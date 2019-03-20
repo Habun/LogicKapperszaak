@@ -1,25 +1,42 @@
-﻿using System;
+﻿using InterfaceUI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FactoryDAL;
+using InterfaceDAL;
 
 namespace LogicKapperszaak
 {
-   public class BehandelingCollectie
+   public class BehandelingCollectie : IBehandelingCollectieUI
     {
-        public List<Behandeling> behandelinglijst { get; private set; } = new List<Behandeling>();
-        public void BehandelingToevoegen(Behandeling behandeling)
+        IBehandelingCollectieDAL BehandelingCollectieDAL = DatabaseFactory.BehandelingCollectieDAL();
+
+        BehandelingInfo behandelinginfo = new BehandelingInfo();
+
+        public void BehandelingToevoegen(BehandelingsInfoUI behandelingUI)
         {
+            behandelinginfo = new BehandelingInfo(behandelingUI.omschrijving, behandelingUI.bedrag);
+            BehandelingCollectieDAL.VoegBehandelingToe(behandelinginfo);
         }
 
-        public void BehandelingVerwijderen(Behandeling behandeling)
+        public void BehandelingVerwijderen(BehandelingsInfoUI behandelingUI)
         {
+            behandelinginfo = new BehandelingInfo(behandelingUI.omschrijving, behandelingUI.bedrag);
+            BehandelingCollectieDAL.VerwijderBehandeling(behandelinginfo);
         }
 
-        public List<Behandeling> AlleBehandelingenOphalen() //moet behandeling zijn
+        public List<BehandelingsInfoUI> AlleBehandelingenOphalen() 
         {
-            throw new NotImplementedException();
+            List<BehandelingsInfoUI> lijstbehandeling = new List<BehandelingsInfoUI>();
+
+            foreach (var bhInfo in BehandelingCollectieDAL.HaalBehandelingenOp())
+            {
+                BehandelingsInfoUI behandelingUI = new BehandelingsInfoUI(bhInfo.omschrijving, bhInfo.bedrag);
+                lijstbehandeling.Add(behandelingUI);
+            }
+            return lijstbehandeling; 
         }
     }
 }

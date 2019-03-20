@@ -7,6 +7,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicKapperszaak", "LogicKa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceDAL", "InterfaceDAL\InterfaceDAL.csproj", "{5FEDD5D4-1DA2-4063-9D3B-82C471FACB21}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{E36BE63B-FF75-4196-B003-53332EE74264}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceUI", "InterfaceUI\InterfaceUI.csproj", "{67D3AAA7-D41A-4F88-9519-FE14E91B987E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoryDAL", "FactoryDAL\FactoryDAL.csproj", "{656596B6-775B-4075-8EC1-7FA9536786D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoryUI", "FactoryUI\FactoryUI.csproj", "{C35C7993-643A-4463-A3F4-75FD800F03C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HairSalonBotan", "HairSalonBotan\HairSalonBotan.csproj", "{B560923D-A99F-4B5B-AAD0-76D33E135292}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +31,26 @@ Global
 		{5FEDD5D4-1DA2-4063-9D3B-82C471FACB21}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FEDD5D4-1DA2-4063-9D3B-82C471FACB21}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FEDD5D4-1DA2-4063-9D3B-82C471FACB21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E36BE63B-FF75-4196-B003-53332EE74264}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E36BE63B-FF75-4196-B003-53332EE74264}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E36BE63B-FF75-4196-B003-53332EE74264}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E36BE63B-FF75-4196-B003-53332EE74264}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67D3AAA7-D41A-4F88-9519-FE14E91B987E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67D3AAA7-D41A-4F88-9519-FE14E91B987E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67D3AAA7-D41A-4F88-9519-FE14E91B987E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67D3AAA7-D41A-4F88-9519-FE14E91B987E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{656596B6-775B-4075-8EC1-7FA9536786D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{656596B6-775B-4075-8EC1-7FA9536786D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{656596B6-775B-4075-8EC1-7FA9536786D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{656596B6-775B-4075-8EC1-7FA9536786D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C35C7993-643A-4463-A3F4-75FD800F03C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C35C7993-643A-4463-A3F4-75FD800F03C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C35C7993-643A-4463-A3F4-75FD800F03C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C35C7993-643A-4463-A3F4-75FD800F03C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B560923D-A99F-4B5B-AAD0-76D33E135292}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B560923D-A99F-4B5B-AAD0-76D33E135292}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B560923D-A99F-4B5B-AAD0-76D33E135292}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B560923D-A99F-4B5B-AAD0-76D33E135292}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

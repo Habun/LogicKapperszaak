@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InterfaceDAL
+namespace InterfaceUI
 {
-   public interface IBehandelingDAL
+    public interface IBehandelingUI
     {
-        void UpdateBehandeling(BehandelingInfo behandelingsinfo);
+        void UpdateBehandeling(BehandelingsInfoUI behandeling);
     }
 }

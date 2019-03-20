@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F5CFCD4F-D415-4B4F-B389-9F7BEB8C3D7A}</ProjectGuid>
+    <ProjectGuid>{E36BE63B-FF75-4196-B003-53332EE74264}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LogicKapperszaak</RootNamespace>
-    <AssemblyName>LogicKapperszaak</AssemblyName>
+    <RootNamespace>DAL</RootNamespace>
+    <AssemblyName>DAL</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,29 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin.cs" />
-    <Compile Include="Afspraak.cs" />
-    <Compile Include="Behandeling.cs" />
-    <Compile Include="BehandelingCollectie.cs" />
-    <Compile Include="CadeauKaart.cs" />
-    <Compile Include="Categorie.cs" />
-    <Compile Include="Kapperszaak.cs" />
-    <Compile Include="Klant.cs" />
-    <Compile Include="Product.cs" />
+    <Compile Include="BehandelingDatabase.cs" />
+    <Compile Include="KapperszaakDatabase.cs" />
+    <Compile Include="KlantDatabase.cs" />
+    <Compile Include="ProductDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ConnectieDatabase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FactoryDAL\FactoryDAL.csproj">
-      <Project>{656596b6-775b-4075-8ec1-7fa9536786d3}</Project>
-      <Name>FactoryDAL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\InterfaceDAL\InterfaceDAL.csproj">
       <Project>{5fedd5d4-1da2-4063-9d3b-82c471facb21}</Project>
       <Name>InterfaceDAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\InterfaceUI\InterfaceUI.csproj">
-      <Project>{67D3AAA7-D41A-4F88-9519-FE14E91B987E}</Project>
-      <Name>InterfaceUI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -3,20 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InterfaceUI;
 
 namespace LogicKapperszaak
 {
-   public  class CadeauKaart
+   public class CadeauKaart
     {
         public string bestemd { get; set; }
         public decimal bedrag { get; set; }
-        public Klant Klant { get; set; }
+        public KlantInfoUI KlantInfo { get; set; }
 
-        public CadeauKaart(string Bestemd, decimal Bedrag, Klant klant)
+        public CadeauKaart(string Bestemd, decimal Bedrag, KlantInfoUI klantInfoUI)
         {
-            Klant = klant; 
+            KlantInfo = klantInfoUI; 
             bestemd = Bestemd;
             bedrag = Bedrag;
+        }
+
+        public CadeauKaart()
+        {
+
         }
     }
 }

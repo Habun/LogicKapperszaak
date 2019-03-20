@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InterfaceUI;
+using InterfaceDAL;
 
 namespace LogicKapperszaak
 {
-    public class Klant
+    public class Klant : IKlantUI
     {
         public string naam { get; set; }
         public int telefoonnummer { get; set; }
         public string emailadres { get; set; }
 
+        public CadeauKaartInfo cadeaukaartinfo = new CadeauKaartInfo();
+        CadeauKaart Cadeaukaart = new CadeauKaart();
         public List<CadeauKaart> cadeaukaartlijst { get; private set; } = new List<CadeauKaart>();
 
         public Klant()
@@ -25,13 +29,10 @@ namespace LogicKapperszaak
             emailadres = Emailadres;
         }
 
-        public void CadeauKaartReserveren(string Naam, int Telefoonnummer, string Emailadres, CadeauKaart cadeauKaart)
+        public void CadeauKaartReserveren(KlantInfoUI klantinfoUI, CadeauKaartInfoUI cadeauKaartinfoUI)
         {
-            naam = Naam;
-            telefoonnummer = Telefoonnummer;
-            emailadres = Emailadres;
-            cadeauKaart.bestemd = cadeauKaart.bestemd;
-            cadeauKaart.bedrag = cadeauKaart.bedrag; 
+            KlantInfo klantinfo = new KlantInfo(klantinfoUI.naam, klantinfoUI.telefoonnummer, klantinfoUI.emailadres);
+            cadeaukaartinfo = new CadeauKaartInfo(cadeauKaartinfoUI.bestemd, cadeauKaartinfoUI.bedrag, klantinfo);
         }
 
         public void AfspraakReserveren()
