@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InterfaceDAL
+namespace InterfaceUI
 {
-    public struct ProductInfo
+   public struct ProductInfoUI
     {
         public string titel { get; private set; }
         public string omschrijving { get; private set; }
         public decimal prijs { get; private set; }
         public string image { get; private set; }
 
-        public ProductInfo(string Titel, string Omschrijving, decimal Prijs, string Image)
+        public ProductInfoUI(string Titel, string Omschrijving, decimal Prijs, string Image)
         {
             titel = Titel;
             omschrijving = Omschrijving;

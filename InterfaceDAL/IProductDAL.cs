@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace InterfaceDAL
 {
-   public interface IBehandelingDAL
+   public interface IProductDAL
     {
-        void UpdateBehandeling(BehandelingInfoDal behandelingsinfo);
+        void UpdateProduct(ProductInfoDal productInfo);
     }
 }

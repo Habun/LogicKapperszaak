@@ -9,42 +9,38 @@ using HairSalonBotan.Models;
 
 namespace HairSalonBotan.Controllers
 {
-    public class BehandelingController : Controller
+    public class KapperszaakController : Controller
     {
-        IBehandelingCollectieUI behandelingCollectie = UIFactory.behandelingCollectie();
-        IBehandelingUI behandelingUI = UIFactory.behandeling();
-
-        BehandelingsInfoUI behandelingsinfo = new BehandelingsInfoUI();
-
-        [HttpGet]
+        IKapperszaakUI kapperszaakUI = UIFactory.kapperszaak();
         public ActionResult Index()
         {
-            BehandelingVM bhmodel = new BehandelingVM
+            KapperszaakVM kpmodel = new KapperszaakVM()
             {
-                behandelingUI = behandelingCollectie.AlleBehandelingenOphalen()
+                producten = kapperszaakUI.AlleProductenOphalen()
             };
-            return View(bhmodel);
+            return View(kpmodel);
         }
 
-        // GET: Behandeling/Details/5
+        // GET: Kapperszaak/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        [HttpGet]
-        public ActionResult Create()        
+        // GET: Kapperszaak/Create
+        public ActionResult Create()
         {
             return View();
         }
 
+        // POST: Kapperszaak/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection, BehandelingVM behandelingVM)
+        public ActionResult Create(FormCollection collection)
         {
             try
             {
-                behandelingsinfo = new BehandelingsInfoUI(behandelingVM.omschrijving, behandelingVM.bedrag);
-                behandelingCollectie.BehandelingToevoegen(behandelingsinfo);
+                // TODO: Add insert logic here
+
                 return RedirectToAction("Index");
             }
             catch
@@ -53,13 +49,13 @@ namespace HairSalonBotan.Controllers
             }
         }
 
-        // GET: Behandeling/Edit/5
+        // GET: Kapperszaak/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Behandeling/Edit/5
+        // POST: Kapperszaak/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -75,13 +71,13 @@ namespace HairSalonBotan.Controllers
             }
         }
 
-        // GET: Behandeling/Delete/5
+        // GET: Kapperszaak/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Behandeling/Delete/5
+        // POST: Kapperszaak/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

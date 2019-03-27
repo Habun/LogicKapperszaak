@@ -41,16 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AfspraakInfo.cs" />
-    <Compile Include="BehandelingInfo.cs" />
-    <Compile Include="CadeauKaartInfo.cs" />
+    <Compile Include="struct\AdminInfoDal.cs" />
+    <Compile Include="struct\AfspraakInfoDal.cs" />
+    <Compile Include="struct\BehandelingInfoDal.cs" />
+    <Compile Include="struct\CadeauKaartInfoDal.cs" />
     <Compile Include="IBehandelingCollectieDAL.cs" />
     <Compile Include="IBehandelingDAL.cs" />
     <Compile Include="IKapperszaakDAL.cs" />
     <Compile Include="IKlantDAL.cs" />
-    <Compile Include="IProduct.cs" />
-    <Compile Include="KlantInfo.cs" />
-    <Compile Include="ProductInfo.cs" />
+    <Compile Include="IProductDAL.cs" />
+    <Compile Include="struct\KlantInfoDal.cs" />
+    <Compile Include="struct\ProductInfoDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

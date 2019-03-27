@@ -8,11 +8,11 @@ namespace InterfaceDAL
 {
     public interface IKapperszaakDAL
     {
-        void Inloggen();
-        void VoegProductToe(ProductInfo productInfo);
-        void VerwijderProduct(ProductInfo productInfo);
-        List<ProductInfo> HaalProductenOp();
-        List<AfspraakInfo> HaalAfspraakOp();
-        List<CadeauKaartInfo> HaalCadeauKaartOp();
+        void Inloggen(AdminInfoDal adminInfoDal);
+        void VoegProductToe(ProductInfoDal productInfo);
+        void VerwijderProduct(ProductInfoDal productInfo);
+        List<ProductInfoDal> HaalProductenOp();
+        List<AfspraakInfoDal> HaalAfspraakOp();
+        List<CadeauKaartInfoDal> HaalCadeauKaartOp();
     }
 }

@@ -16,7 +16,7 @@ namespace LogicKapperszaak
 
         public IBehandelingDAL behandelingDAL = DatabaseFactory.Behandelingdal();
 
-        public BehandelingInfo behandelingsinfo = new BehandelingInfo();
+        public BehandelingInfoDal behandelingsinfo = new BehandelingInfoDal();
 
         public Behandeling()
         {
@@ -30,7 +30,7 @@ namespace LogicKapperszaak
 
         public void UpdateBehandeling(BehandelingsInfoUI behandelingUI)
         {
-            behandelingsinfo = new BehandelingInfo(behandelingUI.omschrijving, behandelingUI.bedrag);
+            behandelingsinfo = new BehandelingInfoDal(behandelingUI.omschrijving, behandelingUI.bedrag);
             behandelingDAL.UpdateBehandeling(behandelingsinfo);
         }
     }

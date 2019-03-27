@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using InterfaceUI;
 using InterfaceDAL;
+using FactoryDAL;
 
 namespace LogicKapperszaak
 {
@@ -14,7 +15,9 @@ namespace LogicKapperszaak
         public int telefoonnummer { get; set; }
         public string emailadres { get; set; }
 
-        public CadeauKaartInfo cadeaukaartinfo = new CadeauKaartInfo();
+        IKlantDAL klantDAL = DatabaseFactory.KlantDAL();
+
+        public CadeauKaartInfoDal cadeaukaartinfo = new CadeauKaartInfoDal();
         CadeauKaart Cadeaukaart = new CadeauKaart();
         public List<CadeauKaart> cadeaukaartlijst { get; private set; } = new List<CadeauKaart>();
 
@@ -31,8 +34,10 @@ namespace LogicKapperszaak
 
         public void CadeauKaartReserveren(KlantInfoUI klantinfoUI, CadeauKaartInfoUI cadeauKaartinfoUI)
         {
-            KlantInfo klantinfo = new KlantInfo(klantinfoUI.naam, klantinfoUI.telefoonnummer, klantinfoUI.emailadres);
-            cadeaukaartinfo = new CadeauKaartInfo(cadeauKaartinfoUI.bestemd, cadeauKaartinfoUI.bedrag, klantinfo);
+            KlantInfoDal klantinfo = new KlantInfoDal(klantinfoUI.naam, klantinfoUI.telefoonnummer, klantinfoUI.emailadres);
+            cadeaukaartinfo = new CadeauKaartInfoDal(cadeauKaartinfoUI.bestemd, cadeauKaartinfoUI.bedrag, klantinfo);
+
+            klantDAL.CadeauKaartReserveren(cadeaukaartinfo);
         }
 
         public void AfspraakReserveren()

@@ -8,7 +8,7 @@ namespace InterfaceDAL
 {
    public interface IKlantDAL
     {
-        void CadeauKaartReserveren();
+        void CadeauKaartReserveren(CadeauKaartInfoDal cadeauKaartInfo);
         void AfspraakReserveren();
     }
 }

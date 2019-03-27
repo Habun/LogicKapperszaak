@@ -10,13 +10,25 @@ namespace FactoryUI
 {
    public class UIFactory
     {
-        public static IBehandelingCollectieUI behandelingCollectieUI()
+        public static IBehandelingCollectieUI behandelingCollectie()
         {
             return new BehandelingCollectie();
         }
-        public static IBehandelingUI behandelingUI()
+        public static IBehandelingUI behandeling()
         {
             return new Behandeling();
+        }
+        public static IKlantUI klant()
+        {
+            return new Klant();
+        }
+        public static IProductUI product()
+        {
+            return new Product();
+        }
+        public static IKapperszaakUI kapperszaak()
+        {
+            return new Kapperszaak();
         }
     }
 }

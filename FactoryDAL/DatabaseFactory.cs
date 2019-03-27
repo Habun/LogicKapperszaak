@@ -8,7 +8,7 @@ using DAL;
 
 namespace FactoryDAL
 {
-    public class DatabaseFactory
+    public static class DatabaseFactory
     {
         public static IBehandelingDAL Behandelingdal()
         {
@@ -17,6 +17,18 @@ namespace FactoryDAL
         public static IBehandelingCollectieDAL BehandelingCollectieDAL()
         {
             return new BehandelingDatabase();
+        }
+        public static IKlantDAL KlantDAL()
+        {
+            return new KlantDatabase();
+        }
+        public static IProductDAL ProductDAL()
+        {
+            return new ProductDatabase();
+        }
+        public static IKapperszaakDAL KapperszaakDAL()
+        {
+            return new KapperszaakDatabase();
         }
     }
 }

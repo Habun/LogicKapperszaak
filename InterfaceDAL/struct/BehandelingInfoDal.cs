@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace InterfaceDAL
 {
-    public struct BehandelingInfo
+    public struct BehandelingInfoDal
     {
-        public string omschrijving { get; private set; }
-        public decimal bedrag { get; private set; }
+        public string omschrijving { get;}
+        public decimal bedrag { get;}
 
-        public BehandelingInfo(string Omschrijving, decimal Bedrag)
+        public BehandelingInfoDal(string Omschrijving, decimal Bedrag)
         {
             omschrijving = Omschrijving;
             bedrag = Bedrag;

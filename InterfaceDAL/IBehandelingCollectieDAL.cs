@@ -8,8 +8,8 @@ namespace InterfaceDAL
 {
     public interface IBehandelingCollectieDAL
     {
-        void VoegBehandelingToe(BehandelingInfo behandelingsinfo);
-        void VerwijderBehandeling(BehandelingInfo behandelingsinfo);
-        List<BehandelingInfo> HaalBehandelingenOp();
+        void VoegBehandelingToe(BehandelingInfoDal behandelingsinfo);
+        void VerwijderBehandeling(BehandelingInfoDal behandelingsinfo);
+        List<BehandelingInfoDal> HaalBehandelingenOp();
     }
 }

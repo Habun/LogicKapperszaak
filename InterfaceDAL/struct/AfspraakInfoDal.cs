@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace InterfaceDAL
 {
-   public struct AfspraakInfo
+   public struct AfspraakInfoDal
     {
         public string opmerkingen { get; private set; }
         public DateTime datetime { get; private set; }
-        public KlantInfo klantinfo { get; private set; }
+        public KlantInfoDal klantinfo { get; private set; }
 
-        public AfspraakInfo(string Opmerking, DateTime dateTime, KlantInfo klantinfoAF)
+        public AfspraakInfoDal(string Opmerking, DateTime dateTime, KlantInfoDal klantinfoAF)
         {
             klantinfo = klantinfoAF;
             opmerkingen = Opmerking;

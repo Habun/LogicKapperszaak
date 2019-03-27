@@ -13,17 +13,17 @@ namespace LogicKapperszaak
     {
         IBehandelingCollectieDAL BehandelingCollectieDAL = DatabaseFactory.BehandelingCollectieDAL();
 
-        BehandelingInfo behandelinginfo = new BehandelingInfo();
+        BehandelingInfoDal behandelinginfo = new BehandelingInfoDal();
 
         public void BehandelingToevoegen(BehandelingsInfoUI behandelingUI)
         {
-            behandelinginfo = new BehandelingInfo(behandelingUI.omschrijving, behandelingUI.bedrag);
+            behandelinginfo = new BehandelingInfoDal(behandelingUI.omschrijving, behandelingUI.bedrag);
             BehandelingCollectieDAL.VoegBehandelingToe(behandelinginfo);
         }
 
         public void BehandelingVerwijderen(BehandelingsInfoUI behandelingUI)
         {
-            behandelinginfo = new BehandelingInfo(behandelingUI.omschrijving, behandelingUI.bedrag);
+            behandelinginfo = new BehandelingInfoDal(behandelingUI.omschrijving, behandelingUI.bedrag);
             BehandelingCollectieDAL.VerwijderBehandeling(behandelinginfo);
         }
 

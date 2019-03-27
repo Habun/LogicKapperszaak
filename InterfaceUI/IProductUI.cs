@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InterfaceDAL
+namespace InterfaceUI
 {
-   public interface IProduct
+   public interface IProductUI
     {
-        void UpdateProduct();
+        void UpdateProduct(ProductInfoUI productInfoUI);
     }
 }

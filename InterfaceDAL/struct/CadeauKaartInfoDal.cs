@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace InterfaceDAL
 {
-    public struct CadeauKaartInfo
+    public struct CadeauKaartInfoDal
     {
         public string bestemd { get; private set; }
         public decimal bedrag { get; private set; }
-        public KlantInfo klantinfo { get; private set; }
+        public KlantInfoDal klantinfo { get; private set; }
         
-        public CadeauKaartInfo(string Bestemd, decimal Bedrag, KlantInfo klantinfoCK)
+        public CadeauKaartInfoDal(string Bestemd, decimal Bedrag, KlantInfoDal klantinfoCK)
         {
             klantinfo = klantinfoCK;
             bestemd = Bestemd;

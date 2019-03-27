@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace InterfaceDAL
 {
-    public struct KlantInfo
+    public struct KlantInfoDal
     {
         public string naam { get; private set; }
         public int telefoonnummer { get; private set; }
         public string emailadres { get; private set; }
 
-        public KlantInfo(string Naam, int Telefoonnummer, string Emailadres)
+        public KlantInfoDal(string Naam, int Telefoonnummer, string Emailadres)
         {
             naam = Naam;
             telefoonnummer = Telefoonnummer;

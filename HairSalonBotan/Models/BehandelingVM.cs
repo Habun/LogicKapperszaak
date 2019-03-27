@@ -19,4 +19,4 @@ namespace HairSalonBotan.Models
         [Required]
         public List<BehandelingsInfoUI> behandelingUI = new List<BehandelingsInfoUI>();
     }
-}
+}           
