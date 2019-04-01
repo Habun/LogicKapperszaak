@@ -10,12 +10,12 @@ namespace HairSalonBotan.Models
 {
     public class BehandelingVM
     {
+      public  CategorieVM categorieVM = new CategorieVM();
+
         [Required]
         public string omschrijving { get; set; }
-
         [Required]
         public decimal bedrag { get; set; }
-
         [Required]
         public List<BehandelingsInfoUI> behandelingUI = new List<BehandelingsInfoUI>();
     }

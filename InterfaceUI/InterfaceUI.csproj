@@ -52,6 +52,7 @@
     <Compile Include="Struct\CadeauKaartInfoUI.cs" />
     <Compile Include="IBehandelingCollectieUI.cs" />
     <Compile Include="IBehandelingUI.cs" />
+    <Compile Include="Struct\CategorieInfoUI.cs" />
     <Compile Include="Struct\KlantInfoUI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Struct\ProductInfoUI.cs" />

@@ -8,9 +8,9 @@ namespace InterfaceDAL
 {
    public struct AfspraakInfoDal
     {
-        public string opmerkingen { get; private set; }
-        public DateTime datetime { get; private set; }
-        public KlantInfoDal klantinfo { get; private set; }
+        public string opmerkingen { get;}
+        public DateTime datetime { get;}
+        public KlantInfoDal klantinfo { get;}
 
         public AfspraakInfoDal(string Opmerking, DateTime dateTime, KlantInfoDal klantinfoAF)
         {

@@ -8,10 +8,10 @@ namespace InterfaceDAL
 {
     public struct ProductInfoDal
     {
-        public string titel { get; private set; }
-        public string omschrijving { get; private set; }
-        public decimal prijs { get; private set; }
-        public string image { get; private set; }
+        public string titel { get;}
+        public string omschrijving { get;}
+        public decimal prijs { get;}
+        public string image { get;}
 
         public ProductInfoDal(string Titel, string Omschrijving, decimal Prijs, string Image)
         {

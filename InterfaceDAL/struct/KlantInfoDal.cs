@@ -8,9 +8,9 @@ namespace InterfaceDAL
 {
     public struct KlantInfoDal
     {
-        public string naam { get; private set; }
-        public int telefoonnummer { get; private set; }
-        public string emailadres { get; private set; }
+        public string naam { get;}
+        public int telefoonnummer { get;}
+        public string emailadres { get;}
 
         public KlantInfoDal(string Naam, int Telefoonnummer, string Emailadres)
         {

@@ -132,6 +132,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BehandelingVM.cs" />
+    <Compile Include="Models\CategorieVM.cs" />
     <Compile Include="Models\KapperszaakVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

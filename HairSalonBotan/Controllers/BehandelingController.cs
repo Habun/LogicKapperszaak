@@ -15,9 +15,10 @@ namespace HairSalonBotan.Controllers
         IBehandelingUI behandelingUI = UIFactory.behandeling();
 
         BehandelingsInfoUI behandelingsinfo = new BehandelingsInfoUI();
+        CategorieInfoUI categorieInfo = new CategorieInfoUI();
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(BehandelingVM behandelingVM)
         {
             BehandelingVM bhmodel = new BehandelingVM
             {
@@ -26,7 +27,6 @@ namespace HairSalonBotan.Controllers
             return View(bhmodel);
         }
 
-        // GET: Behandeling/Details/5
         public ActionResult Details(int id)
         {
             return View();
@@ -39,16 +39,19 @@ namespace HairSalonBotan.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection, BehandelingVM behandelingVM)
+        public ActionResult Create(BehandelingVM behandelingVM, CategorieVM categorieVM)
         {
             try
             {
-                behandelingsinfo = new BehandelingsInfoUI(behandelingVM.omschrijving, behandelingVM.bedrag);
+                categorieInfo = new CategorieInfoUI(categorieVM.categorieId, categorieVM.categorienaam);
+
+                behandelingsinfo = new BehandelingsInfoUI(behandelingVM.omschrijving, behandelingVM.bedrag, categorieInfo);
                 behandelingCollectie.BehandelingToevoegen(behandelingsinfo);
                 return RedirectToAction("Index");
             }
             catch
             {
+        // GET: Behandeling/Details/5
                 return View();
             }
         }

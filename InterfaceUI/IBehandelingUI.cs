@@ -8,6 +8,6 @@ namespace InterfaceUI
 {
     public interface IBehandelingUI
     {
-        void UpdateBehandeling(BehandelingsInfoUI behandeling);
+        void UpdateBehandeling(BehandelingsInfoUI behandeling, CategorieInfoUI categorieInfoUI);
     }
 }

@@ -8,9 +8,9 @@ namespace InterfaceUI
 {
    public struct CadeauKaartInfoUI
     {
-        public string bestemd { get; private set; }
-        public decimal bedrag { get; private set; }
-        public KlantInfoUI klantinfo { get; private set; }
+        public string bestemd { get;}
+        public decimal bedrag { get;}
+        public KlantInfoUI klantinfo { get;}
 
         public CadeauKaartInfoUI(string Bestemd, decimal Bedrag, KlantInfoUI klantinfoCK)
         {

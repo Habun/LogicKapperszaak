@@ -8,9 +8,9 @@ namespace InterfaceDAL
 {
     public struct CadeauKaartInfoDal
     {
-        public string bestemd { get; private set; }
-        public decimal bedrag { get; private set; }
-        public KlantInfoDal klantinfo { get; private set; }
+        public string bestemd { get;}
+        public decimal bedrag { get;}
+        public KlantInfoDal klantinfo { get; }
         
         public CadeauKaartInfoDal(string Bestemd, decimal Bedrag, KlantInfoDal klantinfoCK)
         {

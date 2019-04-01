@@ -10,11 +10,12 @@ namespace InterfaceDAL
     {
         public string omschrijving { get;}
         public decimal bedrag { get;}
-
-        public BehandelingInfoDal(string Omschrijving, decimal Bedrag)
+        public CategorieInfoDal CategorieinfoDal { get; }
+        public BehandelingInfoDal(string Omschrijving, decimal Bedrag, CategorieInfoDal categorieInfodal)
         {
             omschrijving = Omschrijving;
             bedrag = Bedrag;
+            CategorieinfoDal = categorieInfodal;
         }
     }
 }

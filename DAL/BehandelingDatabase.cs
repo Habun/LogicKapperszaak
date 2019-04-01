@@ -20,7 +20,7 @@ namespace DAL
         {
             try
             {
-                string query = "INSERT INTO Product (Omschrijving, Bedrag) VALUES(@Omschrijving, @Bedrag)";
+                string query = "INSERT INTO Behandeling (Omschrijving, Bedrag) VALUES(@Omschrijving, @Bedrag)";
                 conn.Open();
 
                 using (cmd = new SqlCommand(query, conn))
@@ -30,10 +30,14 @@ namespace DAL
                 }
                 cmd.ExecuteNonQuery();
             }
+            catch (Exception e)
+            {
+                var test = e;
+            }
             finally
             {
                 conn.Close();
-                }
+            }
         }
 
         public void VerwijderBehandeling(BehandelingInfoDal behandelingsinfo)
@@ -45,10 +49,8 @@ namespace DAL
         {
             List<BehandelingInfoDal> behandelingen = new List<BehandelingInfoDal>();
 
-            //  string query = "SELECT Categorie.Categorienaam, Behandeling.Omschrijving, Behandeling.Bedrag FROM Categorie " +
-            //                 "INNER JOIN Behandeling ON Categorie.CategorieId = Behandeling.CategorieId";
-
-            string query = "Select Behandeling.Omschrijving, Behandeling.Bedrag FROM Behandeling";
+            string query = "Select Omschrijving, Bedrag, Behandeling.CategorieId, Categorie.Categorienaam FROM Behandeling INNER JOIN Categorie on Behandeling.CategorieId = Categorie.CategorieId;";
+            
             conn.Open();
             cmd = new SqlCommand(query, conn);
 
@@ -56,7 +58,8 @@ namespace DAL
             {
                 while (reader.Read())
                 {
-                    BehandelingInfoDal behandelingInfo = new BehandelingInfoDal(reader.GetString(0), reader.GetDecimal(1));
+                    CategorieInfoDal categorieInfoDal = new CategorieInfoDal(reader.GetInt32(2), reader.GetString(3));
+                    BehandelingInfoDal behandelingInfo = new BehandelingInfoDal(reader.GetString(0), reader.GetDecimal(1), categorieInfoDal);
                     behandelingen.Add(behandelingInfo);
                 }
                 reader.Close();

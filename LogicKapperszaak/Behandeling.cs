@@ -14,24 +14,31 @@ namespace LogicKapperszaak
         public string omschrijving { get; set; }
         public decimal bedrag { get; set; }
 
+        Categorie categorie = new Categorie();
+
         public IBehandelingDAL behandelingDAL = DatabaseFactory.Behandelingdal();
 
-        public BehandelingInfoDal behandelingsinfo = new BehandelingInfoDal();
+        public BehandelingInfoDal behandelingsinfoDal = new BehandelingInfoDal();
+
+        public CategorieInfoDal categorieInfoDal = new CategorieInfoDal();
 
         public Behandeling()
         {
 
         }
-        public Behandeling(string Omschrijving, decimal Bedrag)
+        public Behandeling(string Omschrijving, decimal Bedrag, Categorie categorieen)
         {
             omschrijving = Omschrijving;
             bedrag = Bedrag;
+            categorie = categorieen;
         }
 
-        public void UpdateBehandeling(BehandelingsInfoUI behandelingUI)
+        public void UpdateBehandeling(BehandelingsInfoUI behandelingUI, CategorieInfoUI categorieInfoUI)
         {
-            behandelingsinfo = new BehandelingInfoDal(behandelingUI.omschrijving, behandelingUI.bedrag);
-            behandelingDAL.UpdateBehandeling(behandelingsinfo);
+            categorieInfoDal = new CategorieInfoDal(categorieInfoUI.categorieId, categorieInfoUI.categorienaam);
+
+            behandelingsinfoDal = new BehandelingInfoDal(behandelingUI.omschrijving, behandelingUI.bedrag, categorieInfoDal);
+            behandelingDAL.UpdateBehandeling(behandelingsinfoDal);
         }
     }
 }

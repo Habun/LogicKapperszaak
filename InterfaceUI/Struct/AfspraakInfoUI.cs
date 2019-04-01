@@ -8,9 +8,9 @@ namespace InterfaceUI
 {
     public struct AfspraakInfoUI
     {
-        public string opmerkingen { get; private set; }
-        public DateTime datetime { get; private set; }
-        public KlantInfoUI klantInfoUI { get; private set; }
+        public string opmerkingen { get;}
+        public DateTime datetime { get;}
+        public KlantInfoUI klantInfoUI { get;}
 
         public AfspraakInfoUI(string Opmerking, DateTime dateTime, KlantInfoUI klantinfoAF)
         {

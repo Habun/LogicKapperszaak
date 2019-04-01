@@ -8,8 +8,8 @@ namespace InterfaceUI
 {
     public struct AdminInfoUI
     {
-        public string emailadres { get; private set; }
-        public string wachtwoord { get; private set; }
+        public string emailadres { get;}
+        public string wachtwoord { get;}
 
         public AdminInfoUI(string Emailadres, string Wachtwoord)
         {

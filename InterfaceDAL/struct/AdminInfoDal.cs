@@ -8,8 +8,8 @@ namespace InterfaceDAL
 {
     public struct AdminInfoDal
     {
-        public string emailadres { get; private set; }
-        public string wachtwoord { get; private set; }
+        public string emailadres { get;}
+        public string wachtwoord { get; }
 
         public AdminInfoDal(string Emailadres, string Wachtwoord)
         {

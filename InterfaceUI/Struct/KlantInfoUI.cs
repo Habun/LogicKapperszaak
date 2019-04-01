@@ -8,9 +8,9 @@ namespace InterfaceUI
 {
    public struct KlantInfoUI
     {
-        public string naam { get; private set; }
-        public int telefoonnummer { get; private set; }
-        public string emailadres { get; private set; }
+        public string naam { get;}
+        public int telefoonnummer { get;}
+        public string emailadres { get;}
 
         public KlantInfoUI(string Naam, int Telefoonnummer, string Emailadres)
         {

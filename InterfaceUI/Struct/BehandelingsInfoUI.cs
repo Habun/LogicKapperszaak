@@ -8,13 +8,14 @@ namespace InterfaceUI
 {
    public struct BehandelingsInfoUI
     {
-        public string omschrijving { get; private set; }
-        public decimal bedrag { get; private set; }
-
-        public BehandelingsInfoUI(string Omschrijving, decimal Bedrag)
+        public string omschrijving { get;}
+        public decimal bedrag { get;}
+        public CategorieInfoUI CategorieinfoUI { get; }
+        public BehandelingsInfoUI(string Omschrijving, decimal Bedrag, CategorieInfoUI categorieInfoUI)
         {
             omschrijving = Omschrijving;
             bedrag = Bedrag;
+            CategorieinfoUI = categorieInfoUI;
         }
     }
 }

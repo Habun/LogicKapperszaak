@@ -7,10 +7,13 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nieuw behandeling toevoegen", "Create")
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.categorieVM.categorienaam)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.omschrijving)
         </th>
@@ -23,14 +26,15 @@
 @foreach (var item in @Model.behandelingUI) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.CategorieinfoUI.categorienaam)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.omschrijving)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.bedrag)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
         </td>
     </tr>

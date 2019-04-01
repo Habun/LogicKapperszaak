@@ -11,12 +11,10 @@ namespace HairSalonBotan.Models
     {
         [Required]
         public string titel { get; set; }
-
         [Required]
         public string omschrijving { get; set; }
         [Required]
         public decimal prijs { get; set; }
-
         [Required]
         public string image { get; set; }
         [Required]
