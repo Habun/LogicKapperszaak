@@ -32,9 +32,10 @@ namespace LogicKapperszaak
             image = Image; 
         }
 
-        public void UpdateProduct(ProductInfoUI productInfoUI)
+        public void UpdateProduct(ProductInfoUI productInfoUI, KapperszaakinfoUI kapperszaakinfoUI)
         {
-            productInfo = new ProductInfoDal(productInfoUI.titel, productInfoUI.omschrijving, productInfoUI.prijs, productInfoUI.image);
+            KapperszaakInfoDal kapperszaakInfoDal = new KapperszaakInfoDal(kapperszaakinfoUI.kapperszaakid, kapperszaakinfoUI.naam); 
+            productInfo = new ProductInfoDal(kapperszaakInfoDal , productInfoUI.titel, productInfoUI.omschrijving, productInfoUI.prijs, productInfoUI.image);
             productdal.UpdateProduct(productInfo);
         }
     }

@@ -8,11 +8,13 @@ namespace InterfaceUI
 {
    public struct BehandelingsInfoUI
     {
+        public int behandelingsId { get; }
         public string omschrijving { get;}
         public decimal bedrag { get;}
         public CategorieInfoUI CategorieinfoUI { get; }
-        public BehandelingsInfoUI(string Omschrijving, decimal Bedrag, CategorieInfoUI categorieInfoUI)
+        public BehandelingsInfoUI(int BehandelingsId, string Omschrijving, decimal Bedrag, CategorieInfoUI categorieInfoUI)
         {
+            behandelingsId = BehandelingsId;
             omschrijving = Omschrijving;
             bedrag = Bedrag;
             CategorieinfoUI = categorieInfoUI;

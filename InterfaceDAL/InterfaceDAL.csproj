@@ -51,6 +51,7 @@
     <Compile Include="IKlantDAL.cs" />
     <Compile Include="IProductDAL.cs" />
     <Compile Include="struct\CategorieInfoDal.cs" />
+    <Compile Include="struct\KapperszaakInfoDal.cs" />
     <Compile Include="struct\KlantInfoDal.cs" />
     <Compile Include="struct\ProductInfoDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

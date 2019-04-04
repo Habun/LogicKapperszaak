@@ -15,21 +15,17 @@ namespace DAL
 
         SqlConnection conn = ConnectieDatabase.Connection;
 
-        public List<ProductInfoDal> producten { get; private set; } = new List<ProductInfoDal>()
-        {
-            new ProductInfoDal("t", "t", 12, "t")
-        };
         public List<AfspraakInfoDal> afspraken { get; private set; } = new List<AfspraakInfoDal>();
         public List<CadeauKaartInfoDal> cadeaukaarten { get; private set; } = new List<CadeauKaartInfoDal>();
 
         public void VerwijderProduct(ProductInfoDal productInfo)
         {
-            producten.Remove(productInfo);
+//            producten.Remove(productInfo);
         }
 
         public void VoegProductToe(ProductInfoDal productInfo)
         {
-            producten.Add(productInfo);
+  //          producten.Add(productInfo);
         }
         public void Inloggen(AdminInfoDal adminInfoDal)
         {
@@ -47,7 +43,26 @@ namespace DAL
 
         public List<ProductInfoDal> HaalProductenOp()
         {
-            return producten;
+            List<ProductInfoDal> productenlijst = new List<ProductInfoDal>();
+
+            string query = "Select ProductId, Titel, Omschrijving, Prijs, Image FROM Product"; 
+
+            conn.Open();
+
+            cmd = new SqlCommand(query, conn);
+            using (reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    KapperszaakInfoDal kapperszaakInfoDal = new KapperszaakInfoDal(reader.GetInt32(0), reader.GetString(1));
+                    ProductInfoDal productInfoDal = new ProductInfoDal(kapperszaakInfoDal,reader.GetString(1), reader.GetString(2), reader.GetDecimal(3), reader.GetString(4));
+                    productenlijst.Add(productInfoDal);
+                }
+                reader.Close();
+            }
+            conn.Close();
+
+            return productenlijst;
         }
     }
 }

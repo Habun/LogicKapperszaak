@@ -174,7 +174,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Behandeling\Index.cshtml" />
     <Content Include="Views\Kapperszaak\Index.cshtml" />
-    <Content Include="Views\Behandeling\Create.cshtml" />
+    <Content Include="Views\Behandeling\CreateBehandeling.cshtml" />
+    <Content Include="Views\Behandeling\VerwijderBehandeling.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

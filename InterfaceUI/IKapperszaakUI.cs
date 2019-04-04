@@ -9,8 +9,8 @@ namespace InterfaceUI
    public interface IKapperszaakUI
     {
         void Inloggen(AdminInfoUI adminInfoUI);
-        void VoegProductToe(ProductInfoUI productInfoUI);
-        void VerwijderProduct(ProductInfoUI productInfoUI);
+        void VoegProductToe(ProductInfoUI productInfoUI, KapperszaakinfoUI kappersinfoUI);
+        void VerwijderProduct(ProductInfoUI productInfoUI, KapperszaakinfoUI kappersinfoUI);
         List<ProductInfoUI> AlleProductenOphalen();
         List<AfspraakInfoUI> AlleAfsprakenOphalen();
         List<CadeauKaartInfoUI> AlleCadeauKaartenOphalen();

@@ -33,25 +33,25 @@ namespace HairSalonBotan.Controllers
         }
 
         [HttpGet]
-        public ActionResult Create()        
+        public ActionResult CreateBehandeling()        
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Create(BehandelingVM behandelingVM, CategorieVM categorieVM)
+        public ActionResult CreateBehandeling(BehandelingVM behandelingVM, CategorieVM categorieVM)
         {
             try
             {
                 categorieInfo = new CategorieInfoUI(categorieVM.categorieId, categorieVM.categorienaam);
 
-                behandelingsinfo = new BehandelingsInfoUI(behandelingVM.omschrijving, behandelingVM.bedrag, categorieInfo);
-                behandelingCollectie.BehandelingToevoegen(behandelingsinfo);
+                behandelingsinfo = new BehandelingsInfoUI(behandelingVM.behandelingsId ,behandelingVM.omschrijving, behandelingVM.bedrag, categorieInfo);
+                behandelingCollectie.BehandelingToevoegen(behandelingsinfo, categorieInfo);
+
                 return RedirectToAction("Index");
             }
             catch
             {
-        // GET: Behandeling/Details/5
                 return View();
             }
         }
@@ -77,27 +77,9 @@ namespace HairSalonBotan.Controllers
                 return View();
             }
         }
-
-        // GET: Behandeling/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Behandeling/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+        public ActionResult VerwijderBehandeling(int id)
+        {   
+            return RedirectToAction("Index");
         }
     }
 }

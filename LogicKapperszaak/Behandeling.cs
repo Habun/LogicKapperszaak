@@ -11,6 +11,7 @@ namespace LogicKapperszaak
 {
     public class Behandeling : IBehandelingUI
     {
+        public int behandelingId { get; set; }
         public string omschrijving { get; set; }
         public decimal bedrag { get; set; }
 
@@ -26,8 +27,9 @@ namespace LogicKapperszaak
         {
 
         }
-        public Behandeling(string Omschrijving, decimal Bedrag, Categorie categorieen)
+        public Behandeling(int BehandlingId, string Omschrijving, decimal Bedrag, Categorie categorieen)
         {
+            behandelingId = BehandlingId;
             omschrijving = Omschrijving;
             bedrag = Bedrag;
             categorie = categorieen;
@@ -37,7 +39,7 @@ namespace LogicKapperszaak
         {
             categorieInfoDal = new CategorieInfoDal(categorieInfoUI.categorieId, categorieInfoUI.categorienaam);
 
-            behandelingsinfoDal = new BehandelingInfoDal(behandelingUI.omschrijving, behandelingUI.bedrag, categorieInfoDal);
+            behandelingsinfoDal = new BehandelingInfoDal(behandelingId,behandelingUI.omschrijving, behandelingUI.bedrag, categorieInfoDal);
             behandelingDAL.UpdateBehandeling(behandelingsinfoDal);
         }
     }

@@ -13,8 +13,11 @@ namespace InterfaceUI
         public decimal prijs { get;}
         public string image { get;}
 
-        public ProductInfoUI(string Titel, string Omschrijving, decimal Prijs, string Image)
+        public KapperszaakinfoUI kapperszaakinfoUI { get; }
+
+        public ProductInfoUI(KapperszaakinfoUI KappersZaakInfoUI,string Titel, string Omschrijving, decimal Prijs, string Image)
         {
+            kapperszaakinfoUI = KappersZaakInfoUI;
             titel = Titel;
             omschrijving = Omschrijving;
             prijs = Prijs;

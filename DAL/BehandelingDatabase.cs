@@ -20,11 +20,12 @@ namespace DAL
         {
             try
             {
-                string query = "INSERT INTO Behandeling (Omschrijving, Bedrag) VALUES(@Omschrijving, @Bedrag)";
+                string query = "INSERT INTO Behandeling (CategorieId, Omschrijving, Bedrag) VALUES(@CategorieId, @Omschrijving, @Bedrag)";
                 conn.Open();
 
                 using (cmd = new SqlCommand(query, conn))
                 {
+                    cmd.Parameters.AddWithValue("@CategorieId", behandelingsinfo.CategorieinfoDal.categorieId);
                     cmd.Parameters.AddWithValue("@Omschrijving", behandelingsinfo.omschrijving);
                     cmd.Parameters.AddWithValue("@Bedrag", behandelingsinfo.bedrag);
                 }
@@ -42,14 +43,28 @@ namespace DAL
 
         public void VerwijderBehandeling(BehandelingInfoDal behandelingsinfo)
         {
-            throw new NotImplementedException();
+            try
+            {
+                string query = "Delete FROM Behandeling Where BehandelingId = @BehandelingsId ";
+                conn.Open();
+
+                using (cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@BehandelingsId", behandelingsinfo.behandelingId);
+                }
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
         public List<BehandelingInfoDal> HaalBehandelingenOp()
         {
             List<BehandelingInfoDal> behandelingen = new List<BehandelingInfoDal>();
 
-            string query = "Select Omschrijving, Bedrag, Behandeling.CategorieId, Categorie.Categorienaam FROM Behandeling INNER JOIN Categorie on Behandeling.CategorieId = Categorie.CategorieId;";
+            string query = "Select Categorie.CategorieId, Omschrijving, Bedrag, Categorie.Categorienaam FROM Behandeling INNER JOIN Categorie on Behandeling.CategorieId = Categorie.CategorieId;";
             
             conn.Open();
             cmd = new SqlCommand(query, conn);
@@ -58,8 +73,8 @@ namespace DAL
             {
                 while (reader.Read())
                 {
-                    CategorieInfoDal categorieInfoDal = new CategorieInfoDal(reader.GetInt32(2), reader.GetString(3));
-                    BehandelingInfoDal behandelingInfo = new BehandelingInfoDal(reader.GetString(0), reader.GetDecimal(1), categorieInfoDal);
+                    CategorieInfoDal categorieInfoDal = new CategorieInfoDal(reader.GetInt32(0), reader.GetString(3));
+                    BehandelingInfoDal behandelingInfo = new BehandelingInfoDal(reader.GetInt32(0),reader.GetString(1), reader.GetDecimal(2), categorieInfoDal);
                     behandelingen.Add(behandelingInfo);
                 }
                 reader.Close();

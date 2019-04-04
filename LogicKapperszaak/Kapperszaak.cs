@@ -11,6 +11,7 @@ namespace LogicKapperszaak
 {
    public class Kapperszaak : IKapperszaakUI
     {
+        public int kapperszaakid { get; set; }
         public string naam { get; set; }
         public List<ProductInfoUI> producten { get; private set; } = new List<ProductInfoUI>();
         public List<AfspraakInfoUI> afspraken { get; private set; } = new List<AfspraakInfoUI>();
@@ -18,10 +19,17 @@ namespace LogicKapperszaak
 
         IKapperszaakDAL kapperszaakDAL = DatabaseFactory.KapperszaakDAL();
 
+        KapperszaakInfoDal kapperszaakinfodal = new KapperszaakInfoDal();
+
         ProductInfoDal productinfo = new ProductInfoDal();
+
         KlantInfoUI klantInfoUI = new KlantInfoUI();
 
-
+        public Kapperszaak(int KapperszaakId, string Naam)
+        {
+            kapperszaakid = KapperszaakId;
+            naam = Naam;
+        }
         public Kapperszaak()
         {
         }
@@ -39,22 +47,28 @@ namespace LogicKapperszaak
             }
         }
 
-        public void VoegProductToe(ProductInfoUI productInfoUI)
+        public void VoegProductToe(ProductInfoUI productInfoUI, KapperszaakinfoUI kappersinfoUI)
         {
-            productinfo = new ProductInfoDal(productInfoUI.titel, productInfoUI.omschrijving, productInfoUI.prijs, productInfoUI.image);
+            kapperszaakinfodal = new KapperszaakInfoDal(kappersinfoUI.kapperszaakid, kappersinfoUI.naam);
+
+            productinfo = new ProductInfoDal(kapperszaakinfodal, productInfoUI.titel, productInfoUI.omschrijving, productInfoUI.prijs, productInfoUI.image);
             kapperszaakDAL.VoegProductToe(productinfo);
         }
 
-        public void VerwijderProduct(ProductInfoUI productInfoUI)
+        public void VerwijderProduct(ProductInfoUI productInfoUI, KapperszaakinfoUI kappersinfoUI)
         {
-            productinfo = new ProductInfoDal(productInfoUI.titel, productInfoUI.omschrijving, productInfoUI.prijs, productInfoUI.image);
+            kapperszaakinfodal = new KapperszaakInfoDal(kappersinfoUI.kapperszaakid, kappersinfoUI.naam);
+
+            productinfo = new ProductInfoDal(kapperszaakinfodal , productInfoUI.titel, productInfoUI.omschrijving, productInfoUI.prijs, productInfoUI.image);
             kapperszaakDAL.VerwijderProduct(productinfo);
         }
         public List<ProductInfoUI> AlleProductenOphalen()
         {
             foreach (var pinfoDal in kapperszaakDAL.HaalProductenOp())
             {
-                ProductInfoUI productInfoUI = new ProductInfoUI(pinfoDal.titel, pinfoDal.omschrijving, pinfoDal.prijs, pinfoDal.image);
+                KapperszaakinfoUI kapperszaakinfoUI = new KapperszaakinfoUI(pinfoDal.kapperszaakdal.kapperszaakid, pinfoDal.kapperszaakdal.naam);
+
+                ProductInfoUI productInfoUI = new ProductInfoUI(kapperszaakinfoUI, pinfoDal.titel, pinfoDal.omschrijving, pinfoDal.prijs, pinfoDal.image);
                 producten.Add(productInfoUI);
             }
             return producten;

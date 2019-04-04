@@ -37,7 +37,7 @@
             @Html.DisplayFor(modelItem => item.prijs)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.image)
+            <img src="@Url.Content(item.image)" width="250" height="200"/>
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

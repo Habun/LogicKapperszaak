@@ -17,20 +17,18 @@ namespace LogicKapperszaak
 
         CategorieInfoDal categorieInfoDal = new CategorieInfoDal();
 
-        CategorieInfoUI categorieInfoUI = new CategorieInfoUI();
-
-        public void BehandelingToevoegen(BehandelingsInfoUI behandelingUI)
+        public void BehandelingToevoegen(BehandelingsInfoUI behandelingUI, CategorieInfoUI categorieInfoUI)
         {
             categorieInfoDal = new CategorieInfoDal(categorieInfoUI.categorieId, categorieInfoUI.categorienaam);
 
-            behandelinginfo = new BehandelingInfoDal(behandelingUI.omschrijving, behandelingUI.bedrag, categorieInfoDal);
+            behandelinginfo = new BehandelingInfoDal(behandelinginfo.behandelingId, behandelingUI.omschrijving, behandelingUI.bedrag, categorieInfoDal);
             BehandelingCollectieDAL.VoegBehandelingToe(behandelinginfo);
         }
-        public void BehandelingVerwijderen(BehandelingsInfoUI behandelingUI)
+        public void BehandelingVerwijderen(BehandelingsInfoUI behandelingUI, CategorieInfoUI categorieInfoUI)
         {
             categorieInfoDal = new CategorieInfoDal(categorieInfoUI.categorieId, categorieInfoUI.categorienaam);
 
-            behandelinginfo = new BehandelingInfoDal(behandelingUI.omschrijving, behandelingUI.bedrag, categorieInfoDal);
+            behandelinginfo = new BehandelingInfoDal(behandelinginfo.behandelingId,behandelingUI.omschrijving, behandelingUI.bedrag, categorieInfoDal);
             BehandelingCollectieDAL.VerwijderBehandeling(behandelinginfo);
         }
         public List<BehandelingsInfoUI> AlleBehandelingenOphalen() 
@@ -41,7 +39,7 @@ namespace LogicKapperszaak
             {
                 CategorieInfoUI categorieInfoUI = new CategorieInfoUI(bhInfo.CategorieinfoDal.categorieId, bhInfo.CategorieinfoDal.categorienaam);
 
-                BehandelingsInfoUI behandelingUI = new BehandelingsInfoUI(bhInfo.omschrijving, bhInfo.bedrag, categorieInfoUI);
+                BehandelingsInfoUI behandelingUI = new BehandelingsInfoUI(bhInfo.behandelingId,bhInfo.omschrijving, bhInfo.bedrag, categorieInfoUI);
                 lijstbehandeling.Add(behandelingUI);
             }
             return lijstbehandeling; 

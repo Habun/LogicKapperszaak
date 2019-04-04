@@ -10,8 +10,10 @@ namespace HairSalonBotan.Models
 {
     public class BehandelingVM
     {
-      public  CategorieVM categorieVM = new CategorieVM();
+        public CategorieVM categorieVM = new CategorieVM();
 
+        [Required]
+        public int behandelingsId { get; set; }
         [Required]
         public string omschrijving { get; set; }
         [Required]
@@ -19,4 +21,4 @@ namespace HairSalonBotan.Models
         [Required]
         public List<BehandelingsInfoUI> behandelingUI = new List<BehandelingsInfoUI>();
     }
-}           
+}
