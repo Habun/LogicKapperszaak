@@ -131,6 +131,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdminVM.cs" />
     <Compile Include="Models\BehandelingVM.cs" />
     <Compile Include="Models\CategorieVM.cs" />
     <Compile Include="Models\KapperszaakVM.cs" />
@@ -169,13 +170,12 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Behandeling\Index.cshtml" />
-    <Content Include="Views\Kapperszaak\Index.cshtml" />
+    <Content Include="Views\Kapperszaak\LijstProducten.cshtml" />
     <Content Include="Views\Behandeling\CreateBehandeling.cshtml" />
     <Content Include="Views\Behandeling\VerwijderBehandeling.cshtml" />
+    <Content Include="Views\Kapperszaak\ProductenPagina.cshtml" />
+    <Content Include="Views\Kapperszaak\Inloggen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

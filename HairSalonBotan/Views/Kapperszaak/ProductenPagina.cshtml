@@ -1,0 +1,18 @@
+﻿@model HairSalonBotan.Models.KapperszaakVM
+
+@{
+    ViewBag.Title = "ProductenPagina";
+}
+<br />
+<h2>ProductenPagina</h2>
+
+@foreach (var item in @Model.producten)
+{
+    <div class="col-sm-4">
+        <h2>@Html.DisplayFor(modelItem => item.titel)</h2>
+        <img src="@Url.Content(item.image)" width="335" height="220" />
+        <br />
+        <p>@Html.DisplayFor(modelItem => item.omschrijving)</p>
+        <p> € @Html.DisplayFor(modelItem => item.prijs)</p>
+    </div>
+}

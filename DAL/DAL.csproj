@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BehandelingDatabase.cs" />
+    <Compile Include="CategorieDatabase.cs" />
     <Compile Include="KapperszaakDatabase.cs" />
     <Compile Include="KlantDatabase.cs" />
     <Compile Include="ProductDatabase.cs" />

@@ -1,12 +1,11 @@
 ﻿@model HairSalonBotan.Models.KapperszaakVM
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "LijstProducten";
 }
 
-<h2>Index</h2>
-
-
+<h2>Producten</h2>
+<br />
 <table class="table">
     <tr>
         <th>
@@ -34,7 +33,7 @@
             @Html.DisplayFor(modelItem => item.omschrijving)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.prijs)
+            € @Html.DisplayFor(modelItem => item.prijs)
         </td>
         <td>
             <img src="@Url.Content(item.image)" width="250" height="200"/>

@@ -29,7 +29,29 @@ namespace DAL
         }
         public void Inloggen(AdminInfoDal adminInfoDal)
         {
-            throw new NotImplementedException();
+            try
+            {
+                string query = "Select Emailadres, Wachtwoord FROM Admin Where Emailadres =@Emailadres and Wachtwoord =@Wachtwoord ";
+                conn.Open();
+                cmd = new SqlCommand(query, conn);
+
+                cmd.Parameters.AddWithValue("@Emailadres", adminInfoDal.emailadres);
+                cmd.Parameters.AddWithValue("@Wachtwoord", adminInfoDal.wachtwoord);
+
+                using (reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                       AdminInfoDal amInfoDal = new AdminInfoDal(reader.GetString(0), reader.GetString(1));
+                    }
+                }
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                conn.Close();
+
+            }
         }
         public List<AfspraakInfoDal> HaalAfspraakOp()
         {

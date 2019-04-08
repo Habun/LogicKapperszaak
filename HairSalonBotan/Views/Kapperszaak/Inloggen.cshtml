@@ -1,0 +1,21 @@
+﻿@model HairSalonBotan.Models.KapperszaakVM
+
+@{
+    ViewBag.Title = "Inloggen";
+}
+
+<html>
+<head>
+    <title> Login Pagina</title>
+</head>
+<body>
+    <form asp-area="" asp-controller="Kapperszaak" asp-action="Inloggen" method="post">
+        <div class="container_loginforum">
+            <h2>Login</h2>
+            <input type="text" name="Emailadres" placeholder="Enter Emailadres">
+            <input type="password" name="Wachtwoord" placeholder="Enter Wachtwoord">
+            <input class="inloggen" type="submit" value="Inloggen" />
+        </div>
+    </form>
+</body>
+</html>

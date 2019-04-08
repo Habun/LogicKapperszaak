@@ -9,6 +9,8 @@ namespace HairSalonBotan.Models
 {
     public class KapperszaakVM
     {
+        public AdminVM adminvm = new AdminVM();
+
         [Required]
         public string titel { get; set; }
         [Required]

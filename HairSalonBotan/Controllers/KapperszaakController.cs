@@ -12,7 +12,7 @@ namespace HairSalonBotan.Controllers
     public class KapperszaakController : Controller
     {
         IKapperszaakUI kapperszaakUI = UIFactory.kapperszaak();
-        public ActionResult Index()
+        public ActionResult LijstProducten()
         {
             KapperszaakVM kpmodel = new KapperszaakVM()
             {
@@ -20,11 +20,27 @@ namespace HairSalonBotan.Controllers
             };
             return View(kpmodel);
         }
-
-        // GET: Kapperszaak/Details/5
-        public ActionResult Details(int id)
+        public ActionResult ProductenPagina()
         {
-            return View();
+            KapperszaakVM kpmodel = new KapperszaakVM()
+            {
+                producten = kapperszaakUI.AlleProductenOphalen()
+            };
+            return View(kpmodel);
+        }
+        public ActionResult Inloggen(AdminVM adminVM)
+        {
+            try
+            {
+                AdminInfoUI adminUI = new AdminInfoUI(adminVM.Emailadres, adminVM.Wachtwoord);
+                kapperszaakUI.Inloggen(adminUI);
+
+                return RedirectToAction("ProductenPagina", "Kapperszaak");
+            }
+            catch
+            {
+                return View("Inloggen");
+            }
         }
 
         // GET: Kapperszaak/Create
