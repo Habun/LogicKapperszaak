@@ -88,5 +88,27 @@ namespace DAL
         {
             throw new NotImplementedException();
         }
+
+        //public BehandelingInfoDal HaalIDop(int id)
+        //{
+        //    BehandelingInfoDal behandelingInfo;
+        //    string query = "Select * FROM Behandeling WHERE BehandelingId=@BehandelingId";
+
+        //    conn.Open();
+        //    cmd = new SqlCommand(query, conn);
+
+        //    using (reader = cmd.ExecuteReader())
+        //    {
+        //        cmd.Parameters.AddWithValue("@BehandelingId", id);
+        //        while (reader.Read())
+        //        {
+        //            behandelingInfo = new BehandelingInfoDal(reader.GetInt32(0), reader.GetString(1), reader.GetDecimal(2));
+        //        }
+        //        reader.Close();
+        //    }
+        //    conn.Close();
+
+        //    return behandelingInfo;
+        //}
     }
 }

@@ -9,5 +9,6 @@ namespace InterfaceUI
     public interface IBehandelingUI
     {
         void UpdateBehandeling(BehandelingsInfoUI behandeling, CategorieInfoUI categorieInfoUI);
+      //  BehandelingsInfoUI HaalIDop(int id);
     }
 }

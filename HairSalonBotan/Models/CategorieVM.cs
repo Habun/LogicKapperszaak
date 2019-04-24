@@ -14,9 +14,6 @@ namespace HairSalonBotan.Models
         [Required]
         public string categorienaam { get; set; }
 
-        public List<CategorieInfoUI> categorieInfoUI = new List<CategorieInfoUI>()
-        {
-            new CategorieInfoUI(1, "akjdaks"),
-        };
+        public List<CategorieInfoUI> categorieInfoUI = new List<CategorieInfoUI>();
     }
 }

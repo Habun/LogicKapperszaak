@@ -15,18 +15,18 @@ namespace LogicKapperszaak
 
         BehandelingInfoDal behandelinginfo = new BehandelingInfoDal();
 
-        CategorieInfoDal categorieInfoDal = new CategorieInfoDal();
+        CategorieInfoUI categorieInfoUI = new CategorieInfoUI();
 
-        public void BehandelingToevoegen(BehandelingsInfoUI behandelingUI, CategorieInfoUI categorieInfoUI)
+        public void BehandelingToevoegen(BehandelingsInfoUI behandelingUI)
         {
-            categorieInfoDal = new CategorieInfoDal(categorieInfoUI.categorieId, categorieInfoUI.categorienaam);
+            CategorieInfoDal categorieInfoDal = new CategorieInfoDal(categorieInfoUI.categorieId, categorieInfoUI.categorienaam);
 
             behandelinginfo = new BehandelingInfoDal(behandelinginfo.behandelingId, behandelingUI.omschrijving, behandelingUI.bedrag, categorieInfoDal);
             BehandelingCollectieDAL.VoegBehandelingToe(behandelinginfo);
         }
-        public void BehandelingVerwijderen(BehandelingsInfoUI behandelingUI, CategorieInfoUI categorieInfoUI)
+        public void BehandelingVerwijderen(BehandelingsInfoUI behandelingUI)
         {
-            categorieInfoDal = new CategorieInfoDal(categorieInfoUI.categorieId, categorieInfoUI.categorienaam);
+            CategorieInfoDal categorieInfoDal = new CategorieInfoDal(categorieInfoUI.categorieId, categorieInfoUI.categorienaam);
 
             behandelinginfo = new BehandelingInfoDal(behandelinginfo.behandelingId,behandelingUI.omschrijving, behandelingUI.bedrag, categorieInfoDal);
             BehandelingCollectieDAL.VerwijderBehandeling(behandelinginfo);
@@ -37,7 +37,7 @@ namespace LogicKapperszaak
 
             foreach (var bhInfo in BehandelingCollectieDAL.HaalBehandelingenOp())
             {
-                CategorieInfoUI categorieInfoUI = new CategorieInfoUI(bhInfo.CategorieinfoDal.categorieId, bhInfo.CategorieinfoDal.categorienaam);
+                categorieInfoUI = new CategorieInfoUI(bhInfo.CategorieinfoDal.categorieId, bhInfo.CategorieinfoDal.categorienaam);
 
                 BehandelingsInfoUI behandelingUI = new BehandelingsInfoUI(bhInfo.behandelingId,bhInfo.omschrijving, bhInfo.bedrag, categorieInfoUI);
                 lijstbehandeling.Add(behandelingUI);

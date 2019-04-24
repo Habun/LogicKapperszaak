@@ -47,6 +47,7 @@
     <Compile Include="BehandelingCollectie.cs" />
     <Compile Include="CadeauKaart.cs" />
     <Compile Include="Categorie.cs" />
+    <Compile Include="CategorieCollectie.cs" />
     <Compile Include="Kapperszaak.cs" />
     <Compile Include="Klant.cs" />
     <Compile Include="Product.cs" />

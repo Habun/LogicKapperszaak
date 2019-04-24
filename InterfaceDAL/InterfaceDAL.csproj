@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICategorieCollectionDAL.cs" />
     <Compile Include="struct\AdminInfoDal.cs" />
     <Compile Include="struct\AfspraakInfoDal.cs" />
     <Compile Include="struct\BehandelingInfoDal.cs" />

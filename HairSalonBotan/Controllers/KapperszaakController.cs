@@ -30,9 +30,9 @@ namespace HairSalonBotan.Controllers
         }
         public ActionResult Inloggen(AdminVM adminVM)
         {
+            AdminInfoUI adminUI = new AdminInfoUI(adminVM.Emailadres, adminVM.Wachtwoord);
             try
             {
-                AdminInfoUI adminUI = new AdminInfoUI(adminVM.Emailadres, adminVM.Wachtwoord);
                 kapperszaakUI.Inloggen(adminUI);
 
                 return RedirectToAction("ProductenPagina", "Kapperszaak");

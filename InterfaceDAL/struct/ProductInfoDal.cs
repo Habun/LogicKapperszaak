@@ -10,16 +10,14 @@ namespace InterfaceDAL
     {
         public string titel { get;}
         public string omschrijving { get;}
-        public decimal prijs { get;}
         public string image { get;}
         public KapperszaakInfoDal kapperszaakdal { get; }
 
-        public ProductInfoDal(KapperszaakInfoDal KappersZaakDal, string Titel, string Omschrijving, decimal Prijs, string Image)
+        public ProductInfoDal(KapperszaakInfoDal KappersZaakDal, string Titel, string Omschrijving, string Image)
         {
             kapperszaakdal = KappersZaakDal;
             titel = Titel;
             omschrijving = Omschrijving;
-            prijs = Prijs;
             image = Image;
         }
     }

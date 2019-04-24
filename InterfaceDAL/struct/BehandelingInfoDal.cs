@@ -19,5 +19,12 @@ namespace InterfaceDAL
             bedrag = Bedrag;
             CategorieinfoDal = categorieInfodal;
         }
+
+        public BehandelingInfoDal(int BehandelingId, string Omschrijving, decimal Bedrag) : this()
+        {
+            behandelingId = BehandelingId;
+            omschrijving = Omschrijving;
+            bedrag = Bedrag;
+        }
     }
 }

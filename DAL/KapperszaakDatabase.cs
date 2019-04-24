@@ -31,7 +31,7 @@ namespace DAL
         {
             try
             {
-                string query = "Select Emailadres, Wachtwoord FROM Admin Where Emailadres =@Emailadres and Wachtwoord =@Wachtwoord ";
+                string query = "Select * FROM Admin Where Emailadres =@Emailadres and Wachtwoord =@Wachtwoord ";
                 conn.Open();
                 cmd = new SqlCommand(query, conn);
 
@@ -42,10 +42,14 @@ namespace DAL
                 {
                     while (reader.Read())
                     {
-                       AdminInfoDal amInfoDal = new AdminInfoDal(reader.GetString(0), reader.GetString(1));
+                        AdminInfoDal amInfoDal = new AdminInfoDal(reader.GetString(0), reader.GetString(1));
                     }
                 }
                 cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                var test = e; 
             }
             finally
             {
@@ -67,7 +71,7 @@ namespace DAL
         {
             List<ProductInfoDal> productenlijst = new List<ProductInfoDal>();
 
-            string query = "Select ProductId, Titel, Omschrijving, Prijs, Image FROM Product"; 
+            string query = "Select ProductId, Titel, Omschrijving, Image FROM Product"; 
 
             conn.Open();
 
@@ -77,7 +81,7 @@ namespace DAL
                 while (reader.Read())
                 {
                     KapperszaakInfoDal kapperszaakInfoDal = new KapperszaakInfoDal(reader.GetInt32(0), reader.GetString(1));
-                    ProductInfoDal productInfoDal = new ProductInfoDal(kapperszaakInfoDal,reader.GetString(1), reader.GetString(2), reader.GetDecimal(3), reader.GetString(4));
+                    ProductInfoDal productInfoDal = new ProductInfoDal(kapperszaakInfoDal,reader.GetString(1), reader.GetString(2), reader.GetString(3));
                     productenlijst.Add(productInfoDal);
                 }
                 reader.Close();

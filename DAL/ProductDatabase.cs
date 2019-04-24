@@ -18,14 +18,13 @@ namespace DAL
         {
             try
             {
-                string query = "Update dbo.Product SET Titel =@titel, Omschrijving =@omschrijving, Prijs =@prijs, Image =@image Where Product.ProductId =@ProductId";
+                string query = "Update dbo.Product SET Titel =@titel, Omschrijving =@omschrijving, Image =@image Where Product.ProductId =@ProductId";
                 conn.Open();
 
                 using (cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@titel", productInfo.titel);
                     cmd.Parameters.AddWithValue("@omschrijving", productInfo.omschrijving);
-                    cmd.Parameters.AddWithValue("@prijs", productInfo.prijs);
                     cmd.Parameters.AddWithValue("@image", productInfo.image);
                 }
                 cmd.ExecuteNonQuery();
@@ -35,5 +34,7 @@ namespace DAL
                 conn.Close();
             }
         }
+
+
     }
 }

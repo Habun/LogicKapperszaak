@@ -10,17 +10,15 @@ namespace InterfaceUI
     {
         public string titel { get;}
         public string omschrijving { get;}
-        public decimal prijs { get;}
         public string image { get;}
 
         public KapperszaakinfoUI kapperszaakinfoUI { get; }
 
-        public ProductInfoUI(KapperszaakinfoUI KappersZaakInfoUI,string Titel, string Omschrijving, decimal Prijs, string Image)
+        public ProductInfoUI(KapperszaakinfoUI KappersZaakInfoUI,string Titel, string Omschrijving,string Image)
         {
             kapperszaakinfoUI = KappersZaakInfoUI;
             titel = Titel;
             omschrijving = Omschrijving;
-            prijs = Prijs;
             image = Image;
         }
     }

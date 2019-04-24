@@ -30,5 +30,9 @@ namespace FactoryUI
         {
             return new Kapperszaak();
         }
+        public static ICategorieCollectieUI categorieCollectie()
+        {
+            return new CategorieCollectie();
+        }
     }
 }

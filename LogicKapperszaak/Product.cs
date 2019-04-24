@@ -13,7 +13,6 @@ namespace LogicKapperszaak
     {
         public string titel { get; set; }
         public string omschrijving { get; set; }
-        public decimal prijs { get; set; }
         public string image { get; set; }
 
         IProductDAL productdal = DatabaseFactory.ProductDAL();
@@ -24,18 +23,17 @@ namespace LogicKapperszaak
         {
         }
 
-        public Product(string Titel, string Omschrijving, int Prijs, string Image)
+        public Product(string Titel, string Omschrijving, string Image)
         {
             titel = Titel;
             omschrijving = Omschrijving;
-            prijs = Prijs;
             image = Image; 
         }
 
         public void UpdateProduct(ProductInfoUI productInfoUI, KapperszaakinfoUI kapperszaakinfoUI)
         {
             KapperszaakInfoDal kapperszaakInfoDal = new KapperszaakInfoDal(kapperszaakinfoUI.kapperszaakid, kapperszaakinfoUI.naam); 
-            productInfo = new ProductInfoDal(kapperszaakInfoDal , productInfoUI.titel, productInfoUI.omschrijving, productInfoUI.prijs, productInfoUI.image);
+            productInfo = new ProductInfoDal(kapperszaakInfoDal , productInfoUI.titel, productInfoUI.omschrijving, productInfoUI.image);
             productdal.UpdateProduct(productInfo);
         }
     }

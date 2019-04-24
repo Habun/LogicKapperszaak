@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICategorieCollectieUI.cs" />
     <Compile Include="IKapperszaakUI.cs" />
     <Compile Include="IKlantUI.cs" />
     <Compile Include="IProductUI.cs" />

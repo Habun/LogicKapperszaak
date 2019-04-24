@@ -36,13 +36,14 @@ namespace LogicKapperszaak
 
         public void Inloggen(AdminInfoUI adminInfoUI) 
         {
+            AdminInfoDal adminInfoDal = new AdminInfoDal(adminInfoUI.emailadres, adminInfoUI.wachtwoord);
+
             if (adminInfoUI.emailadres == null && adminInfoUI.wachtwoord == null)
             {
                 throw new NotImplementedException();
             }
             else
             {
-                AdminInfoDal adminInfoDal = new AdminInfoDal(adminInfoUI.emailadres, adminInfoUI.wachtwoord);
                 kapperszaakDAL.Inloggen(adminInfoDal);
             }
         }
@@ -51,7 +52,7 @@ namespace LogicKapperszaak
         {
             kapperszaakinfodal = new KapperszaakInfoDal(kappersinfoUI.kapperszaakid, kappersinfoUI.naam);
 
-            productinfo = new ProductInfoDal(kapperszaakinfodal, productInfoUI.titel, productInfoUI.omschrijving, productInfoUI.prijs, productInfoUI.image);
+            productinfo = new ProductInfoDal(kapperszaakinfodal, productInfoUI.titel, productInfoUI.omschrijving,productInfoUI.image);
             kapperszaakDAL.VoegProductToe(productinfo);
         }
 
@@ -59,7 +60,7 @@ namespace LogicKapperszaak
         {
             kapperszaakinfodal = new KapperszaakInfoDal(kappersinfoUI.kapperszaakid, kappersinfoUI.naam);
 
-            productinfo = new ProductInfoDal(kapperszaakinfodal , productInfoUI.titel, productInfoUI.omschrijving, productInfoUI.prijs, productInfoUI.image);
+            productinfo = new ProductInfoDal(kapperszaakinfodal , productInfoUI.titel, productInfoUI.omschrijving, productInfoUI.image);
             kapperszaakDAL.VerwijderProduct(productinfo);
         }
         public List<ProductInfoUI> AlleProductenOphalen()
@@ -68,7 +69,7 @@ namespace LogicKapperszaak
             {
                 KapperszaakinfoUI kapperszaakinfoUI = new KapperszaakinfoUI(pinfoDal.kapperszaakdal.kapperszaakid, pinfoDal.kapperszaakdal.naam);
 
-                ProductInfoUI productInfoUI = new ProductInfoUI(kapperszaakinfoUI, pinfoDal.titel, pinfoDal.omschrijving, pinfoDal.prijs, pinfoDal.image);
+                ProductInfoUI productInfoUI = new ProductInfoUI(kapperszaakinfoUI, pinfoDal.titel, pinfoDal.omschrijving, pinfoDal.image);
                 producten.Add(productInfoUI);
             }
             return producten;

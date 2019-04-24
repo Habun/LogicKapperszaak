@@ -15,9 +15,6 @@
             @Html.DisplayNameFor(model => model.omschrijving)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.prijs)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.image)
         </th>
         <th></th>
@@ -31,9 +28,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.omschrijving)
-        </td>
-        <td>
-            € @Html.DisplayFor(modelItem => item.prijs)
         </td>
         <td>
             <img src="@Url.Content(item.image)" width="250" height="200"/>

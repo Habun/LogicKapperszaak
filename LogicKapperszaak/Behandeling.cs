@@ -27,9 +27,9 @@ namespace LogicKapperszaak
         {
 
         }
-        public Behandeling(int BehandlingId, string Omschrijving, decimal Bedrag, Categorie categorieen)
+        public Behandeling(int BehandelingId, string Omschrijving, decimal Bedrag, Categorie categorieen)
         {
-            behandelingId = BehandlingId;
+            behandelingId = BehandelingId;
             omschrijving = Omschrijving;
             bedrag = Bedrag;
             categorie = categorieen;
@@ -42,5 +42,18 @@ namespace LogicKapperszaak
             behandelingsinfoDal = new BehandelingInfoDal(behandelingId,behandelingUI.omschrijving, behandelingUI.bedrag, categorieInfoDal);
             behandelingDAL.UpdateBehandeling(behandelingsinfoDal);
         }
+
+        //public BehandelingsInfoUI HaalIDop(BehandelingsInfoUI bh)
+        //{
+        //    if (bh.behandelingsId == 0)
+        //    {
+        //        throw new ArgumentException($"Geen behandeling gevonden.");
+        //    }
+        //    else
+        //    {
+        //        behandelingsinfoDal = new BehandelingInfoDal(bh.behandelingsId, bh.omschrijving, bh.bedrag);
+        //        return behandelingDAL.HaalIDop(behandelingsinfoDal);
+        //    }
+        //}
     }
 }

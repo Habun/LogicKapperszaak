@@ -30,5 +30,9 @@ namespace FactoryDAL
         {
             return new KapperszaakDatabase();
         }
+        public static ICategorieCollectionDAL CategorieDal()
+        {
+            return new CategorieDatabase();
+        }
     }
 }
