@@ -12,13 +12,17 @@ namespace HairSalonBotan.Controllers
     public class CategorieController : Controller
     {
         ICategorieCollectieUI categorieCollectieUI = UIFactory.categorieCollectie();
+        IBehandelingCollectieUI behandelingCollectie = UIFactory.behandelingCollectie();
+
         public ActionResult Categorieën()
         {
             CategorieVM categorieVM = new CategorieVM
             {
-                categorieInfoUI = categorieCollectieUI.AlleCategorieenOphalen()
+                categorieInfoUI = categorieCollectieUI.AlleCategorieenOphalen(),
+                lijstbehandelingen = behandelingCollectie.AlleBehandelingenOphalen()
             };
             return View(categorieVM); 
         }
+
     }
 }

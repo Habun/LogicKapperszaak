@@ -5,7 +5,7 @@
 }
 
 <br />
-<div class="container">
+@*<div class="container">
     <div class="row">
         <div class="col-md-6">
             <h2>Categorieën</h2>
@@ -19,7 +19,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 
         @*<div class="tab-content col-md-9">
                     <div class="tab-pane" id="1"><p>Mannen</p></div>
@@ -30,3 +30,21 @@
                     <div class="tab-pane " id="6">Zes</div>
                     <div class="tab-pane " id="7">Permanent All</div>  
                 </div>*@
+
+<div class="col-md-6">
+    <h3>Test</h3>
+    <div class="tabbable">
+        <ul class="nav nav-pills nav-stacked col-md-3">
+            @foreach (var item in Model.categorieInfoUI)
+            {
+                <li><a href="@item.categorieId" data-toggle="tab">@item.categorienaam</a></li>
+            }
+        </ul>
+        <div class="tab-content col-md-9">
+            @foreach (var test in Model.lijstbehandelingen)
+            {
+                <div class="tab-pane" id="1">@test.omschrijving  @test.bedrag</div>
+            }
+        </div>
+    </div>
+</div>
