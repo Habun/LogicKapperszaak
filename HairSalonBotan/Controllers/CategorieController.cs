@@ -19,7 +19,7 @@ namespace HairSalonBotan.Controllers
             CategorieVM categorieVM = new CategorieVM
             {
                 categorieInfoUI = categorieCollectieUI.AlleCategorieenOphalen(),
-                lijstbehandelingen = behandelingCollectie.AlleBehandelingenOphalen()
+                behandelingMannen = behandelingCollectie.AlleMannenBehandelingenOphalen()
             };
             return View(categorieVM); 
         }

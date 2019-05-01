@@ -11,5 +11,6 @@ namespace InterfaceUI
         void BehandelingToevoegen(BehandelingsInfoUI behandeling);
         void BehandelingVerwijderen(BehandelingsInfoUI behandeling);
         List<BehandelingsInfoUI> AlleBehandelingenOphalen();
+        List<BehandelingsInfoUI> AlleMannenBehandelingenOphalen();
     }
 }

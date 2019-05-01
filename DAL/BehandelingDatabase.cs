@@ -83,6 +83,28 @@ namespace DAL
 
             return behandelingen;
         }
+        public List<BehandelingInfoDal> HaalAlleMannenBehandelingenOp()
+        {
+            List<BehandelingInfoDal> behandelingMannen = new List<BehandelingInfoDal>();
+
+            string query = "Select Behandeling.BehandelingId, Behandeling.Omschrijving, Behandeling.Bedrag FROM Behandeling INNER JOIN Categorie on Categorie.CategorieId = Behandeling.CategorieId Where Behandeling.CategorieId = 1";
+
+            conn.Open();
+            cmd = new SqlCommand(query, conn);
+
+            using (reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    BehandelingInfoDal behandelingInfo = new BehandelingInfoDal(reader.GetInt32(0), reader.GetString(1), reader.GetDecimal(2));
+                    behandelingMannen.Add(behandelingInfo);
+                }
+                reader.Close();
+            }
+            conn.Close();
+
+            return behandelingMannen;
+        }
 
         public void UpdateBehandeling(BehandelingInfoDal behandelingsinfo)
         {

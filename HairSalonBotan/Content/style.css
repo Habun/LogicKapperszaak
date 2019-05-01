@@ -1,0 +1,110 @@
+body
+{
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+}
+.nav-area
+{
+	position: relative;
+	padding: 0;
+	margin:0;
+	background-color: #313131;
+	letter-spacing: 2px;
+	width: 250px;
+	font-family: Poppings; 
+	font-size : 15px;
+	line-height: 15px;
+}
+.nav-area a, 
+.nav-area a:link,
+.nav-area a:visited,
+.nav-area a:focus
+{
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+}
+.nav-area a:hover{
+	color: #247c9d;
+	text-decoration: none;
+}
+.nav-area > li{
+	display: block;
+	text-align: center;
+}
+.nav-area > li:hover a{
+	padding: 40px 18px;
+	display: block;
+}
+.nav-area > li:hover a{
+	color: #fff;
+}
+.nav-area > li:hover{
+	background-color: #247c9d;
+}
+.nav-area > li > .sub-nav{
+	list-style: none;
+	top: 0;
+	left: 250px;
+	width: 400px;
+	min-height: 100%;
+	text-align: left;
+	margin-top: 30px;
+	padding: 0px;
+	z-index: 99;
+	overflow: hidden;
+	opacity: 0;
+	visibility: hidden;
+	position: absolute;
+}
+.nav-area > li:hover .sub-nav{
+	opacity: 1;
+	visibility: visible;
+	margin-top: 0;
+	background: #fff;
+}
+.nav-area ul li:hover:after{
+	color: #247c9d;
+}
+.nav-area .sub-menu{
+	width: 100%;
+	float: left;
+	color: #fff;
+	margin: 0 0 0 15px;
+}
+.nav-area .sub-menu ul{
+	padding: 0;
+	margin: 0;
+}
+.nav-area .sub-menu ul li{
+	padding: 0;
+	list-style: none;
+	font-size: 12px;
+}
+.nav-area .sub-menu h3{
+	font-size: 20px;
+	padding: 10px 10px;
+	font-weight: bold;
+	margin: 30px 30px 30px 0;
+	background: #313131;
+}
+.nav-area .sub-menu ul li a{
+	display: block;
+	padding: 0 0 15px 0;
+	color: #247c9d;
+}
+.nav-area .sub-menu ul li a:hover{
+	color: #313131;
+}
+.nav-area > li > ul li ul,
+.nav-area li > ul li,
+.nav-area > li > sub-nav,
+.nav-area > li > ul,
+.nav-area > li{
+	-webkit-transition: all 0.8s ease-in-out;
+	-moz-transition: all 0.8s ease-in-out;
+	-ms-transition: all 0.8s ease-in-out;
+	-o-transition: all 0.8s ease-in-out;
+	transition: all 0.8s ease-in-out;
+}

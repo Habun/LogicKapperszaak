@@ -44,5 +44,16 @@ namespace LogicKapperszaak
             }
             return lijstbehandeling; 
         }
+        public List<BehandelingsInfoUI> AlleMannenBehandelingenOphalen()
+        {
+            List<BehandelingsInfoUI> behandelingMannen = new List<BehandelingsInfoUI>();
+
+            foreach (var bhInfo in BehandelingCollectieDAL.HaalAlleMannenBehandelingenOp())
+            {
+                BehandelingsInfoUI behandelingUI = new BehandelingsInfoUI(bhInfo.behandelingId, bhInfo.omschrijving, bhInfo.bedrag);
+                behandelingMannen.Add(behandelingUI);
+            }
+            return behandelingMannen;
+        }
     }
 }

@@ -11,5 +11,6 @@ namespace InterfaceDAL
         void VoegBehandelingToe(BehandelingInfoDal behandelingsinfo);
         void VerwijderBehandeling(BehandelingInfoDal behandelingsinfo);
         List<BehandelingInfoDal> HaalBehandelingenOp();
+        List<BehandelingInfoDal> HaalAlleMannenBehandelingenOp();
     }
 }
