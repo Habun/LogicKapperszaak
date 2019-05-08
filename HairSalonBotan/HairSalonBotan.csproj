@@ -179,6 +179,7 @@
     <Content Include="Views\Kapperszaak\ProductenPagina.cshtml" />
     <Content Include="Views\Kapperszaak\Inloggen.cshtml" />
     <Content Include="Views\Categorie\Categorieën.cshtml" />
+    <Content Include="Views\Behandeling\BehandelingDoorGevenAanCategorie.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -3,40 +3,43 @@
 @{
     ViewBag.Title = "Index";
 }
-<br/>
+
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Nieuw behandeling toevoegen", "CreateBehandeling")
+    @Html.ActionLink("Voeg nieuw behandeling toe", "CreateBehandeling")
 </p>
 <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.categorieVM.categorienaam)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.omschrijving)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.bedrag)
-            </th>
-            <th></th>
-        </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.categorieVM.categorienaam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.omschrijving)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bedrag)
+        </th>
+        <th></th>
+    </tr>
 
-    @foreach (var item in @Model.behandelingUI) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategorieinfoUI.categorienaam)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.omschrijving)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.bedrag)
-            </td>
-            <td>
-                @Html.ActionLink("Delete", "VerwijderBehandeling", new { item.behandelingsId })
-            </td>
-        </tr>
-    }
+@foreach (var item in @Model.behandelingUI) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategorieinfoUI.categorienaam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.omschrijving)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bedrag)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
 </table>

@@ -31,7 +31,7 @@
         </div>
     </div>
 
-    @*@Html.DropDownListFor(Categorieen => Categorieen.behandelingsId ,new SelectList(Model.behandelingUI, "behandelingsId", "omschrijving"), "Select")*@
+    @*@Html.DropDownListFor(categorie => categorie.categorieVM.categorieId ,new SelectList(Model.categorieVM.categorieInfoUI, "categorieId", "categorienaam"), "Select")*@
 
     <div class="form-group">
         @Html.LabelFor(model => model.omschrijving, htmlAttributes: new { @class = "control-label col-md-2" })

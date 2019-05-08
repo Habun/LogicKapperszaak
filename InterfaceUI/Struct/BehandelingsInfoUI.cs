@@ -20,11 +20,11 @@ namespace InterfaceUI
             CategorieinfoUI = categorieInfoUI;
         }
 
-        public BehandelingsInfoUI(int behandelingsId, string omschrijving, decimal bedrag) : this()
-        {
-            this.behandelingsId = behandelingsId;
-            this.omschrijving = omschrijving;
-            this.bedrag = bedrag;
-        }
+        //public BehandelingsInfoUI(int behandelingsId, string omschrijving, decimal bedrag) : this()
+        //{
+        //    this.behandelingsId = behandelingsId;
+        //    this.omschrijving = omschrijving;
+        //    this.bedrag = bedrag;
+        //}
     }
 }

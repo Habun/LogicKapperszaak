@@ -14,15 +14,23 @@ namespace HairSalonBotan.Controllers
         IBehandelingCollectieUI behandelingCollectie = UIFactory.behandelingCollectie();
         IBehandelingUI behandelingUI = UIFactory.behandeling();
 
+        BehandelingVM bhmodel;
         BehandelingsInfoUI behandelingsinfo = new BehandelingsInfoUI();
 
         [HttpGet]
-        public ActionResult Index(BehandelingVM behandelingVM)
+        public ActionResult Index()
         {
             BehandelingVM bhmodel = new BehandelingVM
             {
                 behandelingUI = behandelingCollectie.AlleBehandelingenOphalen()
             };
+            return View(bhmodel);
+        }
+        public ActionResult BehandelingDoorGevenAanCategorie(int id)
+        {
+            bhmodel = new BehandelingVM();
+            bhmodel.geefAlleBehandelingVoorCategorie = behandelingCollectie.AlleBehandelingenVoorCategorie(id);
+            
             return View(bhmodel);
         }
 
@@ -45,7 +53,7 @@ namespace HairSalonBotan.Controllers
                 CategorieInfoUI categorieInfo = new CategorieInfoUI(categorieVM.categorieId, categorieVM.categorienaam);
 
                 behandelingsinfo = new BehandelingsInfoUI(behandelingVM.behandelingsId, behandelingVM.omschrijving, behandelingVM.bedrag, categorieInfo);
-                behandelingCollectie.BehandelingToevoegen(behandelingsinfo);
+                behandelingCollectie.BehandelingToevoegen(behandelingsinfo, categorieInfo);
 
                 return RedirectToAction("Index");
             }
@@ -77,11 +85,15 @@ namespace HairSalonBotan.Controllers
             }
         }
 
-        public ActionResult VerwijderBehandeling(BehandelingVM behandelingVM, CategorieVM categorieVM)
-        {
-            behandelingsinfo = new BehandelingsInfoUI(behandelingVM.behandelingsId, behandelingVM.omschrijving, behandelingVM.bedrag);
+        //public ActionResult VerwijderBehandeling(int id, BehandelingVM behandelingVM)
+        //{
+        //    // categorie en behandeling meegeven
+        //    behandelingsinfo = new BehandelingsInfoUI(behandelingVM.behandelingsId, behandelingVM.omschrijving, behandelingVM.bedrag);
+        //    id = behandelingsinfo.behandelingsId;
 
-            return RedirectToAction("Index");
-        }
+        //    var verwijderbehandeling = behandelingCollectie.IdOphalen(id);
+
+        //    return RedirectToAction("Index");
+        //}
     }
 }

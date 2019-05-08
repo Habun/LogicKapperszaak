@@ -17,14 +17,14 @@ namespace LogicKapperszaak
 
         CategorieInfoUI categorieInfoUI = new CategorieInfoUI();
 
-        public void BehandelingToevoegen(BehandelingsInfoUI behandelingUI)
+        public void BehandelingToevoegen(BehandelingsInfoUI behandelingUI, CategorieInfoUI categorieInfoUI)
         {
             CategorieInfoDal categorieInfoDal = new CategorieInfoDal(categorieInfoUI.categorieId, categorieInfoUI.categorienaam);
 
             behandelinginfo = new BehandelingInfoDal(behandelinginfo.behandelingId, behandelingUI.omschrijving, behandelingUI.bedrag, categorieInfoDal);
             BehandelingCollectieDAL.VoegBehandelingToe(behandelinginfo);
         }
-        public void BehandelingVerwijderen(BehandelingsInfoUI behandelingUI)
+        public void BehandelingVerwijderen(BehandelingsInfoUI behandelingUI, CategorieInfoUI categorieInfoUI)
         {
             CategorieInfoDal categorieInfoDal = new CategorieInfoDal(categorieInfoUI.categorieId, categorieInfoUI.categorienaam);
 
@@ -44,14 +44,16 @@ namespace LogicKapperszaak
             }
             return lijstbehandeling; 
         }
-        public List<BehandelingsInfoUI> AlleMannenBehandelingenOphalen()
+        public List<BehandelingsInfoUI> AlleBehandelingenVoorCategorie(int categoryid)
         {
             List<BehandelingsInfoUI> behandelingMannen = new List<BehandelingsInfoUI>();
 
-            foreach (var bhInfo in BehandelingCollectieDAL.HaalAlleMannenBehandelingenOp())
+            foreach (var bhInfo in BehandelingCollectieDAL.GeefAlleBehandelingVoorCategorie(categoryid))
             {
-                BehandelingsInfoUI behandelingUI = new BehandelingsInfoUI(bhInfo.behandelingId, bhInfo.omschrijving, bhInfo.bedrag);
-                behandelingMannen.Add(behandelingUI);
+                    categorieInfoUI = new CategorieInfoUI(bhInfo.CategorieinfoDal.categorieId, bhInfo.CategorieinfoDal.categorienaam);
+                
+                    BehandelingsInfoUI behandelingUI = new BehandelingsInfoUI(bhInfo.behandelingId, bhInfo.omschrijving, bhInfo.bedrag, categorieInfoUI);
+                    behandelingMannen.Add(behandelingUI);
             }
             return behandelingMannen;
         }

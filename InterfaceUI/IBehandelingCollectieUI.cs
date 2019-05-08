@@ -8,9 +8,9 @@ namespace InterfaceUI
 {
    public interface IBehandelingCollectieUI
     {
-        void BehandelingToevoegen(BehandelingsInfoUI behandeling);
-        void BehandelingVerwijderen(BehandelingsInfoUI behandeling);
+        void BehandelingToevoegen(BehandelingsInfoUI behandeling, CategorieInfoUI categorieInfoUI);
+        void BehandelingVerwijderen(BehandelingsInfoUI behandeling, CategorieInfoUI categorieInfoUI);
         List<BehandelingsInfoUI> AlleBehandelingenOphalen();
-        List<BehandelingsInfoUI> AlleMannenBehandelingenOphalen();
+        List<BehandelingsInfoUI> AlleBehandelingenVoorCategorie(int categoryid);
     }
 }

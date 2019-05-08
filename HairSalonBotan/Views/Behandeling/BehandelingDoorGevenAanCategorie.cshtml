@@ -1,0 +1,32 @@
+﻿@model HairSalonBotan.Models.BehandelingVM
+
+@{
+    ViewBag.Title = "BehandelingDoorGevenAanCategorie";
+}
+
+<h2>BehandelingDoorGevenAanCategorie</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.omschrijving)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bedrag)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in @Model.geefAlleBehandelingVoorCategorie) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.omschrijving)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bedrag)
+        </td>
+    </tr>
+}
+
+</table>
