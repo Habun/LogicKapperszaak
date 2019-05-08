@@ -85,15 +85,9 @@ namespace HairSalonBotan.Controllers
             }
         }
 
-        //public ActionResult VerwijderBehandeling(int id, BehandelingVM behandelingVM)
-        //{
-        //    // categorie en behandeling meegeven
-        //    behandelingsinfo = new BehandelingsInfoUI(behandelingVM.behandelingsId, behandelingVM.omschrijving, behandelingVM.bedrag);
-        //    id = behandelingsinfo.behandelingsId;
-
-        //    var verwijderbehandeling = behandelingCollectie.IdOphalen(id);
-
-        //    return RedirectToAction("Index");
-        //}
+        public ActionResult VerwijderBehandeling(int id)
+        {
+            return RedirectToAction("Index");
+        }
     }
 }

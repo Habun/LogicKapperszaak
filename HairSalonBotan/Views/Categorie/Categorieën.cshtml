@@ -4,32 +4,30 @@
     ViewBag.Title = "Categorieën";
 }
 
+<br />
+<h3>Afspraak Maken</h3>
+<br />
 <link href="~/Content/style.css" rel="stylesheet" />
-@*@foreach (var item in Model.categorieInfoUI)
-{
-    @Html.ActionLink(item.categorienaam, "BehandelingDoorGevenAanCategorie", "Behandeling", new { id = item.categorieId }, null)
-}*@
-<br /> 
-<br /> 
-<link href="~/Content/style.css" rel="stylesheet" />
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <h3>Categorieën</h3>
-                <div class="tabbable tabs-left">
-                    <ul class="nav nav-tabs">
-                        @foreach (var item in Model.categorieInfoUI)
-                        {
-                            <li> @Html.ActionLink(item.categorienaam, "BehandelingDoorGevenAanCategorie", "Behandeling", new { id = item.categorieId }, null)</li>
-                        }
-                    </ul>
-                </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="tabbable tabs-left">
+                <ul class="nav nav-tabs">
+                    @foreach (var item in Model.categorieInfoUI)
+                    {
+                        <li> @Html.ActionLink(item.categorienaam, "BehandelingDoorGevenAanCategorie", "Behandeling", new { id = item.categorieId }, null)</li>
+                    }
+                </ul>
             </div>
         </div>
     </div>
+</div>
 
 
-
+@*@foreach (var item in Model.categorieInfoUI)
+    {
+        @Html.ActionLink(item.categorienaam, "BehandelingDoorGevenAanCategorie", "Behandeling", new { id = item.categorieId }, null)
+    }*@
 
 @*<link href="~/Content/style.css" rel="stylesheet" />
     <div class="container">

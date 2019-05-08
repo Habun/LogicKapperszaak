@@ -15,8 +15,6 @@ namespace LogicKapperszaak
 
         BehandelingInfoDal behandelinginfo = new BehandelingInfoDal();
 
-        CategorieInfoUI categorieInfoUI = new CategorieInfoUI();
-
         public void BehandelingToevoegen(BehandelingsInfoUI behandelingUI, CategorieInfoUI categorieInfoUI)
         {
             CategorieInfoDal categorieInfoDal = new CategorieInfoDal(categorieInfoUI.categorieId, categorieInfoUI.categorienaam);
@@ -37,7 +35,7 @@ namespace LogicKapperszaak
 
             foreach (var bhInfo in BehandelingCollectieDAL.HaalBehandelingenOp())
             {
-                categorieInfoUI = new CategorieInfoUI(bhInfo.CategorieinfoDal.categorieId, bhInfo.CategorieinfoDal.categorienaam);
+                CategorieInfoUI categorieInfoUI = new CategorieInfoUI(bhInfo.CategorieinfoDal.categorieId, bhInfo.CategorieinfoDal.categorienaam);
 
                 BehandelingsInfoUI behandelingUI = new BehandelingsInfoUI(bhInfo.behandelingId,bhInfo.omschrijving, bhInfo.bedrag, categorieInfoUI);
                 lijstbehandeling.Add(behandelingUI);
@@ -49,10 +47,8 @@ namespace LogicKapperszaak
             List<BehandelingsInfoUI> behandelingMannen = new List<BehandelingsInfoUI>();
 
             foreach (var bhInfo in BehandelingCollectieDAL.GeefAlleBehandelingVoorCategorie(categoryid))
-            {
-                    categorieInfoUI = new CategorieInfoUI(bhInfo.CategorieinfoDal.categorieId, bhInfo.CategorieinfoDal.categorienaam);
-                
-                    BehandelingsInfoUI behandelingUI = new BehandelingsInfoUI(bhInfo.behandelingId, bhInfo.omschrijving, bhInfo.bedrag, categorieInfoUI);
+            {                
+                    BehandelingsInfoUI behandelingUI = new BehandelingsInfoUI(bhInfo.behandelingId, bhInfo.omschrijving, bhInfo.bedrag);
                     behandelingMannen.Add(behandelingUI);
             }
             return behandelingMannen;
