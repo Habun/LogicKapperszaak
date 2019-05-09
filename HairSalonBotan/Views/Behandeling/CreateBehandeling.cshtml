@@ -16,22 +16,11 @@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
     <div class="form-group">
-        @Html.LabelFor(model => model.categorieVM.categorieId, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.categorieVM.categorieId, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.categorieVM.categorieId, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
         @Html.LabelFor(model => model.categorieVM.categorienaam, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.categorieVM.categorienaam, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.categorieVM.categorienaam, "", new { @class = "text-danger" })
+            @Html.DropDownListFor(CategorieNaam => CategorieNaam.categorieVM.categorieId, new SelectList(Model.categorieVM.categorieInfoUI, "categorieId", "categorienaam", "Select"))
         </div>
     </div>
-
-    @*@Html.DropDownListFor(categorie => categorie.categorieVM.categorieId ,new SelectList(Model.categorieVM.categorieInfoUI, "categorieId", "categorienaam"), "Select")*@
 
     <div class="form-group">
         @Html.LabelFor(model => model.omschrijving, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -58,5 +47,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Terug naar behandelingen", "Index")
 </div>

@@ -13,6 +13,8 @@ namespace HairSalonBotan.Controllers
     {
         IBehandelingCollectieUI behandelingCollectie = UIFactory.behandelingCollectie();
         IBehandelingUI behandelingUI = UIFactory.behandeling();
+        ICategorieCollectieUI categorieCollectie = UIFactory.categorieCollectie();
+
 
         BehandelingVM bhmodel;
         BehandelingsInfoUI behandelingsinfo = new BehandelingsInfoUI();
@@ -40,9 +42,10 @@ namespace HairSalonBotan.Controllers
         }
 
         [HttpGet]
-        public ActionResult CreateBehandeling()
+        public ActionResult CreateBehandeling(BehandelingVM behandelingVM)
         {
-            return View();
+            behandelingVM.categorieVM.categorieInfoUI = categorieCollectie.AlleCategorieenOphalen();
+            return View(behandelingVM);
         }
 
         [HttpPost]
