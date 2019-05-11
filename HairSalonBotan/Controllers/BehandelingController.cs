@@ -15,8 +15,7 @@ namespace HairSalonBotan.Controllers
         IBehandelingUI behandelingUI = UIFactory.behandeling();
         ICategorieCollectieUI categorieCollectie = UIFactory.categorieCollectie();
 
-
-        BehandelingVM bhmodel;
+        BehandelingVM bhmodel = new BehandelingVM();
         BehandelingsInfoUI behandelingsinfo = new BehandelingsInfoUI();
 
         [HttpGet]
@@ -32,7 +31,7 @@ namespace HairSalonBotan.Controllers
         {
             bhmodel = new BehandelingVM();
             bhmodel.geefAlleBehandelingVoorCategorie = behandelingCollectie.AlleBehandelingenVoorCategorie(id);
-            
+
             return View(bhmodel);
         }
 
@@ -87,9 +86,18 @@ namespace HairSalonBotan.Controllers
                 return View();
             }
         }
-
-        public ActionResult VerwijderBehandeling(int id)
+        [HttpGet]
+        public ActionResult VerwijderBehandeling()
         {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult VerwijderBehandeling(int behandelingId)
+        {
+            behandelingsinfo = new BehandelingsInfoUI(bhmodel.behandelingsId);
+            behandelingsinfo = behandelingCollectie.HaalBehandelingIdOp(behandelingId);
+            behandelingCollectie.BehandelingVerwijderen(behandelingId);
+
             return RedirectToAction("Index");
         }
     }

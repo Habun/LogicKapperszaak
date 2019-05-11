@@ -15,6 +15,7 @@ namespace DAL
         private SqlDataReader reader;
 
         SqlConnection conn = ConnectieDatabase.Connection;
+        CategorieInfoDal categorieInfoDal;
 
         public void VoegCategorieToe(CategorieInfoDal categorieinfoDal)
         {
@@ -27,7 +28,6 @@ namespace DAL
         public List<CategorieInfoDal> HaalBehandelingenOp()
         {
             List<CategorieInfoDal> categorieen = new List<CategorieInfoDal>();
-
             string query = "Select * From Categorie";
 
             conn.Open();
@@ -40,12 +40,25 @@ namespace DAL
                     CategorieInfoDal categorieInfoDal = new CategorieInfoDal(reader.GetInt32(0), reader.GetString(1));
                     categorieen.Add(categorieInfoDal);
                 }
-                reader.Close();
             }
-            conn.Close();
-
             return categorieen;
         }
+        public CategorieInfoDal CategoryIdOphalen(int id)
+        {
+            string query = "Select * FROM Categorie WHERE CategorieId=@CategorieID";
 
+            conn.Open();
+            cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@CategorieID", id);
+
+            using (reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    categorieInfoDal = new CategorieInfoDal(reader.GetInt32(0), reader.GetString(1));
+                }
+            }
+            return categorieInfoDal;
+        }
     }
 }

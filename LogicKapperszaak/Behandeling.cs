@@ -42,18 +42,5 @@ namespace LogicKapperszaak
             behandelingsinfoDal = new BehandelingInfoDal(behandelingId,behandelingUI.omschrijving, behandelingUI.bedrag, categorieInfoDal);
             behandelingDAL.UpdateBehandeling(behandelingsinfoDal);
         }
-
-        //public BehandelingsInfoUI HaalIDop(BehandelingsInfoUI bh)
-        //{
-        //    if (bh.behandelingsId == 0)
-        //    {
-        //        throw new ArgumentException($"Geen behandeling gevonden.");
-        //    }
-        //    else
-        //    {
-        //        behandelingsinfoDal = new BehandelingInfoDal(bh.behandelingsId, bh.omschrijving, bh.bedrag);
-        //        return behandelingDAL.HaalIDop(behandelingsinfoDal);
-        //    }
-        //}
     }
 }

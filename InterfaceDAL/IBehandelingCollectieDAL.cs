@@ -9,8 +9,9 @@ namespace InterfaceDAL
     public interface IBehandelingCollectieDAL
     {
         void VoegBehandelingToe(BehandelingInfoDal behandelingsinfo);
-        void VerwijderBehandeling(BehandelingInfoDal behandelingsinfo);
+        void VerwijderBehandeling(int behandelingId);
         List<BehandelingInfoDal> HaalBehandelingenOp();
         List<BehandelingInfoDal> GeefAlleBehandelingVoorCategorie(int categoryid);
+        BehandelingInfoDal BehandelingIdOphalen(int id);
     }
 }

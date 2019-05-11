@@ -13,21 +13,21 @@ namespace LogicKapperszaak
     {
         IBehandelingCollectieDAL BehandelingCollectieDAL = DatabaseFactory.BehandelingCollectieDAL();
 
-        BehandelingInfoDal behandelinginfo = new BehandelingInfoDal();
+        BehandelingInfoDal behandelinginfoDal = new BehandelingInfoDal();
+        CategorieInfoUI categorieInfoUI = new CategorieInfoUI();
+
 
         public void BehandelingToevoegen(BehandelingsInfoUI behandelingUI, CategorieInfoUI categorieInfoUI)
         {
             CategorieInfoDal categorieInfoDal = new CategorieInfoDal(categorieInfoUI.categorieId, categorieInfoUI.categorienaam);
 
-            behandelinginfo = new BehandelingInfoDal(behandelinginfo.behandelingId, behandelingUI.omschrijving, behandelingUI.bedrag, categorieInfoDal);
-            BehandelingCollectieDAL.VoegBehandelingToe(behandelinginfo);
+            behandelinginfoDal = new BehandelingInfoDal(behandelinginfoDal.behandelingId, behandelingUI.omschrijving, behandelingUI.bedrag, categorieInfoDal);
+            BehandelingCollectieDAL.VoegBehandelingToe(behandelinginfoDal);
         }
-        public void BehandelingVerwijderen(BehandelingsInfoUI behandelingUI, CategorieInfoUI categorieInfoUI)
+        public void BehandelingVerwijderen(int behandelingId)
         {
-            CategorieInfoDal categorieInfoDal = new CategorieInfoDal(categorieInfoUI.categorieId, categorieInfoUI.categorienaam);
-
-            behandelinginfo = new BehandelingInfoDal(behandelinginfo.behandelingId,behandelingUI.omschrijving, behandelingUI.bedrag, categorieInfoDal);
-            BehandelingCollectieDAL.VerwijderBehandeling(behandelinginfo);
+            behandelinginfoDal = new BehandelingInfoDal(behandelingId);
+            BehandelingCollectieDAL.VerwijderBehandeling(behandelingId);
         }
         public List<BehandelingsInfoUI> AlleBehandelingenOphalen() 
         {
@@ -52,6 +52,21 @@ namespace LogicKapperszaak
                     behandelingMannen.Add(behandelingUI);
             }
             return behandelingMannen;
+        }
+
+        public BehandelingsInfoUI HaalBehandelingIdOp(int id)
+        {
+            BehandelingCollectieDAL.BehandelingIdOphalen(id);
+            BehandelingsInfoUI behandelingsInfoUI = new BehandelingsInfoUI(id);
+
+            if (id == 0)
+            {
+                throw new NotImplementedException();
+            }
+            else
+            {
+                return behandelingsInfoUI;
+            }
         }
     }
 }

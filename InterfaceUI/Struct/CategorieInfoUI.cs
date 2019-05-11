@@ -15,6 +15,11 @@ namespace InterfaceUI
             categorieId = CategorieId;
             categorienaam = CategorieNaam;
         }
+
+        public CategorieInfoUI(int id) : this()
+        {
+            this.categorieId = id;
+        }
     }
 }
 

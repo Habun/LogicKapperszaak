@@ -11,5 +11,6 @@ namespace InterfaceUI
         void CategorieToevoegen(CategorieInfoUI categorieUI);
         void CategorieVerwijderen(CategorieInfoUI categorieUI);
         List<CategorieInfoUI> AlleCategorieenOphalen();
+        CategorieInfoUI HaalCategorieIdOp(int id);
     }
 }

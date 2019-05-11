@@ -26,5 +26,9 @@ namespace InterfaceDAL
             omschrijving = Omschrijving;
             bedrag = Bedrag;
         }
+        public BehandelingInfoDal(int BehandelingId) : this()
+        {
+            behandelingId = BehandelingId;
+        }
     }
 }

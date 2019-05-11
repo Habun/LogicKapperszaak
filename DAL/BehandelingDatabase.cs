@@ -14,8 +14,9 @@ namespace DAL
         private SqlDataReader reader;
 
         SqlConnection conn = ConnectieDatabase.Connection;
+        BehandelingInfoDal behandelingInfo;
 
-        public void VoegBehandelingToe( BehandelingInfoDal behandelingsinfo)
+        public void VoegBehandelingToe(BehandelingInfoDal behandelingsinfo)
         {
             string query = "INSERT INTO Behandeling (CategorieId, Omschrijving, Bedrag) VALUES(@CategorieId, @Omschrijving, @Bedrag)";
             conn.Open();
@@ -29,14 +30,14 @@ namespace DAL
             cmd.ExecuteNonQuery();
         }
 
-        public void VerwijderBehandeling(BehandelingInfoDal behandelingsinfo)
+        public void VerwijderBehandeling(int behandelingId)
         {
             string query = "Delete FROM Behandeling Where BehandelingId = @BehandelingsId ";
             conn.Open();
 
             using (cmd = new SqlCommand(query, conn))
             {
-              cmd.Parameters.AddWithValue("@BehandelingsId", behandelingsinfo.behandelingId);
+              cmd.Parameters.AddWithValue("@BehandelingsId", behandelingId);
             }
             cmd.ExecuteNonQuery();
         }
@@ -45,7 +46,7 @@ namespace DAL
         {
             List<BehandelingInfoDal> behandelingen = new List<BehandelingInfoDal>();
 
-            string query = "Select Categorie.CategorieId, Omschrijving, Bedrag, Categorie.Categorienaam FROM Behandeling INNER JOIN Categorie on Behandeling.CategorieId = Categorie.CategorieId ;";
+            string query = "Select Categorie.CategorieId, Behandeling.BehandelingId , Omschrijving, Bedrag, Categorie.Categorienaam FROM Behandeling INNER JOIN Categorie on Behandeling.CategorieId = Categorie.CategorieId ;";
             
             conn.Open();
             cmd = new SqlCommand(query, conn);
@@ -54,8 +55,8 @@ namespace DAL
             {
                 while (reader.Read())
                 {
-                    CategorieInfoDal categorieInfoDal = new CategorieInfoDal(reader.GetInt32(0), reader.GetString(3));
-                    BehandelingInfoDal behandelingInfo = new BehandelingInfoDal(reader.GetInt32(0),reader.GetString(1), reader.GetDecimal(2), categorieInfoDal);
+                    CategorieInfoDal categorieInfoDal = new CategorieInfoDal(reader.GetInt32(0), reader.GetString(4));
+                    BehandelingInfoDal behandelingInfo = new BehandelingInfoDal(reader.GetInt32(1),reader.GetString(2), reader.GetDecimal(3), categorieInfoDal);
                     behandelingen.Add(behandelingInfo);
                 }
             }
@@ -85,6 +86,25 @@ namespace DAL
         public void UpdateBehandeling(BehandelingInfoDal behandelingsinfo)
         {
             throw new NotImplementedException();
+        }
+
+        public BehandelingInfoDal BehandelingIdOphalen(int id)
+        {
+            string query = "Select * FROM Behandeling WHERE BehandelingId=@BehandelingId";
+
+            conn.Open();
+            cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@BehandelingId", id);
+
+            using (reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    behandelingInfo = new BehandelingInfoDal(reader.GetInt32(0));
+                }
+            }
+            conn.Close();
+            return behandelingInfo;
         }
     }
 }

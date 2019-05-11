@@ -12,7 +12,7 @@ namespace LogicKapperszaak
    public class CategorieCollectie : ICategorieCollectieUI
     {
         ICategorieCollectionDAL CategorieCollectionDAL = DatabaseFactory.CategorieDal();
-        public CategorieInfoDal categorieinfoDal = new CategorieInfoDal();
+        CategorieInfoDal categorieinfoDal;
         public void CategorieToevoegen(CategorieInfoUI categorieUI)
         {
             categorieinfoDal = new CategorieInfoDal(categorieUI.categorieId, categorieUI.categorienaam);
@@ -31,6 +31,20 @@ namespace LogicKapperszaak
                 categorielijst.Add(categorieInfoUI);
             }
             return categorielijst;
+        }
+        public CategorieInfoUI HaalCategorieIdOp(int id)
+        {
+            CategorieCollectionDAL.CategoryIdOphalen(id);
+            CategorieInfoUI categorieInfoUI = new CategorieInfoUI(id);
+
+            if (id == 0)
+            {
+                throw new NotImplementedException();
+            }
+            else
+            {
+                return categorieInfoUI;
+            }
         }
     }
 }

@@ -26,5 +26,10 @@ namespace InterfaceUI
             this.omschrijving = omschrijving;
             this.bedrag = bedrag;
         }
+
+        public BehandelingsInfoUI(int id) : this()
+        {
+            this.behandelingsId = id;
+        }
     }
 }
