@@ -18,9 +18,16 @@ namespace DAL
         public List<AfspraakInfoDal> afspraken { get; private set; } = new List<AfspraakInfoDal>();
         public List<CadeauKaartInfoDal> cadeaukaarten { get; private set; } = new List<CadeauKaartInfoDal>();
 
-        public void VerwijderProduct(ProductInfoDal productInfo)
+        public void VerwijderProduct(int productId)
         {
-//            producten.Remove(productInfo);
+            string query = "Delete FROM Product Where ProductId = @ProductId ";
+            conn.Open();
+
+            using (cmd = new SqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@ProductId", productId);
+            }
+            cmd.ExecuteNonQuery();
         }
 
         public void VoegProductToe(ProductInfoDal productInfo)
@@ -71,7 +78,7 @@ namespace DAL
         {
             List<ProductInfoDal> productenlijst = new List<ProductInfoDal>();
 
-            string query = "Select ProductId, Titel, Omschrijving, Image FROM Product"; 
+            string query = "Select ProductId, KapperszaakId, Titel, Omschrijving, Image FROM Product"; 
 
             conn.Open();
 
@@ -80,8 +87,8 @@ namespace DAL
             {
                 while (reader.Read())
                 {
-                    KapperszaakInfoDal kapperszaakInfoDal = new KapperszaakInfoDal(reader.GetInt32(0), reader.GetString(1));
-                    ProductInfoDal productInfoDal = new ProductInfoDal(kapperszaakInfoDal,reader.GetString(1), reader.GetString(2), reader.GetString(3));
+                    KapperszaakInfoDal kapperszaakInfoDal = new KapperszaakInfoDal(reader.GetInt32(1), reader.GetString(2));
+                    ProductInfoDal productInfoDal = new ProductInfoDal(kapperszaakInfoDal, reader.GetInt32(0), reader.GetString(2), reader.GetString(3), reader.GetString(4));
                     productenlijst.Add(productInfoDal);
                 }
                 reader.Close();

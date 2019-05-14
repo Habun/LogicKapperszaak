@@ -14,9 +14,6 @@ namespace LogicKapperszaak
         IBehandelingCollectieDAL BehandelingCollectieDAL = DatabaseFactory.BehandelingCollectieDAL();
 
         BehandelingInfoDal behandelinginfoDal = new BehandelingInfoDal();
-        CategorieInfoUI categorieInfoUI = new CategorieInfoUI();
-
-
         public void BehandelingToevoegen(BehandelingsInfoUI behandelingUI, CategorieInfoUI categorieInfoUI)
         {
             CategorieInfoDal categorieInfoDal = new CategorieInfoDal(categorieInfoUI.categorieId, categorieInfoUI.categorienaam);
@@ -26,7 +23,6 @@ namespace LogicKapperszaak
         }
         public void BehandelingVerwijderen(int behandelingId)
         {
-            behandelinginfoDal = new BehandelingInfoDal(behandelingId);
             BehandelingCollectieDAL.VerwijderBehandeling(behandelingId);
         }
         public List<BehandelingsInfoUI> AlleBehandelingenOphalen() 
@@ -52,21 +48,6 @@ namespace LogicKapperszaak
                     behandelingMannen.Add(behandelingUI);
             }
             return behandelingMannen;
-        }
-
-        public BehandelingsInfoUI HaalBehandelingIdOp(int id)
-        {
-            BehandelingCollectieDAL.BehandelingIdOphalen(id);
-            BehandelingsInfoUI behandelingsInfoUI = new BehandelingsInfoUI(id);
-
-            if (id == 0)
-            {
-                throw new NotImplementedException();
-            }
-            else
-            {
-                return behandelingsInfoUI;
-            }
         }
     }
 }

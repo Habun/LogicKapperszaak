@@ -3,7 +3,6 @@
 @{
     ViewBag.Title = "Index";
 }
-
 <h2>Index</h2>
 
 <p>
@@ -23,7 +22,7 @@
         <th></th>
     </tr>
 
-    @foreach (var item in @Model.behandelingUI)
+    @foreach (var item in Model.behandelingUI)
     {
         <tr>
             <td>
@@ -36,8 +35,7 @@
                 @Html.DisplayFor(modelItem => item.bedrag)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Edit", "Edit", new { behandelingId = item.behandelingsId }) |
                 @Html.ActionLink("Delete", "VerwijderBehandeling",new { behandelingId = item.behandelingsId })
             </td>
         </tr>

@@ -1,13 +1,9 @@
-﻿using InterfaceUI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FactoryDAL;
 using InterfaceDAL;
-using FactoryDAL;
+using InterfaceUI;
+using System;
 
-namespace LogicKapperszaak 
+namespace LogicKapperszaak
 {
     public class Behandeling : IBehandelingUI
     {
@@ -35,12 +31,23 @@ namespace LogicKapperszaak
             categorie = categorieen;
         }
 
-        public void UpdateBehandeling(BehandelingsInfoUI behandelingUI, CategorieInfoUI categorieInfoUI)
+        public void UpdateBehandeling(int BehandelingId, BehandelingsInfoUI BehandelingUI, CategorieInfoUI CategorieUI)
         {
-            categorieInfoDal = new CategorieInfoDal(categorieInfoUI.categorieId, categorieInfoUI.categorienaam);
+            categorieInfoDal = new CategorieInfoDal(CategorieUI.categorieId, CategorieUI.categorienaam);
 
-            behandelingsinfoDal = new BehandelingInfoDal(behandelingId,behandelingUI.omschrijving, behandelingUI.bedrag, categorieInfoDal);
+            behandelingsinfoDal = new BehandelingInfoDal(BehandelingId, BehandelingUI.omschrijving, BehandelingUI.bedrag, categorieInfoDal);
             behandelingDAL.UpdateBehandeling(behandelingsinfoDal);
+        }
+        public int BehandelingIDdoorGeven()
+        {
+            if (behandelingDAL.GeefBehandelingIDdoor() == 0)
+            {
+                throw new ArgumentException($"Geen behandelingId gevonden.");
+            }
+            else
+            {
+                return behandelingDAL.GeefBehandelingIDdoor();
+            }
         }
     }
 }

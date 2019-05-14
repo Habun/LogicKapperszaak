@@ -9,6 +9,6 @@ namespace InterfaceDAL
    public interface IBehandelingDAL
     {
         void UpdateBehandeling(BehandelingInfoDal behandelingsinfo);
-        //BehandelingInfoDal HaalIDop(BehandelingInfoDal behandelingInfoDal);
+        int GeefBehandelingIDdoor();
     }
 }

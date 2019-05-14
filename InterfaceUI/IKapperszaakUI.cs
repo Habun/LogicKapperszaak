@@ -10,7 +10,7 @@ namespace InterfaceUI
     {
         void Inloggen(AdminInfoUI adminInfoUI);
         void VoegProductToe(ProductInfoUI productInfoUI, KapperszaakinfoUI kappersinfoUI);
-        void VerwijderProduct(ProductInfoUI productInfoUI, KapperszaakinfoUI kappersinfoUI);
+        void VerwijderProduct(int productId);
         List<ProductInfoUI> AlleProductenOphalen();
         List<AfspraakInfoUI> AlleAfsprakenOphalen();
         List<CadeauKaartInfoUI> AlleCadeauKaartenOphalen();

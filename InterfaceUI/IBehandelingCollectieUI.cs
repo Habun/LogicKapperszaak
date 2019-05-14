@@ -12,6 +12,5 @@ namespace InterfaceUI
         void BehandelingVerwijderen(int behandelingId);
         List<BehandelingsInfoUI> AlleBehandelingenOphalen();
         List<BehandelingsInfoUI> AlleBehandelingenVoorCategorie(int categoryid);
-        BehandelingsInfoUI HaalBehandelingIdOp(int id);
     }
 }

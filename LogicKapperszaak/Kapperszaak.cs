@@ -52,16 +52,14 @@ namespace LogicKapperszaak
         {
             kapperszaakinfodal = new KapperszaakInfoDal(kappersinfoUI.kapperszaakid, kappersinfoUI.naam);
 
-            productinfo = new ProductInfoDal(kapperszaakinfodal, productInfoUI.titel, productInfoUI.omschrijving,productInfoUI.image);
+            productinfo = new ProductInfoDal(kapperszaakinfodal, productInfoUI.productId, productInfoUI.titel, productInfoUI.omschrijving,productInfoUI.image);
             kapperszaakDAL.VoegProductToe(productinfo);
         }
 
-        public void VerwijderProduct(ProductInfoUI productInfoUI, KapperszaakinfoUI kappersinfoUI)
+        public void VerwijderProduct(int productId)
         {
-            kapperszaakinfodal = new KapperszaakInfoDal(kappersinfoUI.kapperszaakid, kappersinfoUI.naam);
-
-            productinfo = new ProductInfoDal(kapperszaakinfodal , productInfoUI.titel, productInfoUI.omschrijving, productInfoUI.image);
-            kapperszaakDAL.VerwijderProduct(productinfo);
+            productinfo = new ProductInfoDal(productId);
+            kapperszaakDAL.VerwijderProduct(productId);
         }
         public List<ProductInfoUI> AlleProductenOphalen()
         {
@@ -69,7 +67,7 @@ namespace LogicKapperszaak
             {
                 KapperszaakinfoUI kapperszaakinfoUI = new KapperszaakinfoUI(pinfoDal.kapperszaakdal.kapperszaakid, pinfoDal.kapperszaakdal.naam);
 
-                ProductInfoUI productInfoUI = new ProductInfoUI(kapperszaakinfoUI, pinfoDal.titel, pinfoDal.omschrijving, pinfoDal.image);
+                ProductInfoUI productInfoUI = new ProductInfoUI(kapperszaakinfoUI, pinfoDal.productId, pinfoDal.titel, pinfoDal.omschrijving, pinfoDal.image);
                 producten.Add(productInfoUI);
             }
             return producten;

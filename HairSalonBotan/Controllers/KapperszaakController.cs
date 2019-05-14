@@ -12,6 +12,10 @@ namespace HairSalonBotan.Controllers
     public class KapperszaakController : Controller
     {
         IKapperszaakUI kapperszaakUI = UIFactory.kapperszaak();
+        IProductUI productUI = UIFactory.product();
+
+        ProductInfoUI productInfoUI;
+        ProductVM pdVM = new ProductVM();
         public ActionResult LijstProducten()
         {
             KapperszaakVM kpmodel = new KapperszaakVM()
@@ -43,13 +47,11 @@ namespace HairSalonBotan.Controllers
             }
         }
 
-        // GET: Kapperszaak/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Kapperszaak/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -87,26 +89,17 @@ namespace HairSalonBotan.Controllers
             }
         }
 
-        // GET: Kapperszaak/Delete/5
-        public ActionResult Delete(int id)
+        [HttpGet]
+        public ActionResult ProductVerwijderen()
         {
             return View();
         }
 
-        // POST: Kapperszaak/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult ProductVerwijderen(int productId)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            kapperszaakUI.VerwijderProduct(productId);
+            return RedirectToAction("LijstProducten");
         }
     }
 }

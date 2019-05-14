@@ -8,7 +8,7 @@ namespace InterfaceDAL
 {
     public struct BehandelingInfoDal
     {
-        public int behandelingId { get; }
+        public int behandelingId { get;}
         public string omschrijving { get;}
         public decimal bedrag { get;}
         public CategorieInfoDal CategorieinfoDal { get; }

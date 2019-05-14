@@ -9,5 +9,6 @@ namespace InterfaceUI
    public interface IProductUI
     {
         void UpdateProduct(ProductInfoUI productInfoUI, KapperszaakinfoUI kapperszaakinfoUI);
+        ProductInfoUI HaalBehandelingIdOp(int productId);
     }
 }

@@ -136,6 +136,7 @@
     <Compile Include="Models\BehandelingVM.cs" />
     <Compile Include="Models\CategorieVM.cs" />
     <Compile Include="Models\KapperszaakVM.cs" />
+    <Compile Include="Models\ProductVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +181,8 @@
     <Content Include="Views\Categorie\Categorieën.cshtml" />
     <Content Include="Views\Behandeling\BehandelingDoorGevenAanCategorie.cshtml" />
     <Content Include="Views\Behandeling\VerwijderBehandeling.cshtml" />
+    <Content Include="Views\Behandeling\Edit.cshtml" />
+    <Content Include="Views\Kapperszaak\ProductVerwijderen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

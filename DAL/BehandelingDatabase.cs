@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL
 {
@@ -88,23 +85,25 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public BehandelingInfoDal BehandelingIdOphalen(int id)
+        public int GeefBehandelingIDdoor()
         {
-            string query = "Select * FROM Behandeling WHERE BehandelingId=@BehandelingId";
+            int id = behandelingInfo.behandelingId;
+
+            string query = "Select * FROM Behandeling WHERE BehandelingId= BehandelingId";
 
             conn.Open();
             cmd = new SqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("@BehandelingId", id);
 
             using (reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    behandelingInfo = new BehandelingInfoDal(reader.GetInt32(0));
+                    id = reader.GetInt32(0);
                 }
             }
             conn.Close();
-            return behandelingInfo;
+
+            return id;
         }
     }
 }

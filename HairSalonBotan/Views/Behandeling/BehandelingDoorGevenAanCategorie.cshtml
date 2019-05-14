@@ -3,9 +3,9 @@
 @{
     ViewBag.Title = "BehandelingDoorGevenAanCategorie";
 }
-
 <h2>BehandelingDoorGevenAanCategorie</h2>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 <table class="table">
     <tr>
@@ -18,18 +18,20 @@
         <th></th>
     </tr>
 
-@foreach (var item in @Model.geefAlleBehandelingVoorCategorie) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.omschrijving)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.bedrag)
-        </td>
-        <td>
-            <button type="button" class="btn">Reserveren</button>
-        </td>
-    </tr>
-}
+    @foreach (var item in Model.geefAlleBehandelingVoorCategorie)
+    {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.omschrijving)
+                </td>
+                <td>
+                    € @Html.DisplayFor(modelItem => item.bedrag)
+                </td>
+                <td>
+                    @Html.Hidden("BehandelingsId", item.behandelingsId)
+                    @*<input type="button" class="btn btn-info" value="BehandelingsId" />*@
 
+                </td>
+            </tr>
+    }
 </table>

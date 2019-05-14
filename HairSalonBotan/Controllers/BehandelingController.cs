@@ -17,6 +17,7 @@ namespace HairSalonBotan.Controllers
 
         BehandelingVM bhmodel = new BehandelingVM();
         BehandelingsInfoUI behandelingsinfo = new BehandelingsInfoUI();
+        CategorieInfoUI categorieInfo = new CategorieInfoUI();
 
         [HttpGet]
         public ActionResult Index()
@@ -29,15 +30,15 @@ namespace HairSalonBotan.Controllers
         }
         public ActionResult BehandelingDoorGevenAanCategorie(int id)
         {
-            bhmodel = new BehandelingVM();
             bhmodel.geefAlleBehandelingVoorCategorie = behandelingCollectie.AlleBehandelingenVoorCategorie(id);
-
             return View(bhmodel);
         }
-
-        public ActionResult Details(int id)
+        public ActionResult Test(int id)
         {
-            return View();
+            bhmodel.geefAlleBehandelingVoorCategorie = behandelingCollectie.AlleBehandelingenVoorCategorie(id);
+            string naam;
+            naam = "hoi";
+            return RedirectToAction("BehandelingDoorGevenAanCategorie", "Behandeling");
         }
 
         [HttpGet]
@@ -52,7 +53,7 @@ namespace HairSalonBotan.Controllers
         {
             try
             {
-                CategorieInfoUI categorieInfo = new CategorieInfoUI(categorieVM.categorieId, categorieVM.categorienaam);
+                categorieInfo = new CategorieInfoUI(categorieVM.categorieId, categorieVM.categorienaam);
 
                 behandelingsinfo = new BehandelingsInfoUI(behandelingVM.behandelingsId, behandelingVM.omschrijving, behandelingVM.bedrag, categorieInfo);
                 behandelingCollectie.BehandelingToevoegen(behandelingsinfo, categorieInfo);
@@ -65,37 +66,37 @@ namespace HairSalonBotan.Controllers
             }
         }
 
-        // GET: Behandeling/Edit/5
-        public ActionResult Edit(int id)
+        [HttpGet]
+        public ActionResult Edit(int behandelingId)
         {
-            return View();
+            behandelingUI.BehandelingIDdoorGeven();
+            bhmodel.behandelingsId = behandelingId; 
+
+            return View(bhmodel);
         }
 
-        // POST: Behandeling/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int behandelingId, CategorieVM categorieVM, BehandelingVM behandelingVM)
         {
-            try
-            {
-                // TODO: Add update logic here
+            categorieInfo = new CategorieInfoUI(categorieVM.categorieId, categorieVM.categorienaam);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            behandelingsinfo = new BehandelingsInfoUI(behandelingVM.behandelingsId, behandelingVM.omschrijving, behandelingVM.bedrag, categorieInfo);
+            behandelingUI.UpdateBehandeling(behandelingId, behandelingsinfo, categorieInfo);
+
+            return RedirectToAction("Index");
         }
+
         [HttpGet]
         public ActionResult VerwijderBehandeling()
         {
             return View();
         }
+
         [HttpPost]
-        public ActionResult VerwijderBehandeling(int behandelingId)
+        public ActionResult VerwijderBehandeling(BehandelingsInfoUI behandelingsinfo)
         {
-            behandelingsinfo = new BehandelingsInfoUI(bhmodel.behandelingsId);
-            behandelingsinfo = behandelingCollectie.HaalBehandelingIdOp(behandelingId);
+            var behandelingId = behandelingsinfo.behandelingsId;
+            behandelingId = behandelingUI.BehandelingIDdoorGeven();
             behandelingCollectie.BehandelingVerwijderen(behandelingId);
 
             return RedirectToAction("Index");

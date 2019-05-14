@@ -9,5 +9,6 @@ namespace InterfaceDAL
    public interface IProductDAL
     {
         void UpdateProduct(ProductInfoDal productInfo);
+        ProductInfoDal ProductIdOphalen(int productId);
     }
 }

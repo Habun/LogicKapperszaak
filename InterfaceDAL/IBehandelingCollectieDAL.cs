@@ -12,6 +12,5 @@ namespace InterfaceDAL
         void VerwijderBehandeling(int behandelingId);
         List<BehandelingInfoDal> HaalBehandelingenOp();
         List<BehandelingInfoDal> GeefAlleBehandelingVoorCategorie(int categoryid);
-        BehandelingInfoDal BehandelingIdOphalen(int id);
     }
 }
