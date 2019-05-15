@@ -28,17 +28,14 @@ namespace HairSalonBotan.Controllers
             };
             return View(bhmodel);
         }
-        public ActionResult BehandelingDoorGevenAanCategorie(int id)
+        public ActionResult BehandelingDoorGevenAanCategorie(int id, string naam)
         {
             bhmodel.geefAlleBehandelingVoorCategorie = behandelingCollectie.AlleBehandelingenVoorCategorie(id);
             return View(bhmodel);
         }
-        public ActionResult Test(int id)
+        public ActionResult Test(int id, BehandelingVM behandelingVM)
         {
-            bhmodel.geefAlleBehandelingVoorCategorie = behandelingCollectie.AlleBehandelingenVoorCategorie(id);
-            string naam;
-            naam = "hoi";
-            return RedirectToAction("BehandelingDoorGevenAanCategorie", "Behandeling");
+            return View(behandelingVM);
         }
 
         [HttpGet]

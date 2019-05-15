@@ -12,9 +12,10 @@ namespace HairSalonBotan.Controllers
     public class KapperszaakController : Controller
     {
         IKapperszaakUI kapperszaakUI = UIFactory.kapperszaak();
-        IProductUI productUI = UIFactory.product();
+        KapperszaakinfoUI kapperszaakInfoUI = new KapperszaakinfoUI();
 
-        ProductInfoUI productInfoUI;
+        IProductUI productUI = UIFactory.product();
+        ProductInfoUI productInfoUI = new ProductInfoUI();
         ProductVM pdVM = new ProductVM();
         public ActionResult LijstProducten()
         {
@@ -47,17 +48,21 @@ namespace HairSalonBotan.Controllers
             }
         }
 
-        public ActionResult Create()
+        [HttpGet]
+        public ActionResult Create(KapperszaakVM kapperszaakVM)
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(ProductVM productvm, KapperszaakVM kapperszaakVM)
         {
             try
             {
-                // TODO: Add insert logic here
+                kapperszaakInfoUI = new KapperszaakinfoUI(kapperszaakVM.kapperszaakId, kapperszaakVM.naam);
+                productInfoUI = new ProductInfoUI(kapperszaakInfoUI, productvm.productId, productvm.titel, productvm.omschrijving, productvm.image);
+
+                kapperszaakUI.VoegProductToe(productInfoUI, kapperszaakInfoUI);
 
                 return RedirectToAction("Index");
             }

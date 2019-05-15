@@ -32,7 +32,17 @@ namespace DAL
 
         public void VoegProductToe(ProductInfoDal productInfo)
         {
-  //          producten.Add(productInfo);
+            string query = "INSERT INTO Product (KapperszaakId, Titel, Omschrijving, Image) VALUES(@KapperszaakId, @Titel, @Omschrijving, @Image)";
+            conn.Open();
+
+            using (cmd = new SqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@KapperszaakId", productInfo.kapperszaakdal.kapperszaakid);
+                cmd.Parameters.AddWithValue("@Titel", productInfo.titel);
+                cmd.Parameters.AddWithValue("@Omschrijving", productInfo.omschrijving);
+                cmd.Parameters.AddWithValue("@Image", productInfo.image);
+            }
+            cmd.ExecuteNonQuery();
         }
         public void Inloggen(AdminInfoDal adminInfoDal)
         {

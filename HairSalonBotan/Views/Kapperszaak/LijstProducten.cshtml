@@ -6,21 +6,24 @@
 
 <h2>Producten</h2>
 <br />
+<p>
+    @Html.ActionLink("Voeg nieuw product toe", "Create")
+</p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.titel)
+            @Html.DisplayNameFor(model => model.productvm.titel)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.omschrijving)
+            @Html.DisplayNameFor(model => model.productvm.omschrijving)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.image)
+            @Html.DisplayNameFor(model => model.productvm.image)
         </th>
         <th></th>
     </tr>
 
-    @foreach (var item in @Model.producten)
+    @foreach (var item in Model.producten)
     {
     <tr>
         <td>

@@ -1,0 +1,68 @@
+﻿@model HairSalonBotan.Models.KapperszaakVM
+
+@{
+    ViewBag.Title = "CreateBehandeling";
+}
+
+<h2>CreateBehandeling</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>BehandelingVM</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.kapperszaakId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.kapperszaakId, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.kapperszaakId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.naam, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.naam, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.naam, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.productvm.titel, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.productvm.titel, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.productvm.titel, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.productvm.omschrijving, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.productvm.omschrijving, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.productvm.omschrijving, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.productvm.image, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.productvm.image, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.productvm.image, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Terug naar behandelingen", "Index")
+</div>

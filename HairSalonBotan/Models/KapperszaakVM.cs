@@ -11,14 +11,13 @@ namespace HairSalonBotan.Models
     {
         public AdminVM adminvm = new AdminVM();
 
+        public ProductVM productvm = new ProductVM();
+
         [Required]
-        public string titel { get; set; }
+        public int kapperszaakId { get; set; }
         [Required]
-        public string omschrijving { get; set; }
-        [Required]
-        public decimal prijs { get; set; }
-        [Required]
-        public string image { get; set; }
+        public string naam { get; set; }
+        
         [Required]
         public List<ProductInfoUI> producten = new List<ProductInfoUI>();
         [Required]

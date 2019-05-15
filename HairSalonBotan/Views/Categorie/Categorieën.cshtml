@@ -15,7 +15,7 @@
                 <ul class="nav nav-tabs">
                     @foreach (var item in Model.categorieInfoUI)
                     {
-                        <li> @Html.ActionLink(item.categorienaam, "BehandelingDoorGevenAanCategorie", "Behandeling", new { id = item.categorieId }, null)</li>
+                        <li> @Html.ActionLink(item.categorienaam, "BehandelingDoorGevenAanCategorie", "Behandeling", new { id = item.categorieId, naam = item.categorienaam }, null)</li>
                     }
                 </ul>
             </div>

@@ -39,9 +39,5 @@ namespace LogicKapperszaak
 
             klantDAL.CadeauKaartReserveren(cadeaukaartinfo);
         }
-
-        public void AfspraakReserveren()
-        {
-        }
     }
 }
