@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace InterfaceUI
 {
@@ -10,7 +6,7 @@ namespace InterfaceUI
     {
         void Inloggen(AdminInfoUI adminInfoUI);
         void VoegProductToe(ProductInfoUI productInfoUI, KapperszaakinfoUI kappersinfoUI);
-        void VerwijderProduct(int productId);
+        void ProductVerwijderen(int productId);
         List<ProductInfoUI> AlleProductenOphalen();
         List<AfspraakInfoUI> AlleAfsprakenOphalen();
         List<CadeauKaartInfoUI> AlleCadeauKaartenOphalen();

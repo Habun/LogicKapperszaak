@@ -1,17 +1,13 @@
 ﻿using FactoryUI;
 using HairSalonBotan.Models;
 using InterfaceUI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace HairSalonBotan.Controllers
 {
     public class CategorieController : Controller
     {
-        ICategorieCollectieUI categorieCollectieUI = UIFactory.categorieCollectie();
+        ICategorieCollectieUI categorieCollectieUI = UIFactory.CategorieCollectie();
         CategorieVM categorieVM = new CategorieVM();
 
         [HttpGet]

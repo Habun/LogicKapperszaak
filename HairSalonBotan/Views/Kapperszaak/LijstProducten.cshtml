@@ -27,17 +27,17 @@
     {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.titel)
+            @Html.DisplayFor(modelItem => item.Titel)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.omschrijving)
+            @Html.DisplayFor(modelItem => item.Omschrijving)
         </td>
         <td>
-            <img src="@Url.Content(item.image)" width="250" height="200"/>
+            <img src="@Url.Content(item.Image)" width="250" height="200"/>
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.productId }) |
-            @Html.ActionLink("Verwijder", "ProductVerwijderen", new { productId = item.productId })
+            @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
+            @Html.ActionLink("Verwijder", "ProductVerwijderen", new { productId = item.ProductId })
         </td>
     </tr>
     }

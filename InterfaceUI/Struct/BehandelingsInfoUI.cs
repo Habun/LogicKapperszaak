@@ -1,35 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace InterfaceUI
 {
    public struct BehandelingsInfoUI
     {
-        public int behandelingsId { get; }
-        public string omschrijving { get;}
-        public decimal bedrag { get;}
-        public CategorieInfoUI CategorieinfoUI { get; }
-        public BehandelingsInfoUI(int BehandelingsId, string Omschrijving, decimal Bedrag, CategorieInfoUI categorieInfoUI)
+        public int BehandelingsId { get; }
+        public string Omschrijving { get;}
+        public decimal Bedrag { get;}
+        public CategorieInfoUI CategorieinfoUi { get; }
+        public BehandelingsInfoUI(int behandelingsId, string omschrijving, decimal bedrag, CategorieInfoUI categorieInfoUI)
         {
-            behandelingsId = BehandelingsId;
-            omschrijving = Omschrijving;
-            bedrag = Bedrag;
-            CategorieinfoUI = categorieInfoUI;
+            BehandelingsId = behandelingsId;
+            Omschrijving = omschrijving;
+            Bedrag = bedrag;
+            CategorieinfoUi = categorieInfoUI;
         }
 
-        public BehandelingsInfoUI(int behandelingsId, string omschrijving, decimal bedrag) : this()
+        public BehandelingsInfoUI(int behandelingId, string omschrijving, decimal bedrag) : this()
         {
-            this.behandelingsId = behandelingsId;
-            this.omschrijving = omschrijving;
-            this.bedrag = bedrag;
-        }
-
-        public BehandelingsInfoUI(int id) : this()
-        {
-            this.behandelingsId = id;
+            BehandelingsId = behandelingId;
+            Omschrijving = omschrijving;
+            Bedrag = bedrag;
         }
     }
 }

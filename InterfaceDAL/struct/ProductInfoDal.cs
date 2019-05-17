@@ -8,23 +8,19 @@ namespace InterfaceDAL
 {
     public struct ProductInfoDal
     {
-        public int productId { get; }
-        public string titel { get;}
-        public string omschrijving { get;}
-        public string image { get;}
+        public int ProductId { get; }
+        public string Titel { get;}
+        public string Omschrijving { get;}
+        public string Image { get;}
         public KapperszaakInfoDal kapperszaakdal { get; }
 
-        public ProductInfoDal(KapperszaakInfoDal KappersZaakDal, int ProductId ,string Titel, string Omschrijving, string Image)
+        public ProductInfoDal(KapperszaakInfoDal KappersZaakDal, int productId ,string titel, string omschrijving, string image)
         {
             kapperszaakdal = KappersZaakDal;
-            productId = ProductId;
-            titel = Titel;
-            omschrijving = Omschrijving;
-            image = Image;
-        }
-        public ProductInfoDal(int ProductId) : this()
-        {
-            productId = ProductId;
+            ProductId = productId;
+            Titel = titel;
+            Omschrijving = omschrijving;
+            Image = image;
         }
     }
 }

@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace InterfaceUI
 {
   public struct KapperszaakinfoUI
     {
-        public int kapperszaakid { get; }
-        public string naam { get; }
+        public int Kapperszaakid { get; }
+        public string Naam { get; }
 
-        public KapperszaakinfoUI(int KapperszaakId, string Naam)
+        public KapperszaakinfoUI(int kapperszaakId, string naam)
         {
-            kapperszaakid = KapperszaakId;
-            naam = Naam;
+            Kapperszaakid = kapperszaakId;
+            Naam = naam;
         }
     }
 }

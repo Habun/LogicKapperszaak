@@ -1,10 +1,6 @@
 ﻿using InterfaceDAL;
 using InterfaceUI;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FactoryDAL;
 
 namespace LogicKapperszaak
@@ -15,7 +11,7 @@ namespace LogicKapperszaak
         CategorieInfoDal categorieinfoDal;
         public void CategorieToevoegen(CategorieInfoUI categorieUI)
         {
-            categorieinfoDal = new CategorieInfoDal(categorieUI.categorieId, categorieUI.categorienaam);
+            categorieinfoDal = new CategorieInfoDal(categorieUI.CategorieId, categorieUI.Categorienaam);
 
         }
         public void CategorieVerwijderen(CategorieInfoUI categorieUI)
@@ -27,24 +23,10 @@ namespace LogicKapperszaak
 
             foreach (var Cinfo in CategorieCollectionDAL.HaalBehandelingenOp())
             {
-                CategorieInfoUI categorieInfoUI = new CategorieInfoUI(Cinfo.categorieId, Cinfo.categorienaam);
+                CategorieInfoUI categorieInfoUI = new CategorieInfoUI(Cinfo.CategorieId, Cinfo.Categorienaam);
                 categorielijst.Add(categorieInfoUI);
             }
             return categorielijst;
-        }
-        public CategorieInfoUI HaalCategorieIdOp(int id)
-        {
-            CategorieCollectionDAL.CategoryIdOphalen(id);
-            CategorieInfoUI categorieInfoUI = new CategorieInfoUI(id);
-
-            if (id == 0)
-            {
-                throw new NotImplementedException();
-            }
-            else
-            {
-                return categorieInfoUI;
-            }
         }
     }
 }

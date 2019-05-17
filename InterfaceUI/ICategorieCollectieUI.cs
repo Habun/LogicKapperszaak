@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+
 
 namespace InterfaceUI
 {
@@ -11,6 +8,5 @@ namespace InterfaceUI
         void CategorieToevoegen(CategorieInfoUI categorieUI);
         void CategorieVerwijderen(CategorieInfoUI categorieUI);
         List<CategorieInfoUI> AlleCategorieenOphalen();
-        CategorieInfoUI HaalCategorieIdOp(int id);
     }
 }

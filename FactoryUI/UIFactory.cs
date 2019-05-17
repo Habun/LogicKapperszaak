@@ -1,36 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using InterfaceUI;
+﻿using InterfaceUI;
 using LogicKapperszaak;
 
 namespace FactoryUI
 {
    public class UIFactory
     {
-        public static IBehandelingCollectieUI behandelingCollectie()
+        public static IBehandelingCollectieUI BehandelingCollectie()
         {
             return new BehandelingCollectie();
         }
-        public static IBehandelingUI behandeling()
+        public static IBehandelingUi Behandeling()
         {
             return new Behandeling();
         }
-        public static IKlantUI klant()
+        public static IKlantUI Klant()
         {
             return new Klant();
         }
-        public static IProductUI product()
+        public static IProductUI Product()
         {
             return new Product();
         }
-        public static IKapperszaakUI kapperszaak()
+        public static IKapperszaakUI Kapperszaak()
         {
             return new Kapperszaak();
         }
-        public static ICategorieCollectieUI categorieCollectie()
+        public static ICategorieCollectieUI CategorieCollectie()
         {
             return new CategorieCollectie();
         }

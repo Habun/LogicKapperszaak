@@ -1,10 +1,6 @@
 ﻿using InterfaceDAL;
-using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL
 {
@@ -37,10 +33,10 @@ namespace DAL
 
             using (cmd = new SqlCommand(query, conn))
             {
-                cmd.Parameters.AddWithValue("@KapperszaakId", productInfo.kapperszaakdal.kapperszaakid);
-                cmd.Parameters.AddWithValue("@Titel", productInfo.titel);
-                cmd.Parameters.AddWithValue("@Omschrijving", productInfo.omschrijving);
-                cmd.Parameters.AddWithValue("@Image", productInfo.image);
+                cmd.Parameters.AddWithValue("@KapperszaakId", productInfo.kapperszaakdal.Kapperszaakid);
+                cmd.Parameters.AddWithValue("@Titel", productInfo.Titel);
+                cmd.Parameters.AddWithValue("@Omschrijving", productInfo.Omschrijving);
+                cmd.Parameters.AddWithValue("@Image", productInfo.Image);
             }
             cmd.ExecuteNonQuery();
         }
@@ -52,21 +48,17 @@ namespace DAL
                 conn.Open();
                 cmd = new SqlCommand(query, conn);
 
-                cmd.Parameters.AddWithValue("@Emailadres", adminInfoDal.emailadres);
-                cmd.Parameters.AddWithValue("@Wachtwoord", adminInfoDal.wachtwoord);
+                cmd.Parameters.AddWithValue("@Emailadres", adminInfoDal.Emailadres);
+                cmd.Parameters.AddWithValue("@Wachtwoord", adminInfoDal.Wachtwoord);
 
                 using (reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        AdminInfoDal amInfoDal = new AdminInfoDal(reader.GetString(0), reader.GetString(1));
+                       AdminInfoDal admin = new AdminInfoDal(reader.GetString(0), reader.GetString(1));
                     }
                 }
                 cmd.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                var test = e; 
             }
             finally
             {

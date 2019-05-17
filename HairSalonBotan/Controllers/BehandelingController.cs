@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using InterfaceUI;
 using FactoryUI;
 using HairSalonBotan.Models;
@@ -11,13 +7,13 @@ namespace HairSalonBotan.Controllers
 {
     public class BehandelingController : Controller
     {
-        IBehandelingCollectieUI behandelingCollectie = UIFactory.behandelingCollectie();
-        IBehandelingUI behandelingUI = UIFactory.behandeling();
-        ICategorieCollectieUI categorieCollectie = UIFactory.categorieCollectie();
+        IBehandelingCollectieUI behandelingCollectie = UIFactory.BehandelingCollectie();
+        IBehandelingUi behandelingUI = UIFactory.Behandeling();
+        ICategorieCollectieUI categorieCollectie = UIFactory.CategorieCollectie();
 
         BehandelingVM bhmodel = new BehandelingVM();
-        BehandelingsInfoUI behandelingsinfo = new BehandelingsInfoUI();
-        CategorieInfoUI categorieInfo = new CategorieInfoUI();
+        BehandelingsInfoUI behandelingsinfo;
+        CategorieInfoUI categorieInfo;
 
         [HttpGet]
         public ActionResult Index()
@@ -92,8 +88,7 @@ namespace HairSalonBotan.Controllers
         [HttpPost]
         public ActionResult VerwijderBehandeling(BehandelingsInfoUI behandelingsinfo)
         {
-            var behandelingId = behandelingsinfo.behandelingsId;
-            behandelingId = behandelingUI.BehandelingIDdoorGeven();
+            var behandelingId = behandelingUI.BehandelingIDdoorGeven();
             behandelingCollectie.BehandelingVerwijderen(behandelingId);
 
             return RedirectToAction("Index");

@@ -2,33 +2,30 @@
 using InterfaceUI;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FactoryDAL;
 
 namespace LogicKapperszaak
 {
    public class Kapperszaak : IKapperszaakUI
     {
-        public int kapperszaakid { get; set; }
-        public string naam { get; set; }
-        public List<ProductInfoUI> producten { get; private set; } = new List<ProductInfoUI>();
-        public List<AfspraakInfoUI> afspraken { get; private set; } = new List<AfspraakInfoUI>();
-        public List<CadeauKaartInfoUI> cadeaukaarten { get; private set; } = new List<CadeauKaartInfoUI>();
+        public int Kapperszaakid { get; set; }
+        public string Naam { get; set; }
+        public List<ProductInfoUI> producten { get;} = new List<ProductInfoUI>();
+        public List<AfspraakInfoUI> afspraken { get;} = new List<AfspraakInfoUI>();
+        public List<CadeauKaartInfoUI> cadeaukaarten { get;} = new List<CadeauKaartInfoUI>();
 
         IKapperszaakDAL kapperszaakDAL = DatabaseFactory.KapperszaakDAL();
 
-        KapperszaakInfoDal kapperszaakinfodal = new KapperszaakInfoDal();
+        KapperszaakInfoDal kapperszaakinfodal;
 
-        ProductInfoDal productinfo = new ProductInfoDal();
+        ProductInfoDal productinfo;
 
         KlantInfoUI klantInfoUI = new KlantInfoUI();
 
-        public Kapperszaak(int KapperszaakId, string Naam)
+        public Kapperszaak(int kapperszaakId, string naam)
         {
-            kapperszaakid = KapperszaakId;
-            naam = Naam;
+            Kapperszaakid = kapperszaakId;
+            Naam = naam;
         }
         public Kapperszaak()
         {
@@ -36,9 +33,9 @@ namespace LogicKapperszaak
 
         public void Inloggen(AdminInfoUI adminInfoUI) 
         {
-            AdminInfoDal adminInfoDal = new AdminInfoDal(adminInfoUI.emailadres, adminInfoUI.wachtwoord);
+            AdminInfoDal adminInfoDal = new AdminInfoDal(adminInfoUI.Emailadres, adminInfoUI.Wachtwoord);
 
-            if (adminInfoUI.emailadres == null && adminInfoUI.wachtwoord == null)
+            if (adminInfoUI.Emailadres == null && adminInfoUI.Wachtwoord == null)
             {
                 throw new NotImplementedException();
             }
@@ -50,24 +47,22 @@ namespace LogicKapperszaak
 
         public void VoegProductToe(ProductInfoUI productInfoUI, KapperszaakinfoUI kappersinfoUI)
         {
-            kapperszaakinfodal = new KapperszaakInfoDal(kappersinfoUI.kapperszaakid, kappersinfoUI.naam);
+            kapperszaakinfodal = new KapperszaakInfoDal(kappersinfoUI.Kapperszaakid, kappersinfoUI.Naam);
 
-            productinfo = new ProductInfoDal(kapperszaakinfodal, productInfoUI.productId, productInfoUI.titel, productInfoUI.omschrijving,productInfoUI.image);
+            productinfo = new ProductInfoDal(kapperszaakinfodal, productInfoUI.ProductId, productInfoUI.Titel, productInfoUI.Omschrijving,productInfoUI.Image);
             kapperszaakDAL.VoegProductToe(productinfo);
         }
-
-        public void VerwijderProduct(int productId)
+        public void ProductVerwijderen(int productId)
         {
-            productinfo = new ProductInfoDal(productId);
             kapperszaakDAL.VerwijderProduct(productId);
         }
         public List<ProductInfoUI> AlleProductenOphalen()
         {
             foreach (var pinfoDal in kapperszaakDAL.HaalProductenOp())
             {
-                KapperszaakinfoUI kapperszaakinfoUI = new KapperszaakinfoUI(pinfoDal.kapperszaakdal.kapperszaakid, pinfoDal.kapperszaakdal.naam);
+                KapperszaakinfoUI kapperszaakinfoUI = new KapperszaakinfoUI(pinfoDal.kapperszaakdal.Kapperszaakid, pinfoDal.kapperszaakdal.Naam);
 
-                ProductInfoUI productInfoUI = new ProductInfoUI(kapperszaakinfoUI, pinfoDal.productId, pinfoDal.titel, pinfoDal.omschrijving, pinfoDal.image);
+                ProductInfoUI productInfoUI = new ProductInfoUI(kapperszaakinfoUI, pinfoDal.ProductId, pinfoDal.Titel, pinfoDal.Omschrijving, pinfoDal.Image);
                 producten.Add(productInfoUI);
             }
             return producten;
@@ -76,7 +71,7 @@ namespace LogicKapperszaak
         {
             foreach (var asinfoDal in kapperszaakDAL.HaalAfspraakOp())
             {
-                AfspraakInfoUI afspraakInfoUI = new AfspraakInfoUI(asinfoDal.opmerkingen, asinfoDal.datetime, klantInfoUI);
+                AfspraakInfoUI afspraakInfoUI = new AfspraakInfoUI(asinfoDal.Opmerkingen, asinfoDal.datetime, klantInfoUI);
                 afspraken.Add(afspraakInfoUI);
             }
             return afspraken;
@@ -85,7 +80,7 @@ namespace LogicKapperszaak
         {
             foreach (var ckinfoDal in kapperszaakDAL.HaalCadeauKaartOp())
             {
-                CadeauKaartInfoUI cadeauKaartInfoUI = new CadeauKaartInfoUI(ckinfoDal.bestemd, ckinfoDal.bedrag, klantInfoUI);
+                CadeauKaartInfoUI cadeauKaartInfoUI = new CadeauKaartInfoUI(ckinfoDal.Bestemd, ckinfoDal.Bedrag, klantInfoUI);
                 cadeaukaarten.Add(cadeauKaartInfoUI);
             }
             return cadeaukaarten; 

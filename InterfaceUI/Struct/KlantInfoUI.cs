@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace InterfaceUI
 {
    public struct KlantInfoUI
     {
-        public string naam { get;}
-        public int telefoonnummer { get;}
-        public string emailadres { get;}
+        public string Naam { get;}
+        public int Telefoonnummer { get;}
+        public string Emailadres { get;}
 
-        public KlantInfoUI(string Naam, int Telefoonnummer, string Emailadres)
+        public KlantInfoUI(string naam, int telefoonnummer, string emailadres)
         {
-            naam = Naam;
-            telefoonnummer = Telefoonnummer;
-            emailadres = Emailadres;
+            Naam = naam;
+            Telefoonnummer = telefoonnummer;
+            Emailadres = emailadres;
         }
     }
 }

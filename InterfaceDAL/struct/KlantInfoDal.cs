@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace InterfaceDAL
 {
     public struct KlantInfoDal
     {
-        public string naam { get;}
-        public int telefoonnummer { get;}
-        public string emailadres { get;}
+        public string Naam { get;}
+        public int Telefoonnummer { get;}
+        public string Emailadres { get;}
 
-        public KlantInfoDal(string Naam, int Telefoonnummer, string Emailadres)
+        public KlantInfoDal(string naam, int telefoonnummer, string emailadres)
         {
-            naam = Naam;
-            telefoonnummer = Telefoonnummer;
-            emailadres = Emailadres;
+            Naam = naam;
+            Telefoonnummer = telefoonnummer;
+            Emailadres = emailadres;
         }
     }
 }

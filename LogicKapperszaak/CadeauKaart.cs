@@ -1,23 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using InterfaceUI;
+﻿using InterfaceUI;
 
 namespace LogicKapperszaak
 {
    public class CadeauKaart
     {
-        public string bestemd { get; set; }
-        public decimal bedrag { get; set; }
-        public KlantInfoUI KlantInfo { get; set; }
+        public string Bestemd { get; set; }
+        public decimal Bedrag { get; set; }
+        public KlantInfoUI klantInfo { get; set; }
 
-        public CadeauKaart(string Bestemd, decimal Bedrag, KlantInfoUI klantInfoUI)
+        public CadeauKaart(string bestemd, decimal bedrag, KlantInfoUI klantInfoUI)
         {
-            KlantInfo = klantInfoUI; 
-            bestemd = Bestemd;
-            bedrag = Bedrag;
+            klantInfo = klantInfoUI; 
+            Bestemd = bestemd;
+            Bedrag = bedrag;
         }
 
         public CadeauKaart()

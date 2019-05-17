@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace InterfaceUI
 {
    public struct CadeauKaartInfoUI
     {
-        public string bestemd { get;}
-        public decimal bedrag { get;}
+        public string Bestemd { get;}
+        public decimal Bedrag { get;}
         public KlantInfoUI klantinfo { get;}
 
-        public CadeauKaartInfoUI(string Bestemd, decimal Bedrag, KlantInfoUI klantinfoCK)
+        public CadeauKaartInfoUI(string bestemd, decimal bedrag, KlantInfoUI klantinfoCK)
         {
             klantinfo = klantinfoCK;
-            bestemd = Bestemd;
-            bedrag = Bedrag;
+            Bestemd = bestemd;
+            Bedrag = bedrag;
         }
     }
 }

@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace InterfaceDAL
 {
     public struct AdminInfoDal
     {
-        public string emailadres { get;}
-        public string wachtwoord { get; }
+        public string Emailadres { get;}
+        public string Wachtwoord { get; }
 
-        public AdminInfoDal(string Emailadres, string Wachtwoord)
+        public AdminInfoDal(string emailadres, string wachtwoord)
         {
-            emailadres = Emailadres;
-            wachtwoord = Wachtwoord;
+            Emailadres = emailadres;
+            Wachtwoord = wachtwoord;
         }
     }
 }

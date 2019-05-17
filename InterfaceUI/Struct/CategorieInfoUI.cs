@@ -1,24 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace InterfaceUI
 {
     public struct CategorieInfoUI
     {
-        public int categorieId { get;}
-        public string categorienaam { get;}
-        public CategorieInfoUI(int CategorieId, string CategorieNaam)
+        public int CategorieId { get;}
+        public string Categorienaam { get;}
+        public CategorieInfoUI(int categorieId, string categorieNaam)
         {
-            categorieId = CategorieId;
-            categorienaam = CategorieNaam;
-        }
-
-        public CategorieInfoUI(int id) : this()
-        {
-            this.categorieId = id;
+            CategorieId = categorieId;
+            Categorienaam = categorieNaam;
         }
     }
 }

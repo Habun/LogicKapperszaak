@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+
 
 namespace InterfaceDAL
 {
@@ -11,6 +8,5 @@ namespace InterfaceDAL
         void VoegCategorieToe(CategorieInfoDal categorieinfoDal);
         void VerwijderCategorie(CategorieInfoDal categorieinfoDal);
         List<CategorieInfoDal> HaalBehandelingenOp();
-        CategorieInfoDal CategoryIdOphalen(int id);
     }
 }

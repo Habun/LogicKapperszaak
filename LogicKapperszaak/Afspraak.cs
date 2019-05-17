@@ -1,25 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using InterfaceDAL;
 using InterfaceUI;
 
 namespace LogicKapperszaak
 {
     public class Afspraak
     {
-        public int afspraakId { get; set; }
-        public string opmerkingen { get; set; }
+        public int AfspraakId { get; set; }
+        public string Opmerkingen { get; set; }
         public DateTime datetime { get; set; }
         public Klant klant { get; set; }
 
-        public Afspraak(int AfspraakId, string Opmerking, DateTime dateTime, Klant KlantAF)
+        public Afspraak(int afspraakId, string opmerking, DateTime dateTime, Klant klantAF)
         {
-            afspraakId = AfspraakId;
-            klant = KlantAF;
-            opmerkingen = Opmerking;
+            AfspraakId = afspraakId;
+            klant = klantAF;
+            Opmerkingen = opmerking;
             datetime = dateTime;
         }
 

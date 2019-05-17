@@ -20,9 +20,9 @@ namespace DAL
 
             using (cmd = new SqlCommand(query, conn))
             {
-                cmd.Parameters.AddWithValue("@CategorieId", behandelingsinfo.CategorieinfoDal.categorieId);
-                cmd.Parameters.AddWithValue("@Omschrijving", behandelingsinfo.omschrijving);
-                cmd.Parameters.AddWithValue("@Bedrag", behandelingsinfo.bedrag);
+                cmd.Parameters.AddWithValue("@CategorieId", behandelingsinfo.categorieinfoDal.CategorieId);
+                cmd.Parameters.AddWithValue("@Omschrijving", behandelingsinfo.Omschrijving);
+                cmd.Parameters.AddWithValue("@Bedrag", behandelingsinfo.Bedrag);
             }
             cmd.ExecuteNonQuery();
         }
@@ -61,7 +61,7 @@ namespace DAL
         }
         public List<BehandelingInfoDal> GeefAlleBehandelingVoorCategorie(int categoryid)
         {
-            List<BehandelingInfoDal> behandelingMannen = new List<BehandelingInfoDal>();
+            List<BehandelingInfoDal> behandelingVoorCategorie = new List<BehandelingInfoDal>();
 
             string query = "Select Behandeling.BehandelingId, Behandeling.Omschrijving, Behandeling.Bedrag FROM Behandeling INNER JOIN Categorie on Categorie.CategorieId = Behandeling.CategorieId Where Behandeling.CategorieId =@CategoryId ";
 
@@ -74,10 +74,10 @@ namespace DAL
                 while (reader.Read())
                 {
                     BehandelingInfoDal behandelingInfo = new BehandelingInfoDal(reader.GetInt32(0), reader.GetString(1), reader.GetDecimal(2));
-                    behandelingMannen.Add(behandelingInfo);
+                    behandelingVoorCategorie.Add(behandelingInfo);
                 }
             }
-            return behandelingMannen;
+            return behandelingVoorCategorie;
         }
 
         public void UpdateBehandeling(BehandelingInfoDal behandelingsinfo)
@@ -87,7 +87,7 @@ namespace DAL
 
         public int GeefBehandelingIDdoor()
         {
-            int id = behandelingInfo.behandelingId;
+            int behandelingId = behandelingInfo.BehandelingId;
 
             string query = "Select * FROM Behandeling WHERE BehandelingId= BehandelingId";
 
@@ -98,12 +98,12 @@ namespace DAL
             {
                 while (reader.Read())
                 {
-                    id = reader.GetInt32(0);
+                    behandelingId = reader.GetInt32(0);
                 }
             }
             conn.Close();
 
-            return id;
+            return behandelingId;
         }
     }
 }

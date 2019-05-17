@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace InterfaceUI
 {
-    public interface IBehandelingUI
+    public interface IBehandelingUi
     {
-        void UpdateBehandeling(int BehandelingId, BehandelingsInfoUI behandeling, CategorieInfoUI categorieInfoUI);
+        void UpdateBehandeling(int behandelingId, BehandelingsInfoUI behandelingUI, CategorieInfoUI categorieUI);
         int BehandelingIDdoorGeven();
     }
 }

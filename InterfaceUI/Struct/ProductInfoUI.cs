@@ -1,32 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace InterfaceUI
 {
    public struct ProductInfoUI
     {
-        public int productId { get; }
-        public string titel { get;}
-        public string omschrijving { get;}
-        public string image { get;}
+        public int ProductId { get; }
+        public string Titel { get;}
+        public string Omschrijving { get;}
+        public string Image { get;}
 
         public KapperszaakinfoUI kapperszaakinfoUI { get; }
 
-        public ProductInfoUI(KapperszaakinfoUI KappersZaakInfoUI, int ProductId ,string Titel, string Omschrijving,string Image)
+        public ProductInfoUI(KapperszaakinfoUI kapperszaakinfoUi, int productId ,string titel, string omschrijving, string image)
         {
-            kapperszaakinfoUI = KappersZaakInfoUI;
-            productId = ProductId;
-            titel = Titel;
-            omschrijving = Omschrijving;
-            image = Image;
-        }
-
-        public ProductInfoUI(int productId) : this()
-        {
-            this.productId = productId;
+            kapperszaakinfoUI = kapperszaakinfoUi;
+            ProductId = productId;
+            Titel = titel;
+            Omschrijving = omschrijving;
+            Image = image;
         }
     }
 }

@@ -1,34 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace InterfaceDAL
 {
     public struct BehandelingInfoDal
     {
-        public int behandelingId { get;}
-        public string omschrijving { get;}
-        public decimal bedrag { get;}
-        public CategorieInfoDal CategorieinfoDal { get; }
-        public BehandelingInfoDal(int BehandelingId, string Omschrijving, decimal Bedrag, CategorieInfoDal categorieInfodal)
+        public int BehandelingId { get;}
+        public string Omschrijving { get;}
+        public decimal Bedrag { get;}
+        public CategorieInfoDal categorieinfoDal { get; }
+        public BehandelingInfoDal(int behandelingId, string omschrijving, decimal bedrag, CategorieInfoDal categorieInfodal)
         {
-            behandelingId = BehandelingId;
-            omschrijving = Omschrijving;
-            bedrag = Bedrag;
-            CategorieinfoDal = categorieInfodal;
+            BehandelingId = behandelingId;
+            Omschrijving = omschrijving;
+            Bedrag = bedrag;
+            categorieinfoDal = categorieInfodal;
         }
 
-        public BehandelingInfoDal(int BehandelingId, string Omschrijving, decimal Bedrag) : this()
+        public BehandelingInfoDal(int behandelingId, string omschrijving, decimal bedrag) : this()
         {
-            behandelingId = BehandelingId;
-            omschrijving = Omschrijving;
-            bedrag = Bedrag;
-        }
-        public BehandelingInfoDal(int BehandelingId) : this()
-        {
-            behandelingId = BehandelingId;
+            BehandelingId = behandelingId;
+            Omschrijving = omschrijving;
+            Bedrag = bedrag;
         }
     }
 }

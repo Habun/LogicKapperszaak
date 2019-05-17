@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace InterfaceDAL
 {
    public struct KapperszaakInfoDal
     {
-        public int kapperszaakid { get; }
-        public string naam { get; }
+        public int Kapperszaakid { get; }
+        public string Naam { get; }
 
-        public KapperszaakInfoDal(int KapperszaakId, string Naam)
+        public KapperszaakInfoDal(int kapperszaakId, string naam)
         {
-            kapperszaakid = KapperszaakId;
-            naam = Naam;
+            Kapperszaakid = kapperszaakId;
+            Naam = naam;
         }
     }
 }

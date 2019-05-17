@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace InterfaceDAL
 {
     public struct CategorieInfoDal
     {
-        public int categorieId { get;}
-        public string categorienaam { get;}
-        public CategorieInfoDal(int CategorieId, string CategorieNaam)
+        public int CategorieId { get;}
+        public string Categorienaam { get;}
+        public CategorieInfoDal(int categorieId, string categorieNaam)
         {
-            categorieId = CategorieId;
-            categorienaam = CategorieNaam;
+            CategorieId = categorieId;
+            Categorienaam = categorieNaam;
         }
     }
 }

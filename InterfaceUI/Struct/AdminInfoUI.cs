@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace InterfaceUI
 {
     public struct AdminInfoUI
     {
-        public string emailadres { get;}
-        public string wachtwoord { get;}
+        public string Emailadres { get;}
+        public string Wachtwoord { get;}
 
-        public AdminInfoUI(string Emailadres, string Wachtwoord)
+        public AdminInfoUI(string emailadres, string wachtwoord)
         {
-            emailadres = Emailadres;
-            wachtwoord = Wachtwoord;
+            Emailadres = emailadres;
+            Wachtwoord = wachtwoord;
         }
     }
 }

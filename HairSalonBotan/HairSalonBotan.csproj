@@ -183,7 +183,6 @@
     <Content Include="Views\Behandeling\VerwijderBehandeling.cshtml" />
     <Content Include="Views\Behandeling\Edit.cshtml" />
     <Content Include="Views\Kapperszaak\ProductVerwijderen.cshtml" />
-    <Content Include="Views\Behandeling\Test.cshtml" />
     <Content Include="Views\Kapperszaak\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>

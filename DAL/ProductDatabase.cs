@@ -1,10 +1,5 @@
 ﻿using InterfaceDAL;
-using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL
 {
@@ -14,7 +9,7 @@ namespace DAL
         private SqlDataReader reader;
 
         SqlConnection conn = ConnectieDatabase.Connection;
-        ProductInfoDal productInfoDal;
+        private ProductInfoDal productInfodal;
         public void UpdateProduct(ProductInfoDal productInfo)
         {
             try
@@ -24,9 +19,9 @@ namespace DAL
 
                 using (cmd = new SqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@titel", productInfo.titel);
-                    cmd.Parameters.AddWithValue("@omschrijving", productInfo.omschrijving);
-                    cmd.Parameters.AddWithValue("@image", productInfo.image);
+                    cmd.Parameters.AddWithValue("@titel", productInfo.Titel);
+                    cmd.Parameters.AddWithValue("@omschrijving", productInfo.Omschrijving);
+                    cmd.Parameters.AddWithValue("@image", productInfo.Image);
                 }
                 cmd.ExecuteNonQuery();
             }
@@ -35,24 +30,26 @@ namespace DAL
                 conn.Close();
             }
         }
-        public ProductInfoDal ProductIdOphalen(int productId)
+
+        public int GeefProductId()
         {
-            string query = "Select * FROM Product WHERE ProductId=@ProductId";
+            int productId = productInfodal.ProductId;
+
+            string query = "Select * FROM Product WHERE ProductId= ProductId";
 
             conn.Open();
             cmd = new SqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("@ProductId", productId);
 
             using (reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    productInfoDal = new ProductInfoDal(reader.GetInt32(0));
+                    productId = reader.GetInt32(0);
                 }
             }
             conn.Close();
-            return productInfoDal;
-        }
 
+            return productId;
+        }
     }
 }
