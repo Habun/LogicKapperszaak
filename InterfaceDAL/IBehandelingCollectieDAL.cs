@@ -8,6 +8,6 @@ namespace InterfaceDAL
         void VoegBehandelingToe(BehandelingInfoDal behandelingsinfo);
         void VerwijderBehandeling(int behandelingId);
         List<BehandelingInfoDal> HaalBehandelingenOp();
-        List<BehandelingInfoDal> GeefAlleBehandelingVoorCategorie(int categoryid);
+        List<BehandelingInfoDal> GeefAlleBehandelingVoorCategorie(string categorieNaam);
     }
 }

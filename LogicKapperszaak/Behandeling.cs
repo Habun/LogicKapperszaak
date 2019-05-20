@@ -13,7 +13,6 @@ namespace LogicKapperszaak
 
         public CategorieInfoDal categorieInfoDal;
 
-
         public void UpdateBehandeling(int behandelingId, BehandelingsInfoUI behandelingUI, CategorieInfoUI categorieUI)
         {
             categorieInfoDal = new CategorieInfoDal(categorieUI.CategorieId, categorieUI.Categorienaam);

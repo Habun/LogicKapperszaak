@@ -16,7 +16,7 @@ namespace HairSalonBotan
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Behandeling", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Behandeling", action = "Behandelingen", id = UrlParameter.Optional }
             );
         }
     }

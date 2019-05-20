@@ -34,11 +34,11 @@ namespace LogicKapperszaak
             }
             return lijstbehandeling; 
         }
-        public List<BehandelingsInfoUI> AlleBehandelingenVoorCategorie(int categoryid)
+        public List<BehandelingsInfoUI> AlleBehandelingenVoorCategorie(string categorieNaam)
         {
             List<BehandelingsInfoUI> alleBehandelingenVoorCategorie = new List<BehandelingsInfoUI>();
 
-            foreach (var bhInfo in BehandelingCollectieDAL.GeefAlleBehandelingVoorCategorie(categoryid))
+            foreach (var bhInfo in BehandelingCollectieDAL.GeefAlleBehandelingVoorCategorie(categorieNaam))
             {                
                     BehandelingsInfoUI behandelingUI = new BehandelingsInfoUI(bhInfo.BehandelingId, bhInfo.Omschrijving, bhInfo.Bedrag);
                     alleBehandelingenVoorCategorie.Add(behandelingUI);

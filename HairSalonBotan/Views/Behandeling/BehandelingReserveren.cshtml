@@ -1,0 +1,27 @@
+﻿@model HairSalonBotan.Models.BehandelingVM
+
+@{
+    ViewBag.Title = "BehandelingReserveren";
+}
+
+<h2>BehandelingReserveren</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.omschrijving)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bedrag)
+        </th>
+    </tr>
+
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => Model.omschrijving)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.bedrag)
+        </td>
+    </tr>
+</table>

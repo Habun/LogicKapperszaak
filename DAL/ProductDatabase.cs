@@ -9,7 +9,7 @@ namespace DAL
         private SqlDataReader reader;
 
         SqlConnection conn = ConnectieDatabase.Connection;
-        private ProductInfoDal productInfodal;
+        ProductInfoDal productInfodal;
         public void UpdateProduct(ProductInfoDal productInfo)
         {
             try

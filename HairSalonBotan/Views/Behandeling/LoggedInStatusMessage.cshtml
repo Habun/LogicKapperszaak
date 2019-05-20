@@ -1,0 +1,21 @@
+﻿@model HairSalonBotan.Models.BehandelingVM
+
+@{
+    ViewBag.Title = "LoggedInStatusMessage";
+}
+
+<h2>BehandelingReserveren</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.categorieVM.categorienaam)
+        </th>
+    </tr>
+
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => Model.categorieVM.categorienaam)
+        </td>
+    </tr>
+</table>

@@ -14,6 +14,7 @@ namespace HairSalonBotan.Controllers
         public ActionResult Categorieën()
         {
             categorieVM.categorieInfoUI = categorieCollectieUI.AlleCategorieenOphalen();
+
             return View(categorieVM);
         }
     }

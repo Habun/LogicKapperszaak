@@ -59,15 +59,15 @@ namespace DAL
             }
             return behandelingen;
         }
-        public List<BehandelingInfoDal> GeefAlleBehandelingVoorCategorie(int categoryid)
+        public List<BehandelingInfoDal> GeefAlleBehandelingVoorCategorie(string categorieNaam)
         {
             List<BehandelingInfoDal> behandelingVoorCategorie = new List<BehandelingInfoDal>();
 
-            string query = "Select Behandeling.BehandelingId, Behandeling.Omschrijving, Behandeling.Bedrag FROM Behandeling INNER JOIN Categorie on Categorie.CategorieId = Behandeling.CategorieId Where Behandeling.CategorieId =@CategoryId ";
+            string query = "Select Behandeling.BehandelingId, Behandeling.Omschrijving, Behandeling.Bedrag FROM Behandeling INNER JOIN Categorie on Categorie.CategorieId = Behandeling.CategorieId Where Categorie.Categorienaam =@CategorieNaam ";
 
             conn.Open();
             cmd = new SqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("@CategoryId", categoryid);
+            cmd.Parameters.AddWithValue("@CategorieNaam", categorieNaam);
 
             using (reader = cmd.ExecuteReader())
             {

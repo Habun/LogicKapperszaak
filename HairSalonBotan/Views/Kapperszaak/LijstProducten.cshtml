@@ -36,7 +36,6 @@
             <img src="@Url.Content(item.Image)" width="250" height="200"/>
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
             @Html.ActionLink("Verwijder", "ProductVerwijderen", new { productId = item.ProductId })
         </td>
     </tr>

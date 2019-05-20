@@ -8,6 +8,7 @@
 
 <table class="table">
     <tr>
+
         <th>
             @Html.DisplayNameFor(model => model.omschrijving)
         </th>
@@ -16,21 +17,20 @@
         </th>
         <th></th>
     </tr>
+    
 
     @foreach (var item in Model.geefAlleBehandelingVoorCategorie)
     {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Omschrijving)
-                </td>
-                <td>
-                    € @Html.DisplayFor(modelItem => item.Bedrag)
-                </td>
-                <td>
-                    @*@Html.Hidden("BehandelingsId", item.behandelingsId)*@
-                    @*<input id="BehandelingsId" type="button" class="btn btn-info" />*@
-                    @Html.ActionLink("Kiezen", "Test", new { id = item.BehandelingsId, omschrijving = item.Omschrijving ,bedrag = item.Bedrag }, new { @class = "btn btn-primary" })
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Omschrijving)
+            </td>
+            <td>
+                € @Html.DisplayFor(modelItem => item.Bedrag)
+            </td>
+            <td>
+                @Html.ActionLink("Kiezen", "BehandelingReserveren", new {id = item.BehandelingsId, omschrijving = item.Omschrijving, bedrag = item.Bedrag}, new {@class = "btn btn-primary"})
+            </td>
+        </tr>
     }
 </table>

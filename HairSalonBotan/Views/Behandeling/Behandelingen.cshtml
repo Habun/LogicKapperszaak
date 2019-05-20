@@ -1,9 +1,9 @@
 ﻿@model HairSalonBotan.Models.BehandelingVM
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Behandelingen";
 }
-<h2>Index</h2>
+<h2>Behandelingen</h2>
 
 <p>
     @Html.ActionLink("Voeg nieuw behandeling toe", "CreateBehandeling")
@@ -32,7 +32,7 @@
                 @Html.DisplayFor(modelItem => item.Omschrijving)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Bedrag)
+                € @Html.DisplayFor(modelItem => item.Bedrag)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { behandelingId = item.BehandelingsId }) |

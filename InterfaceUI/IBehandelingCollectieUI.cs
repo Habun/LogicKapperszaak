@@ -8,6 +8,6 @@ namespace InterfaceUI
         void BehandelingToevoegen(BehandelingsInfoUI behandeling, CategorieInfoUI categorieInfoUI);
         void BehandelingVerwijderen(int behandelingId);
         List<BehandelingsInfoUI> AlleBehandelingenOphalen();
-        List<BehandelingsInfoUI> AlleBehandelingenVoorCategorie(int categoryid);
+        List<BehandelingsInfoUI> AlleBehandelingenVoorCategorie(string categorieNaam);
     }
 }
