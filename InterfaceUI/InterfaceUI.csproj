@@ -43,21 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICategorieCollectieUI.cs" />
-    <Compile Include="IKapperszaakUI.cs" />
-    <Compile Include="IKlantUI.cs" />
-    <Compile Include="IProductUI.cs" />
-    <Compile Include="Struct\AdminInfoUI.cs" />
-    <Compile Include="Struct\AfspraakInfoUI.cs" />
-    <Compile Include="Struct\BehandelingsInfoUI.cs" />
-    <Compile Include="Struct\CadeauKaartInfoUI.cs" />
-    <Compile Include="IBehandelingCollectieUI.cs" />
-    <Compile Include="IBehandelingUI.cs" />
-    <Compile Include="Struct\CategorieInfoUI.cs" />
-    <Compile Include="Struct\KapperszaakinfoUI.cs" />
-    <Compile Include="Struct\KlantInfoUI.cs" />
+    <Compile Include="IAdminUi.cs" />
+    <Compile Include="IAfspraakUi.cs" />
+    <Compile Include="ICadeauKaartUi.cs" />
+    <Compile Include="ICategorieCollectieUi.cs" />
+    <Compile Include="ICategorieUI.cs" />
+    <Compile Include="IKapperszaakUi.cs" />
+    <Compile Include="IKlantUi.cs" />
+    <Compile Include="IProductUi.cs" />
+    <Compile Include="IBehandelingCollectieUi.cs" />
+    <Compile Include="IBehandelingUi.cs" />
+    <Compile Include="IWerknemerUi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Struct\ProductInfoUI.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -2,13 +2,18 @@
 
 namespace InterfaceUI
 {
-   public interface IKapperszaakUI
-    {
-        void Inloggen(AdminInfoUI adminInfoUI);
-        void VoegProductToe(ProductInfoUI productInfoUI, KapperszaakinfoUI kappersinfoUI);
+   public interface IKapperszaakUi
+   {
+        int Id { get; }
+        string Naam { get; }
+        void Inloggen(string emailadres, string wachtwoord);
+        void VoegProductToe(IProductUi product);
         void ProductVerwijderen(int productId);
-        List<ProductInfoUI> AlleProductenOphalen();
-        List<AfspraakInfoUI> AlleAfsprakenOphalen();
-        List<CadeauKaartInfoUI> AlleCadeauKaartenOphalen();
-    }
+        int ProductIdDoorGeven(int id);
+        void VoegWerknemerToe(IWerknemerUi werknemer);
+        List<IProductUi> AlleProductenOphalen();
+        List<IAfspraakUi> AlleAfsprakenOphalen();
+        List<ICadeauKaartUi> AlleCadeauKaartenOphalen();
+        List<IWerknemerUi> AlleWerknemersOphalen();
+   }
 }

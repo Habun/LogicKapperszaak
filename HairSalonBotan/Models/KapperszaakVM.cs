@@ -9,8 +9,6 @@ namespace HairSalonBotan.Models
 {
     public class KapperszaakVM
     {
-        public AdminVM adminvm = new AdminVM();
-
         public ProductVM productvm = new ProductVM();
 
         [Required]
@@ -19,11 +17,11 @@ namespace HairSalonBotan.Models
         public string naam { get; set; }
         
         [Required]
-        public List<ProductInfoUI> producten = new List<ProductInfoUI>();
+        public List<IProductUi> producten = new List<IProductUi>();
         [Required]
-        public List<AfspraakInfoUI> afspraken = new List<AfspraakInfoUI>();
+        public List<IAfspraakUi> afspraken = new List<IAfspraakUi>();
         [Required]
-        public List<CadeauKaartInfoUI> cadeaukaarten  = new List<CadeauKaartInfoUI>();
+        public List<ICadeauKaartUi> cadeaukaarten  = new List<ICadeauKaartUi>();
 
 
     }

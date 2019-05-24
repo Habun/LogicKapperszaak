@@ -2,9 +2,12 @@
 
 namespace InterfaceUI
 {
-   public interface IKlantUI
+   public interface IKlantUi
     {
-        void CadeauKaartReserveren(KlantInfoUI klantInfoUI, CadeauKaartInfoUI cadeauKaartInfoUI);
+        string Naam { get; }
+        int Telefoonnummer { get; }
+        string Emailadres { get; }
+        void CadeauKaartReserveren(ICadeauKaartUi cadeauKaart);
         void AfspraakReserveren();
     }
 }

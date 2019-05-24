@@ -7,6 +7,6 @@ namespace InterfaceDAL
     {
         void VoegCategorieToe(CategorieInfoDal categorieinfoDal);
         void VerwijderCategorie(CategorieInfoDal categorieinfoDal);
-        List<CategorieInfoDal> HaalBehandelingenOp();
+        List<CategorieInfoDal> HaalCategorieOp();
     }
 }

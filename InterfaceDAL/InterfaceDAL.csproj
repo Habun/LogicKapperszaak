@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAdminDAL.cs" />
+    <Compile Include="IAfspraakDAL.cs" />
+    <Compile Include="ICadeauKaartDal.cs" />
     <Compile Include="ICategorieCollectionDAL.cs" />
     <Compile Include="struct\AdminInfoDal.cs" />
     <Compile Include="struct\AfspraakInfoDal.cs" />
@@ -56,6 +59,7 @@
     <Compile Include="struct\KlantInfoDal.cs" />
     <Compile Include="struct\ProductInfoDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="struct\WerknemerInfoDal.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

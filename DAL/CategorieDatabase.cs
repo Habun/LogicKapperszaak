@@ -20,7 +20,7 @@ namespace DAL
         {
         }
 
-        public List<CategorieInfoDal> HaalBehandelingenOp()
+        public List<CategorieInfoDal> HaalCategorieOp()
         {
             List<CategorieInfoDal> categorieen = new List<CategorieInfoDal>();
             string query = "Select * From Categorie";

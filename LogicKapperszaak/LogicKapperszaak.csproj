@@ -52,6 +52,7 @@
     <Compile Include="Klant.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Werknemer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FactoryDAL\FactoryDAL.csproj">

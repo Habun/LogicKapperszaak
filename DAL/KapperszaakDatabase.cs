@@ -1,4 +1,5 @@
-﻿using InterfaceDAL;
+﻿using System;
+using InterfaceDAL;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
@@ -13,7 +14,23 @@ namespace DAL
 
         public List<AfspraakInfoDal> afspraken { get; private set; } = new List<AfspraakInfoDal>();
         public List<CadeauKaartInfoDal> cadeaukaarten { get; private set; } = new List<CadeauKaartInfoDal>();
+        public List<WerknemerInfoDal> werknemers { get; private set; } = new List<WerknemerInfoDal>();
 
+        public void VoegProductToe(ProductInfoDal productInfo)
+        {
+            KapperszaakInfoDal kapperszaak = new KapperszaakInfoDal();
+            string query = "INSERT INTO Product (KapperszaakId, Titel, Omschrijving, Image) VALUES(@KapperszaakId, @Titel, @Omschrijving, @Image)";
+            conn.Open();
+
+            using (cmd = new SqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@KapperszaakId", kapperszaak.Id);
+                cmd.Parameters.AddWithValue("@Titel", productInfo.Titel);
+                cmd.Parameters.AddWithValue("@Omschrijving", productInfo.Omschrijving);
+                cmd.Parameters.AddWithValue("@Image", productInfo.Image);
+            }
+            cmd.ExecuteNonQuery();
+        }
         public void VerwijderProduct(int productId)
         {
             string query = "Delete FROM Product Where ProductId = @ProductId ";
@@ -26,24 +43,31 @@ namespace DAL
             cmd.ExecuteNonQuery();
         }
 
-        public void VoegProductToe(ProductInfoDal productInfo)
+        public int GeefProductId(int id)
         {
-            string query = "INSERT INTO Product (KapperszaakId, Titel, Omschrijving, Image) VALUES(@KapperszaakId, @Titel, @Omschrijving, @Image)";
-            conn.Open();
+            string query = "Select * FROM Product WHERE ProductId= ProductId";
 
-            using (cmd = new SqlCommand(query, conn))
+            conn.Open();
+            cmd = new SqlCommand(query, conn);
+
+            using (reader = cmd.ExecuteReader())
             {
-                cmd.Parameters.AddWithValue("@KapperszaakId", productInfo.kapperszaakdal.Kapperszaakid);
-                cmd.Parameters.AddWithValue("@Titel", productInfo.Titel);
-                cmd.Parameters.AddWithValue("@Omschrijving", productInfo.Omschrijving);
-                cmd.Parameters.AddWithValue("@Image", productInfo.Image);
+                while (reader.Read())
+                {
+                    id = reader.GetInt32(0);
+                }
             }
-            cmd.ExecuteNonQuery();
+            conn.Close();
+
+            return id;
         }
-        public void Inloggen(AdminInfoDal adminInfoDal)
+        public void VoegWerknemerToe(WerknemerInfoDal werknemerInfo)
         {
-            try
-            {
+            throw new NotImplementedException();
+        }
+        public void Inloggen(AdminInfoDal adminInfoDal) // string emailadres, wachtwoord 
+        {
+
                 string query = "Select * FROM Admin Where Emailadres =@Emailadres and Wachtwoord =@Wachtwoord ";
                 conn.Open();
                 cmd = new SqlCommand(query, conn);
@@ -59,12 +83,6 @@ namespace DAL
                     }
                 }
                 cmd.ExecuteNonQuery();
-            }
-            finally
-            {
-                conn.Close();
-
-            }
         }
         public List<AfspraakInfoDal> HaalAfspraakOp()
         {
@@ -75,12 +93,16 @@ namespace DAL
         {
             return cadeaukaarten;
         }
+        public List<WerknemerInfoDal> HaalWerknemersOp()
+        {
+            return werknemers;
+        }
 
         public List<ProductInfoDal> HaalProductenOp()
         {
             List<ProductInfoDal> productenlijst = new List<ProductInfoDal>();
 
-            string query = "Select ProductId, KapperszaakId, Titel, Omschrijving, Image FROM Product"; 
+            string query = "Select Titel, Omschrijving, Image FROM Product"; 
 
             conn.Open();
 
@@ -89,14 +111,10 @@ namespace DAL
             {
                 while (reader.Read())
                 {
-                    KapperszaakInfoDal kapperszaakInfoDal = new KapperszaakInfoDal(reader.GetInt32(1), reader.GetString(2));
-                    ProductInfoDal productInfoDal = new ProductInfoDal(kapperszaakInfoDal, reader.GetInt32(0), reader.GetString(2), reader.GetString(3), reader.GetString(4));
+                    ProductInfoDal productInfoDal = new ProductInfoDal(reader.GetString(0), reader.GetString(1), reader.GetString(2));
                     productenlijst.Add(productInfoDal);
                 }
-                reader.Close();
             }
-            conn.Close();
-
             return productenlijst;
         }
     }

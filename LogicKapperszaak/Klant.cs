@@ -5,11 +5,11 @@ using FactoryDAL;
 
 namespace LogicKapperszaak
 {
-    public class Klant : IKlantUI
+    public class Klant : IKlantUi
     {
-        public string Naam { get; set; }
-        public int Telefoonnummer { get; set; }
-        public string Emailadres { get; set; }
+        public string Naam { get;}
+        public int Telefoonnummer { get;}
+        public string Emailadres { get;}
 
         IKlantDAL klantDAL = DatabaseFactory.KlantDAL();
 
@@ -26,12 +26,13 @@ namespace LogicKapperszaak
             Emailadres = emailadres;
         }
 
-        public void CadeauKaartReserveren(KlantInfoUI klantinfoUi, CadeauKaartInfoUI cadeauKaartinfoUI)
+        public void CadeauKaartReserveren(ICadeauKaartUi cadeauKaart)
         {
-            KlantInfoDal klantinfo = new KlantInfoDal(klantinfoUi.Naam, klantinfoUi.Telefoonnummer, klantinfoUi.Emailadres);
-            cadeaukaartinfo = new CadeauKaartInfoDal(cadeauKaartinfoUI.Bestemd, cadeauKaartinfoUI.Bedrag, klantinfo);
+             IKlantUi klant = new Klant();
+             KlantInfoDal klantinfo = new KlantInfoDal(klant.Naam, klant.Telefoonnummer, klant.Emailadres);
+             cadeaukaartinfo = new CadeauKaartInfoDal(cadeauKaart.Bestemd, cadeauKaart.Bedrag, klantinfo);
 
-            klantDAL.CadeauKaartReserveren(cadeaukaartinfo);
+             klantDAL.CadeauKaartReserveren(cadeaukaartinfo);
         }
 
         public void AfspraakReserveren()

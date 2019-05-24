@@ -3,11 +3,11 @@
 
 namespace InterfaceUI
 {
-   public interface IBehandelingCollectieUI
-    {
-        void BehandelingToevoegen(BehandelingsInfoUI behandeling, CategorieInfoUI categorieInfoUI);
-        void BehandelingVerwijderen(int behandelingId);
-        List<BehandelingsInfoUI> AlleBehandelingenOphalen();
-        List<BehandelingsInfoUI> AlleBehandelingenVoorCategorie(string categorieNaam);
+   public interface IBehandelingCollectieUi
+   {
+       void BehandelingToevoegen(IBehandelingUi behandeling);
+       void BehandelingVerwijderen(int behandelingId);
+       List<IBehandelingUi> AlleBehandelingenOphalen();
+       List<IBehandelingUi> AlleBehandelingenVoorCategorie(string categorieNaam);
     }
 }

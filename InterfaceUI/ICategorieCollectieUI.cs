@@ -3,10 +3,10 @@
 
 namespace InterfaceUI
 {
-    public interface ICategorieCollectieUI
+    public interface ICategorieCollectieUi
     {
-        void CategorieToevoegen(CategorieInfoUI categorieUI);
-        void CategorieVerwijderen(CategorieInfoUI categorieUI);
-        List<CategorieInfoUI> AlleCategorieenOphalen();
+        void CategorieToevoegen(ICategorieUI categorieUI);
+        void CategorieVerwijderen(int categorieId);
+        List<ICategorieUI> AlleCategorieenOphalen();
     }
 }

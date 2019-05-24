@@ -5,7 +5,7 @@ namespace FactoryUI
 {
    public class UIFactory
     {
-        public static IBehandelingCollectieUI BehandelingCollectie()
+        public static IBehandelingCollectieUi BehandelingCollectie()
         {
             return new BehandelingCollectie();
         }
@@ -13,19 +13,19 @@ namespace FactoryUI
         {
             return new Behandeling();
         }
-        public static IKlantUI Klant()
+        public static IKlantUi Klant()
         {
             return new Klant();
         }
-        public static IProductUI Product()
+        public static IProductUi Product()
         {
             return new Product();
         }
-        public static IKapperszaakUI Kapperszaak()
+        public static IKapperszaakUi Kapperszaak()
         {
             return new Kapperszaak();
         }
-        public static ICategorieCollectieUI CategorieCollectie()
+        public static ICategorieCollectieUi CategorieCollectie()
         {
             return new CategorieCollectie();
         }

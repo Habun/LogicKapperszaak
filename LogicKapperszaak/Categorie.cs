@@ -1,10 +1,12 @@
 ﻿
+using InterfaceUI;
+
 namespace LogicKapperszaak
 {
-    public class Categorie
+    public class Categorie : ICategorieUI
     {
-        public int CategorieId { get; set; }
-        public string Categorienaam { get; set; }
+        public int CategorieId { get;}
+        public string Categorienaam { get;}
 
         public Categorie()
         {

@@ -1,32 +1,56 @@
 ﻿using FactoryDAL;
 using InterfaceDAL;
 using InterfaceUI;
-using System;
 
 namespace LogicKapperszaak
 {
     public class Behandeling : IBehandelingUi
     {
+        public int Id { get; }
+        public string Omschrijving { get; }
+        public decimal Bedrag { get; }
+
         public IBehandelingDAL behandelingDal = DatabaseFactory.Behandelingdal();
 
         public BehandelingInfoDal behandelingsinfoDal;
 
         public CategorieInfoDal categorieInfoDal;
 
-        public void UpdateBehandeling(int behandelingId, BehandelingsInfoUI behandelingUI, CategorieInfoUI categorieUI)
+        public ICategorieUI Categorie ;
+        public Behandeling(int id, string omschrijving, decimal bedrag, ICategorieUI categorie)
         {
-            categorieInfoDal = new CategorieInfoDal(categorieUI.CategorieId, categorieUI.Categorienaam);
+            Id = id;
+            Omschrijving = omschrijving;
+            Bedrag = bedrag;
+            Categorie = categorie;
+        }
 
-            behandelingsinfoDal = new BehandelingInfoDal(behandelingId, behandelingUI.Omschrijving, behandelingUI.Bedrag, categorieInfoDal);
+        public Behandeling()
+        {
+        }
+
+        public Behandeling(int id, string omschrijving, decimal bedrag)
+        {
+            Id = id;
+            Omschrijving = omschrijving;
+            Bedrag = bedrag;
+        }
+
+        public void UpdateBehandeling(int behandelingId, IBehandelingUi behandeling, ICategorieUI categorie)
+        {
+            categorieInfoDal = new CategorieInfoDal(categorie.CategorieId, categorie.Categorienaam);
+
+            behandelingsinfoDal = new BehandelingInfoDal(behandelingId, behandeling.Omschrijving, behandeling.Bedrag, categorieInfoDal);
             behandelingDal.UpdateBehandeling(behandelingsinfoDal);
         }
-        public int BehandelingIDdoorGeven()
-        {
-            if (behandelingDal.GeefBehandelingIDdoor() == 0)
-            {
-                throw new ArgumentException($"Geen behandelingId gevonden.");
-            }
-            return behandelingDal.GeefBehandelingIDdoor();
-        }
+
+        //public int BehandelingIDdoorGeven()
+        //{
+        //    if (behandelingDal.GeefBehandelingIDdoor() == 0)
+        //    {
+        //        throw new ArgumentException($"Geen behandelingId gevonden.");
+        //    }
+        //    return behandelingDal.GeefBehandelingIDdoor();
+        //}
     }
 }

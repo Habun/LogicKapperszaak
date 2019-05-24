@@ -19,7 +19,7 @@ namespace HairSalonBotan.Models
         [Required]
         public decimal bedrag { get; set; }
         [Required]
-        public List<BehandelingsInfoUI> behandelingUI = new List<BehandelingsInfoUI>();
-        public List<BehandelingsInfoUI> geefAlleBehandelingVoorCategorie = new List<BehandelingsInfoUI>();
+        public List<IBehandelingUi> behandelingUI = new List<IBehandelingUi>();
+        public List<IBehandelingUi> geefAlleBehandelingVoorCategorie = new List<IBehandelingUi>();
     }
 }

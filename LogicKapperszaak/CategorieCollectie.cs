@@ -5,25 +5,26 @@ using FactoryDAL;
 
 namespace LogicKapperszaak
 {
-   public class CategorieCollectie : ICategorieCollectieUI
+   public class CategorieCollectie : ICategorieCollectieUi
     {
         ICategorieCollectionDAL CategorieCollectionDAL = DatabaseFactory.CategorieDal();
-        CategorieInfoDal categorieinfoDal;
-        public void CategorieToevoegen(CategorieInfoUI categorieUI)
+        public CategorieInfoDal categorieinfoDal { get; set; }
+
+        public void CategorieToevoegen(ICategorieUI categorieUI)
         {
-            categorieinfoDal = new CategorieInfoDal(categorieUI.CategorieId, categorieUI.Categorienaam);
 
         }
-        public void CategorieVerwijderen(CategorieInfoUI categorieUI)
+        public void CategorieVerwijderen(int categorieId)
         {
-        }
-        public List<CategorieInfoUI> AlleCategorieenOphalen()
-        {
-            List<CategorieInfoUI> categorielijst = new List<CategorieInfoUI>();
 
-            foreach (var Cinfo in CategorieCollectionDAL.HaalBehandelingenOp())
+        }
+        public List<ICategorieUI> AlleCategorieenOphalen()
+        {
+            List<ICategorieUI> categorielijst = new List<ICategorieUI>();
+
+            foreach (var Cinfo in CategorieCollectionDAL.HaalCategorieOp())
             {
-                CategorieInfoUI categorieInfoUI = new CategorieInfoUI(Cinfo.CategorieId, Cinfo.Categorienaam);
+                ICategorieUI categorieInfoUI = new Categorie(Cinfo.CategorieId, Cinfo.Categorienaam);
                 categorielijst.Add(categorieInfoUI);
             }
             return categorielijst;

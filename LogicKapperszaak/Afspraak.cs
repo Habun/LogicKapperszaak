@@ -4,22 +4,23 @@ using InterfaceUI;
 
 namespace LogicKapperszaak
 {
-    public class Afspraak
+    public class Afspraak : IAfspraakUi
     {
-        public int AfspraakId { get; set; }
-        public string Opmerkingen { get; set; }
-        public DateTime datetime { get; set; }
-        public Klant klant { get; set; }
+        public string Opmerkingen { get;}
+        public DateTime datetime { get; }
+        public List<IBehandelingUi> behandelingen { get; } = new List<IBehandelingUi>();
 
-        public Afspraak(int afspraakId, string opmerking, DateTime dateTime, Klant klantAF)
+        public IKlantUi _klantUi;
+
+
+        public Afspraak(string opmerking, DateTime dateTime, IKlantUi klantUi)
         {
-            AfspraakId = afspraakId;
-            klant = klantAF;
             Opmerkingen = opmerking;
             datetime = dateTime;
+            _klantUi = klantUi;
         }
 
-        public void BehandelingToevoegenAanAfspraak(int BehandelingsId)
+        public void BehandelingToevoegenAanAfspraak(IBehandelingUi behandeling)
         {
 
         }
@@ -28,10 +29,9 @@ namespace LogicKapperszaak
         {
 
         }
-        public List<BehandelingsInfoUI> AfspraakBehandelingenOphalen()
+        public List<IBehandelingUi> AfspraakBehandelingenOphalen()
         {
             throw new NotImplementedException();
         }
-
     }
 }

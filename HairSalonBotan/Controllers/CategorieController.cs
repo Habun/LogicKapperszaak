@@ -7,7 +7,7 @@ namespace HairSalonBotan.Controllers
 {
     public class CategorieController : Controller
     {
-        ICategorieCollectieUI categorieCollectieUI = UIFactory.CategorieCollectie();
+        ICategorieCollectieUi categorieCollectieUI = UIFactory.CategorieCollectie();
         CategorieVM categorieVM = new CategorieVM();
 
         [HttpGet]

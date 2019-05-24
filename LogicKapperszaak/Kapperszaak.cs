@@ -6,82 +6,98 @@ using FactoryDAL;
 
 namespace LogicKapperszaak
 {
-   public class Kapperszaak : IKapperszaakUI
+   public class Kapperszaak : IKapperszaakUi
     {
-        public int Kapperszaakid { get; set; }
-        public string Naam { get; set; }
-        public List<ProductInfoUI> producten { get;} = new List<ProductInfoUI>();
-        public List<AfspraakInfoUI> afspraken { get;} = new List<AfspraakInfoUI>();
-        public List<CadeauKaartInfoUI> cadeaukaarten { get;} = new List<CadeauKaartInfoUI>();
+        public int Id { get;}
+        public string Naam { get;}
 
         IKapperszaakDAL kapperszaakDAL = DatabaseFactory.KapperszaakDAL();
-
-        KapperszaakInfoDal kapperszaakinfodal;
-
         ProductInfoDal productinfo;
 
-        KlantInfoUI klantInfoUI = new KlantInfoUI();
-
-        public Kapperszaak(int kapperszaakId, string naam)
+        public Kapperszaak(int id, string naam)
         {
-            Kapperszaakid = kapperszaakId;
+            Id = id;
             Naam = naam;
         }
         public Kapperszaak()
         {
+
+        }
+        public void Inloggen(string emailadres, string wachtwoord) 
+        {
+            AdminInfoDal adminInfoDal = new AdminInfoDal(emailadres, wachtwoord);
+
+            if (emailadres == null && wachtwoord == null)
+            {
+                throw new NotImplementedException("Vul alle gegevens in");
+            }
+            kapperszaakDAL.Inloggen(adminInfoDal);
         }
 
-        public void Inloggen(AdminInfoUI adminInfoUI) 
+        public void VoegProductToe(IProductUi product)
         {
-            AdminInfoDal adminInfoDal = new AdminInfoDal(adminInfoUI.Emailadres, adminInfoUI.Wachtwoord);
+            productinfo = new ProductInfoDal(product.Titel, product.Omschrijving,product.Image);
 
-            if (adminInfoUI.Emailadres == null && adminInfoUI.Wachtwoord == null)
-            {
-                throw new NotImplementedException();
-            }
-            else
-            {
-                kapperszaakDAL.Inloggen(adminInfoDal);
-            }
-        }
-
-        public void VoegProductToe(ProductInfoUI productInfoUI, KapperszaakinfoUI kappersinfoUI)
-        {
-            kapperszaakinfodal = new KapperszaakInfoDal(kappersinfoUI.Kapperszaakid, kappersinfoUI.Naam);
-
-            productinfo = new ProductInfoDal(kapperszaakinfodal, productInfoUI.ProductId, productInfoUI.Titel, productInfoUI.Omschrijving,productInfoUI.Image);
             kapperszaakDAL.VoegProductToe(productinfo);
         }
         public void ProductVerwijderen(int productId)
         {
             kapperszaakDAL.VerwijderProduct(productId);
         }
-        public List<ProductInfoUI> AlleProductenOphalen()
+        public void VoegWerknemerToe(IWerknemerUi werknemer)
         {
+
+        }
+
+        public int ProductIdDoorGeven(int id)
+        {
+            if (kapperszaakDAL.GeefProductId(id) == 0)
+            {
+                throw new ArgumentException($"Geen productId gevonden.");
+            }
+            return kapperszaakDAL.GeefProductId(id);
+        }
+
+        public List<IWerknemerUi> AlleWerknemersOphalen()
+        {
+            List<IWerknemerUi> werknemers = new List<IWerknemerUi>();
+
+            return werknemers;
+        }
+        public List<IProductUi> AlleProductenOphalen()
+        {
+            List<IProductUi> producten = new List<IProductUi>();
+
             foreach (var pinfoDal in kapperszaakDAL.HaalProductenOp())
             {
-                KapperszaakinfoUI kapperszaakinfoUI = new KapperszaakinfoUI(pinfoDal.kapperszaakdal.Kapperszaakid, pinfoDal.kapperszaakdal.Naam);
-
-                ProductInfoUI productInfoUI = new ProductInfoUI(kapperszaakinfoUI, pinfoDal.ProductId, pinfoDal.Titel, pinfoDal.Omschrijving, pinfoDal.Image);
-                producten.Add(productInfoUI);
+                IProductUi product = new Product(pinfoDal.Titel, pinfoDal.Omschrijving, pinfoDal.Image);
+                producten.Add(product);
             }
             return producten;
         }
-        public List<AfspraakInfoUI> AlleAfsprakenOphalen() 
+        public List<IAfspraakUi> AlleAfsprakenOphalen()
         {
+            List<IAfspraakUi> afspraken = new List<IAfspraakUi>();
+
             foreach (var asinfoDal in kapperszaakDAL.HaalAfspraakOp())
             {
-                AfspraakInfoUI afspraakInfoUI = new AfspraakInfoUI(asinfoDal.Opmerkingen, asinfoDal.datetime, klantInfoUI);
-                afspraken.Add(afspraakInfoUI);
+                IKlantUi klant = new Klant(asinfoDal.klantinfo.Naam, asinfoDal.klantinfo.Telefoonnummer, asinfoDal.klantinfo.Emailadres);
+
+                IAfspraakUi afspraak = new Afspraak(asinfoDal.Opmerkingen, asinfoDal.datetime, klant);
+                afspraken.Add(afspraak);
             }
             return afspraken;
         }
-        public List<CadeauKaartInfoUI> AlleCadeauKaartenOphalen()
+        public List<ICadeauKaartUi> AlleCadeauKaartenOphalen()
         {
+            List<ICadeauKaartUi> cadeaukaarten = new List<ICadeauKaartUi>();
+
             foreach (var ckinfoDal in kapperszaakDAL.HaalCadeauKaartOp())
             {
-                CadeauKaartInfoUI cadeauKaartInfoUI = new CadeauKaartInfoUI(ckinfoDal.Bestemd, ckinfoDal.Bedrag, klantInfoUI);
-                cadeaukaarten.Add(cadeauKaartInfoUI);
+                IKlantUi klant = new Klant(ckinfoDal.klantDAL.Naam, ckinfoDal.klantDAL.Telefoonnummer, ckinfoDal.klantDAL.Emailadres);
+
+                ICadeauKaartUi cadeauKaart = new CadeauKaart(ckinfoDal.Bestemd, ckinfoDal.Bedrag, klant);
+                cadeaukaarten.Add(cadeauKaart);
             }
             return cadeaukaarten; 
         }

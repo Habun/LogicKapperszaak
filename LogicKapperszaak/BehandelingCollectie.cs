@@ -5,43 +5,47 @@ using InterfaceDAL;
 
 namespace LogicKapperszaak
 {
-   public class BehandelingCollectie : IBehandelingCollectieUI
+   public class BehandelingCollectie : IBehandelingCollectieUi
     {
         IBehandelingCollectieDAL BehandelingCollectieDAL = DatabaseFactory.BehandelingCollectieDAL();
 
         BehandelingInfoDal behandelinginfoDal;
-        public void BehandelingToevoegen(BehandelingsInfoUI behandelingUI, CategorieInfoUI categorieInfoUI)
-        {
-            CategorieInfoDal categorieInfoDal = new CategorieInfoDal(categorieInfoUI.CategorieId, categorieInfoUI.Categorienaam);
+        public ICategorieUI categorie { get; }
 
-            behandelinginfoDal = new BehandelingInfoDal(behandelinginfoDal.BehandelingId, behandelingUI.Omschrijving, behandelingUI.Bedrag, categorieInfoDal);
+
+        public void BehandelingToevoegen(IBehandelingUi behandeling)
+        {
+            CategorieInfoDal categorieInfoDal = new CategorieInfoDal(categorie.CategorieId, categorie.Categorienaam);
+
+            behandelinginfoDal = new BehandelingInfoDal(behandeling.Id,behandeling.Omschrijving, behandeling.Bedrag, categorieInfoDal);
             BehandelingCollectieDAL.VoegBehandelingToe(behandelinginfoDal);
         }
+
         public void BehandelingVerwijderen(int behandelingId)
         {
             BehandelingCollectieDAL.VerwijderBehandeling(behandelingId);
         }
-        public List<BehandelingsInfoUI> AlleBehandelingenOphalen() 
+        public List<IBehandelingUi> AlleBehandelingenOphalen() 
         {
-            List<BehandelingsInfoUI> lijstbehandeling = new List<BehandelingsInfoUI>();
+            List<IBehandelingUi> lijstbehandeling = new List<IBehandelingUi>();
 
             foreach (var bhInfo in BehandelingCollectieDAL.HaalBehandelingenOp())
             {
-                CategorieInfoUI categorieInfoUI = new CategorieInfoUI(bhInfo.categorieinfoDal.CategorieId, bhInfo.categorieinfoDal.Categorienaam);
+                ICategorieUI categorie = new Categorie(bhInfo.categorieinfoDal.CategorieId, bhInfo.categorieinfoDal.Categorienaam);
 
-                BehandelingsInfoUI behandelingUI = new BehandelingsInfoUI(bhInfo.BehandelingId,bhInfo.Omschrijving, bhInfo.Bedrag, categorieInfoUI);
-                lijstbehandeling.Add(behandelingUI);
+                IBehandelingUi behandelingUi = new Behandeling(bhInfo.Id, bhInfo.Omschrijving, bhInfo.Bedrag, categorie);
+                lijstbehandeling.Add(behandelingUi);
             }
             return lijstbehandeling; 
         }
-        public List<BehandelingsInfoUI> AlleBehandelingenVoorCategorie(string categorieNaam)
+        public List<IBehandelingUi> AlleBehandelingenVoorCategorie(string categorieNaam)
         {
-            List<BehandelingsInfoUI> alleBehandelingenVoorCategorie = new List<BehandelingsInfoUI>();
+            List<IBehandelingUi> alleBehandelingenVoorCategorie = new List<IBehandelingUi>();
 
             foreach (var bhInfo in BehandelingCollectieDAL.GeefAlleBehandelingVoorCategorie(categorieNaam))
-            {                
-                    BehandelingsInfoUI behandelingUI = new BehandelingsInfoUI(bhInfo.BehandelingId, bhInfo.Omschrijving, bhInfo.Bedrag);
-                    alleBehandelingenVoorCategorie.Add(behandelingUI);
+            {
+                IBehandelingUi behandelingUI = new Behandeling(bhInfo.Id, bhInfo.Omschrijving, bhInfo.Bedrag);
+                alleBehandelingenVoorCategorie.Add(behandelingUI);
             }
             return alleBehandelingenVoorCategorie;
         }

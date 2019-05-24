@@ -4,12 +4,12 @@ namespace InterfaceDAL
 {
    public struct KapperszaakInfoDal
     {
-        public int Kapperszaakid { get; }
+        public int Id { get; }
         public string Naam { get; }
 
-        public KapperszaakInfoDal(int kapperszaakId, string naam)
+        public KapperszaakInfoDal(int id, string naam)
         {
-            Kapperszaakid = kapperszaakId;
+            Id = id;
             Naam = naam;
         }
     }

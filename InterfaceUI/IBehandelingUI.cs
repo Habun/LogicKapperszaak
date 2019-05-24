@@ -4,7 +4,9 @@ namespace InterfaceUI
 {
     public interface IBehandelingUi
     {
-        void UpdateBehandeling(int behandelingId, BehandelingsInfoUI behandelingUI, CategorieInfoUI categorieUI);
-        int BehandelingIDdoorGeven();
+        int Id { get; }
+        string Omschrijving { get; }
+        decimal Bedrag { get; }
+        void UpdateBehandeling(int behandelingId, IBehandelingUi behandeling, ICategorieUI categorie);
     }
 }

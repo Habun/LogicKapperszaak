@@ -11,7 +11,6 @@ namespace DAL
         private SqlDataReader reader;
 
         SqlConnection conn = ConnectieDatabase.Connection;
-        BehandelingInfoDal behandelingInfo;
 
         public void VoegBehandelingToe(BehandelingInfoDal behandelingsinfo)
         {
@@ -83,27 +82,6 @@ namespace DAL
         public void UpdateBehandeling(BehandelingInfoDal behandelingsinfo)
         {
             throw new NotImplementedException();
-        }
-
-        public int GeefBehandelingIDdoor()
-        {
-            int behandelingId = behandelingInfo.BehandelingId;
-
-            string query = "Select * FROM Behandeling WHERE BehandelingId= BehandelingId";
-
-            conn.Open();
-            cmd = new SqlCommand(query, conn);
-
-            using (reader = cmd.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    behandelingId = reader.GetInt32(0);
-                }
-            }
-            conn.Close();
-
-            return behandelingId;
         }
     }
 }

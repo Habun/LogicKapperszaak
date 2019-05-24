@@ -7,10 +7,9 @@ namespace HairSalonBotan.Controllers
 {
     public class KapperszaakController : Controller
     {
-        IKapperszaakUI kapperszaakUI = UIFactory.Kapperszaak();
-        private IProductUI productUi = UIFactory.Product();
-        KapperszaakinfoUI kapperszaakInfoUI;
-        ProductInfoUI productInfoUI;
+        IKapperszaakUi kapperszaakUI = UIFactory.Kapperszaak();
+        IProductUi productUi = UIFactory.Product();
+
 
         public ActionResult LijstProducten()
         {
@@ -30,17 +29,7 @@ namespace HairSalonBotan.Controllers
         }
         public ActionResult Inloggen(AdminVM adminVM)
         {
-            AdminInfoUI adminUI = new AdminInfoUI(adminVM.Emailadres, adminVM.Wachtwoord);
-            try
-            {
-                kapperszaakUI.Inloggen(adminUI);
-
-                return RedirectToAction("ProductenPagina", "Kapperszaak");
-            }
-            catch
-            {
-                return View("Inloggen");
-            }
+            return View();
         }
 
         [HttpGet]
@@ -54,10 +43,10 @@ namespace HairSalonBotan.Controllers
         {
             try
             {
-                kapperszaakInfoUI = new KapperszaakinfoUI(kapperszaakVM.kapperszaakId, kapperszaakVM.naam);
-                productInfoUI = new ProductInfoUI(kapperszaakInfoUI, productvm.productId, productvm.titel, productvm.omschrijving, productvm.image);
+                //kapperszaakInfoUI = new KapperszaakinfoUI(kapperszaakVM.kapperszaakId, kapperszaakVM.naam);
+                //productInfoUI = new ProductInfoUI(kapperszaakInfoUI, productvm.productId, productvm.titel, productvm.omschrijving, productvm.image);
 
-                kapperszaakUI.VoegProductToe(productInfoUI, kapperszaakInfoUI);
+                //kapperszaakUI.VoegProductToe(productInfoUI, kapperszaakInfoUI);
 
                 return RedirectToAction("LijstProducten");
             }
@@ -76,9 +65,6 @@ namespace HairSalonBotan.Controllers
         [HttpPost]
         public ActionResult ProductVerwijderen(KapperszaakVM kapperszaakVm)
         {
-            var productId = productUi.ProductIdDoorGeven();
-            kapperszaakUI.ProductVerwijderen(productId);
-
             return RedirectToAction("LijstProducten");
         }
     }

@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoryUI", "FactoryUI\Fact
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HairSalonBotan", "HairSalonBotan\HairSalonBotan.csproj", "{B560923D-A99F-4B5B-AAD0-76D33E135292}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryContextUnitTest", "DALTests\MemoryContextUnitTest.csproj", "{83F8D4D5-E218-43C9-A3DF-39347C219097}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{B560923D-A99F-4B5B-AAD0-76D33E135292}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B560923D-A99F-4B5B-AAD0-76D33E135292}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B560923D-A99F-4B5B-AAD0-76D33E135292}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83F8D4D5-E218-43C9-A3DF-39347C219097}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83F8D4D5-E218-43C9-A3DF-39347C219097}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83F8D4D5-E218-43C9-A3DF-39347C219097}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83F8D4D5-E218-43C9-A3DF-39347C219097}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

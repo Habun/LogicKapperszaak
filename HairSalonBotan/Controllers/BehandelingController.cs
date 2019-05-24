@@ -7,13 +7,11 @@ namespace HairSalonBotan.Controllers
 {
     public class BehandelingController : Controller
     {
-        IBehandelingCollectieUI behandelingCollectie = UIFactory.BehandelingCollectie();
+        IBehandelingCollectieUi behandelingCollectie = UIFactory.BehandelingCollectie();
         IBehandelingUi behandelingUI = UIFactory.Behandeling();
-        ICategorieCollectieUI categorieCollectie = UIFactory.CategorieCollectie();
+        ICategorieCollectieUi categorieCollectie = UIFactory.CategorieCollectie();
 
         BehandelingVM bhmodel = new BehandelingVM();
-        BehandelingsInfoUI behandelingsinfo;
-        CategorieInfoUI categorieInfo;
 
         [HttpGet]
         public ActionResult Behandelingen()
@@ -97,7 +95,7 @@ namespace HairSalonBotan.Controllers
         [HttpPost]
         public ActionResult VerwijderBehandeling(BehandelingsInfoUI behandelingsinfo)
         {
-            var behandelingId = behandelingUI.BehandelingIDdoorGeven();
+            int behandelingId = behandelingUI.BehandelingsId;
             behandelingCollectie.BehandelingVerwijderen(behandelingId);
 
             return RedirectToAction("Behandelingen");

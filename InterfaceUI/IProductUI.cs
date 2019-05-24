@@ -1,11 +1,12 @@
 ﻿
-
-
 namespace InterfaceUI
 {
-   public interface IProductUI
+   public interface IProductUi
     {
-        void UpdateProduct(ProductInfoUI productInfoUI, KapperszaakinfoUI kapperszaakinfoUI);
-        int ProductIdDoorGeven();
+        string Titel { get;}
+        string Omschrijving { get;}
+        string Image { get; }
+
+        void UpdateProduct(IProductUi product);
     }
 }

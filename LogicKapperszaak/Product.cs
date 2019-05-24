@@ -5,43 +5,32 @@ using FactoryDAL;
 
 namespace LogicKapperszaak
 {
-   public class Product : IProductUI
+   public class Product : IProductUi
     {
-        public int ProductId { get; set; }
-        public string Titel { get; set; }
-        public string Omschrijving { get; set; }
-        public string Image { get; set; }
+        public string Titel { get;}
+        public string Omschrijving { get;}
+        public string Image { get;}
 
         IProductDAL productdal = DatabaseFactory.ProductDAL();
 
-        private ProductInfoDal productInfo;
+        public ProductInfoDal productInfo;
 
         public Product()
         {
+
         }
 
-        public Product(int productId, string titel, string omschrijving, string image)
+        public Product(string titel, string omschrijving, string image)
         {
-            ProductId = productId;
             Titel = titel;
             Omschrijving = omschrijving;
             Image = image; 
         }
 
-        public void UpdateProduct(ProductInfoUI productInfoUI, KapperszaakinfoUI kapperszaakinfoUI)
+        public void UpdateProduct(IProductUi product)
         {
-            KapperszaakInfoDal kapperszaakInfoDal = new KapperszaakInfoDal(kapperszaakinfoUI.Kapperszaakid, kapperszaakinfoUI.Naam); 
-            productInfo = new ProductInfoDal(kapperszaakInfoDal, productInfoUI.ProductId ,productInfoUI.Titel, productInfoUI.Omschrijving, productInfoUI.Image);
+            productInfo = new ProductInfoDal(product.Titel, product.Omschrijving, product.Image);
             productdal.UpdateProduct(productInfo);
-        }
-
-        public int ProductIdDoorGeven()
-        {
-            if (productdal.GeefProductId() == 0)
-            {
-                throw new ArgumentException($"Geen productId gevonden.");
-            }
-            return productdal.GeefProductId();
         }
     }
 }

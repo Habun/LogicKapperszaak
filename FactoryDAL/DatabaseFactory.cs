@@ -1,5 +1,6 @@
 ﻿using InterfaceDAL;
 using DAL;
+using DAL.Tests;
 
 namespace FactoryDAL
 {
@@ -28,6 +29,11 @@ namespace FactoryDAL
         public static ICategorieCollectionDAL CategorieDal()
         {
             return new CategorieDatabase();
+        }
+
+        public static IBehandelingCollectieDAL MemoryContext()
+        {
+            return new MemoryContext();
         }
     }
 }

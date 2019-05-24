@@ -45,6 +45,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DALTests\MemoryContextUnitTest.csproj">
+      <Project>{83f8d4d5-e218-43c9-a3df-39347c219097}</Project>
+      <Name>MemoryContextUnitTest</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{e36be63b-ff75-4196-b003-53332ee74264}</Project>
       <Name>DAL</Name>

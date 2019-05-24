@@ -2,20 +2,25 @@
 
 namespace LogicKapperszaak
 {
-   public class CadeauKaart
+   public class CadeauKaart : ICadeauKaartUi
     {
-        public string Bestemd { get; set; }
-        public decimal Bedrag { get; set; }
-        public KlantInfoUI klantInfo { get; set; }
+        public string Bestemd { get;}
+        public decimal Bedrag { get;}
 
-        public CadeauKaart(string bestemd, decimal bedrag, KlantInfoUI klantInfoUI)
+        public IKlantUi Klant;
+        public CadeauKaart(string bestemd, decimal bedrag, IKlantUi klant)
         {
-            klantInfo = klantInfoUI; 
             Bestemd = bestemd;
             Bedrag = bedrag;
+            Klant = klant;
         }
 
         public CadeauKaart()
+        {
+
+        }
+
+        public void UpdateCadeauKaart(ICadeauKaartUi cadeauKaart)
         {
 
         }
