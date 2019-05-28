@@ -7,9 +7,8 @@ namespace InterfaceUI
         int Id { get; }
         string Naam { get; }
         void Inloggen(string emailadres, string wachtwoord);
-        void VoegProductToe(IProductUi product);
+        void VoegProductToe(IProductUi product, int kapperszaakId);
         void ProductVerwijderen(int productId);
-        int ProductIdDoorGeven(int id);
         void VoegWerknemerToe(IWerknemerUi werknemer);
         List<IProductUi> AlleProductenOphalen();
         List<IAfspraakUi> AlleAfsprakenOphalen();

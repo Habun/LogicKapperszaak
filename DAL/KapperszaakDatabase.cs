@@ -18,13 +18,12 @@ namespace DAL
 
         public void VoegProductToe(ProductInfoDal productInfo)
         {
-            KapperszaakInfoDal kapperszaak = new KapperszaakInfoDal();
             string query = "INSERT INTO Product (KapperszaakId, Titel, Omschrijving, Image) VALUES(@KapperszaakId, @Titel, @Omschrijving, @Image)";
             conn.Open();
 
             using (cmd = new SqlCommand(query, conn))
             {
-                cmd.Parameters.AddWithValue("@KapperszaakId", kapperszaak.Id);
+                cmd.Parameters.AddWithValue("@KapperszaakId", productInfo.Id);
                 cmd.Parameters.AddWithValue("@Titel", productInfo.Titel);
                 cmd.Parameters.AddWithValue("@Omschrijving", productInfo.Omschrijving);
                 cmd.Parameters.AddWithValue("@Image", productInfo.Image);
@@ -102,7 +101,7 @@ namespace DAL
         {
             List<ProductInfoDal> productenlijst = new List<ProductInfoDal>();
 
-            string query = "Select Titel, Omschrijving, Image FROM Product"; 
+            string query = "Select ProductId, Titel, Omschrijving, Image FROM Product"; 
 
             conn.Open();
 
@@ -111,7 +110,7 @@ namespace DAL
             {
                 while (reader.Read())
                 {
-                    ProductInfoDal productInfoDal = new ProductInfoDal(reader.GetString(0), reader.GetString(1), reader.GetString(2));
+                    ProductInfoDal productInfoDal = new ProductInfoDal(reader.GetInt32(0),reader.GetString(1), reader.GetString(2), reader.GetString(3));
                     productenlijst.Add(productInfoDal);
                 }
             }

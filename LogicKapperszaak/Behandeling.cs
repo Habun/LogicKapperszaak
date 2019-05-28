@@ -36,21 +36,12 @@ namespace LogicKapperszaak
             Bedrag = bedrag;
         }
 
-        public void UpdateBehandeling(int behandelingId, IBehandelingUi behandeling, ICategorieUI categorie)
+        public void UpdateBehandeling(IBehandelingUi behandeling, ICategorieUI categorie)
         {
             categorieInfoDal = new CategorieInfoDal(categorie.CategorieId, categorie.Categorienaam);
 
-            behandelingsinfoDal = new BehandelingInfoDal(behandelingId, behandeling.Omschrijving, behandeling.Bedrag, categorieInfoDal);
+            behandelingsinfoDal = new BehandelingInfoDal(behandeling.Id, behandeling.Omschrijving, behandeling.Bedrag, categorieInfoDal);
             behandelingDal.UpdateBehandeling(behandelingsinfoDal);
         }
-
-        //public int BehandelingIDdoorGeven()
-        //{
-        //    if (behandelingDal.GeefBehandelingIDdoor() == 0)
-        //    {
-        //        throw new ArgumentException($"Geen behandelingId gevonden.");
-        //    }
-        //    return behandelingDal.GeefBehandelingIDdoor();
-        //}
     }
 }

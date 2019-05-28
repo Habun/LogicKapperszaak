@@ -7,15 +7,15 @@ namespace LogicKapperszaak
 {
    public class BehandelingCollectie : IBehandelingCollectieUi
     {
-        IBehandelingCollectieDAL BehandelingCollectieDAL = DatabaseFactory.BehandelingCollectieDAL();
+        public IBehandelingCollectieDAL BehandelingCollectieDAL = DatabaseFactory.MemoryContext();
+
+        public List<IBehandelingUi> lijstbehandeling { get; private set; } = new List<IBehandelingUi>();
 
         BehandelingInfoDal behandelinginfoDal;
-        public ICategorieUI categorie { get; }
 
-
-        public void BehandelingToevoegen(IBehandelingUi behandeling)
+        public void BehandelingToevoegen(IBehandelingUi behandeling, ICategorieUI categorieUi)
         {
-            CategorieInfoDal categorieInfoDal = new CategorieInfoDal(categorie.CategorieId, categorie.Categorienaam);
+            CategorieInfoDal categorieInfoDal = new CategorieInfoDal(categorieUi.CategorieId, categorieUi.Categorienaam);
 
             behandelinginfoDal = new BehandelingInfoDal(behandeling.Id,behandeling.Omschrijving, behandeling.Bedrag, categorieInfoDal);
             BehandelingCollectieDAL.VoegBehandelingToe(behandelinginfoDal);
@@ -27,8 +27,6 @@ namespace LogicKapperszaak
         }
         public List<IBehandelingUi> AlleBehandelingenOphalen() 
         {
-            List<IBehandelingUi> lijstbehandeling = new List<IBehandelingUi>();
-
             foreach (var bhInfo in BehandelingCollectieDAL.HaalBehandelingenOp())
             {
                 ICategorieUI categorie = new Categorie(bhInfo.categorieinfoDal.CategorieId, bhInfo.categorieinfoDal.Categorienaam);

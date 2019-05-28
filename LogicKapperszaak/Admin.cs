@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using FactoryDAL;
 using InterfaceUI;
+using InterfaceDAL;
 
 namespace LogicKapperszaak
 {
@@ -9,13 +10,17 @@ namespace LogicKapperszaak
         private string _emailadres;
         private string _wachtwoord;
 
+        private IAdminDAL adminDal = DatabaseFactory.AdminDAL();
         public List<IKapperszaakUi> kapperszaken { get; } = new List<IKapperszaakUi>();
         public Admin(string emailadres, string wachtwoord)
         {
             Emailadres = emailadres;
             Wachtwoord = wachtwoord;
         }
+        public Admin()
+        {
 
+        }
         public string Emailadres { get => _emailadres;
             set => _emailadres = value;
         }
@@ -24,9 +29,13 @@ namespace LogicKapperszaak
         }
 
         public List<IKapperszaakUi> AlleKapperZakenOphalen() 
-        { 
-
-            throw new NotImplementedException();
+        {
+            foreach (var kpInfo in adminDal.AlleKappersZakenOphalen())
+            {
+                IKapperszaakUi kapperszaak = new Kapperszaak(kpInfo.Id, kpInfo.Naam);
+                kapperszaken.Add(kapperszaak);
+            }
+            return kapperszaken;
         }
     }
 }

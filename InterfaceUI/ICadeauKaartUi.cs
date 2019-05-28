@@ -6,6 +6,6 @@ namespace InterfaceUI
     {
         string Bestemd { get; }
         decimal Bedrag { get; }
-        void UpdateCadeauKaart(ICadeauKaartUi cadeauKaart);
+        void UpdateCadeauKaart(ICadeauKaartUi cadeauKaart, IKlantUi klant);
     }
 }

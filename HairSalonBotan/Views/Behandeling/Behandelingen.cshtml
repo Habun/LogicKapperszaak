@@ -26,17 +26,17 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.CategorieinfoUi.Categorienaam)
+                @Html.DisplayFor(modelItem => item.categorieVM.categorieInfoUI)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Omschrijving)
+                @Html.DisplayFor(modelItem => item.omschrijving)
             </td>
             <td>
-                € @Html.DisplayFor(modelItem => item.Bedrag)
+                € @Html.DisplayFor(modelItem => item.bedrag)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { behandelingId = item.BehandelingsId }) |
-                @Html.ActionLink("Delete", "VerwijderBehandeling",new { behandelingId = item.BehandelingsId })
+                @Html.ActionLink("Edit", "Edit", new { behandelingId = item.Id }) |
+                @Html.ActionLink("Delete", "VerwijderBehandeling",new { behandelingId = item.Id })
             </td>
         </tr>
     }

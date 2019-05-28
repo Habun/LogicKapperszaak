@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{83F8D4D5-E218-43C9-A3DF-39347C219097}</ProjectGuid>
+    <ProjectGuid>{4092E9FB-1D55-4E8B-885C-D4069CC45D02}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DALTests</RootNamespace>
-    <AssemblyName>DALTests</AssemblyName>
+    <RootNamespace>DALTests2</RootNamespace>
+    <AssemblyName>DALTests2</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -56,8 +56,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="BehandelingContext.cs" />
-    <Compile Include="KappersZaakContext.cs" />
+    <Compile Include="KapperszaakDatabaseTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -67,10 +66,6 @@
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{E36BE63B-FF75-4196-B003-53332EE74264}</Project>
       <Name>DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\InterfaceDAL\InterfaceDAL.csproj">
-      <Project>{5fedd5d4-1da2-4063-9d3b-82c471facb21}</Project>
-      <Name>InterfaceDAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

@@ -29,5 +29,14 @@ namespace FactoryUI
         {
             return new CategorieCollectie();
         }
+
+        public static ICategorieUI Categorie()
+        {
+            return new Categorie();
+        }
+        public static IAdminUi Admin()
+        {
+            return new Admin();
+        }
     }
 }

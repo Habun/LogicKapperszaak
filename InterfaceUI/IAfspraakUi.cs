@@ -12,5 +12,6 @@ namespace InterfaceUI
         void BehandelingToevoegenAanAfspraak(IBehandelingUi behandeling);
         void BehandelingVerwijderenBijAfspraak();
         List<IBehandelingUi> AfspraakBehandelingenOphalen();
+        void KostenVanBehandelingenOptellen();
     }
 }

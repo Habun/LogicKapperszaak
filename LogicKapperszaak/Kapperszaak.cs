@@ -11,8 +11,8 @@ namespace LogicKapperszaak
         public int Id { get;}
         public string Naam { get;}
 
-        IKapperszaakDAL kapperszaakDAL = DatabaseFactory.KapperszaakDAL();
-        ProductInfoDal productinfo;
+        public IKapperszaakDAL kapperszaakDAL = DatabaseFactory.KapperszaakContext();
+
 
         public Kapperszaak(int id, string naam)
         {
@@ -34,11 +34,11 @@ namespace LogicKapperszaak
             kapperszaakDAL.Inloggen(adminInfoDal);
         }
 
-        public void VoegProductToe(IProductUi product)
+        public void VoegProductToe(IProductUi product, int kapperszaakId)
         {
-            productinfo = new ProductInfoDal(product.Titel, product.Omschrijving,product.Image);
+           ProductInfoDal productinfo = new ProductInfoDal(kapperszaakId, product.Titel, product.Omschrijving,product.Image);
 
-            kapperszaakDAL.VoegProductToe(productinfo);
+           kapperszaakDAL.VoegProductToe(productinfo);
         }
         public void ProductVerwijderen(int productId)
         {
@@ -46,16 +46,8 @@ namespace LogicKapperszaak
         }
         public void VoegWerknemerToe(IWerknemerUi werknemer)
         {
-
-        }
-
-        public int ProductIdDoorGeven(int id)
-        {
-            if (kapperszaakDAL.GeefProductId(id) == 0)
-            {
-                throw new ArgumentException($"Geen productId gevonden.");
-            }
-            return kapperszaakDAL.GeefProductId(id);
+            WerknemerInfoDal werknemerInfo = new WerknemerInfoDal(werknemer.Naam);
+            kapperszaakDAL.VoegWerknemerToe(werknemerInfo);
         }
 
         public List<IWerknemerUi> AlleWerknemersOphalen()
@@ -70,7 +62,7 @@ namespace LogicKapperszaak
 
             foreach (var pinfoDal in kapperszaakDAL.HaalProductenOp())
             {
-                IProductUi product = new Product(pinfoDal.Titel, pinfoDal.Omschrijving, pinfoDal.Image);
+                IProductUi product = new Product(pinfoDal.Id,pinfoDal.Titel, pinfoDal.Omschrijving, pinfoDal.Image);
                 producten.Add(product);
             }
             return producten;

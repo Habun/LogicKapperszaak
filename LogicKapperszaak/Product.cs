@@ -7,6 +7,7 @@ namespace LogicKapperszaak
 {
    public class Product : IProductUi
     {
+        public int Id { get; }
         public string Titel { get;}
         public string Omschrijving { get;}
         public string Image { get;}
@@ -20,8 +21,9 @@ namespace LogicKapperszaak
 
         }
 
-        public Product(string titel, string omschrijving, string image)
+        public Product(int id, string titel, string omschrijving, string image)
         {
+            Id = id;
             Titel = titel;
             Omschrijving = omschrijving;
             Image = image; 
@@ -29,7 +31,7 @@ namespace LogicKapperszaak
 
         public void UpdateProduct(IProductUi product)
         {
-            productInfo = new ProductInfoDal(product.Titel, product.Omschrijving, product.Image);
+            productInfo = new ProductInfoDal(product.Id, product.Titel, product.Omschrijving, product.Image);
             productdal.UpdateProduct(productInfo);
         }
     }

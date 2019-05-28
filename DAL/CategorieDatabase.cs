@@ -16,7 +16,7 @@ namespace DAL
         {
         }
 
-        public void VerwijderCategorie(CategorieInfoDal categorieinfoDal)
+        public void VerwijderCategorie(int categorieId)
         {
         }
 

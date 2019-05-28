@@ -8,6 +8,11 @@ namespace InterfaceDAL
 {
     public struct WerknemerInfoDal
     {
+        public string Naam { get; }
 
+        public WerknemerInfoDal(string naam)
+        {
+            Naam = naam;
+        }
     }
 }

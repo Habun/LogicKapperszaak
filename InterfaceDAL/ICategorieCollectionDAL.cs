@@ -6,7 +6,7 @@ namespace InterfaceDAL
    public interface ICategorieCollectionDAL
     {
         void VoegCategorieToe(CategorieInfoDal categorieinfoDal);
-        void VerwijderCategorie(CategorieInfoDal categorieinfoDal);
+        void VerwijderCategorie(int categorieId);
         List<CategorieInfoDal> HaalCategorieOp();
     }
 }

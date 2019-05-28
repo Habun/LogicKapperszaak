@@ -13,7 +13,7 @@ namespace HairSalonBotan.Models
         public CategorieVM categorieVM = new CategorieVM();
 
         [Required]
-        public int behandelingsId { get; set; }
+        public int Id { get; set; }
         [Required]
         public string omschrijving { get; set; }
         [Required]

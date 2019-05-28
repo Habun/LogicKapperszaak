@@ -53,10 +53,10 @@ namespace HairSalonBotan.Controllers
         {
             try
             {
-                categorieInfo = new CategorieInfoUI(categorieVM.categorieId, categorieVM.categorienaam);
+                //categorieInfo = new CategorieInfoUI(categorieVM.categorieId, categorieVM.categorienaam);
 
-                behandelingsinfo = new BehandelingsInfoUI(behandelingVM.behandelingsId, behandelingVM.omschrijving, behandelingVM.bedrag, categorieInfo);
-                behandelingCollectie.BehandelingToevoegen(behandelingsinfo, categorieInfo);
+                //behandelingsinfo = new BehandelingsInfoUI(behandelingVM.behandelingsId, behandelingVM.omschrijving, behandelingVM.bedrag, categorieInfo);
+                //behandelingCollectie.BehandelingToevoegen(behandelingsinfo, categorieInfo);
 
                 return RedirectToAction("Behandelingen");
             }
@@ -69,19 +69,19 @@ namespace HairSalonBotan.Controllers
         [HttpGet]
         public ActionResult Edit(int behandelingId)
         {
-            behandelingUI.BehandelingIDdoorGeven();
-            bhmodel.behandelingsId = behandelingId; 
+            //behandelingUI.BehandelingIDdoorGeven();
+            //bhmodel.behandelingsId = behandelingId; 
 
-            return View(bhmodel);
+            return View();
         }
 
         [HttpPost]
         public ActionResult Edit(int behandelingId, CategorieVM categorieVM, BehandelingVM behandelingVM)
         {
-            categorieInfo = new CategorieInfoUI(categorieVM.categorieId, categorieVM.categorienaam);
+            //categorieInfo = new CategorieInfoUI(categorieVM.categorieId, categorieVM.categorienaam);
 
-            behandelingsinfo = new BehandelingsInfoUI(behandelingVM.behandelingsId, behandelingVM.omschrijving, behandelingVM.bedrag, categorieInfo);
-            behandelingUI.UpdateBehandeling(behandelingId, behandelingsinfo, categorieInfo);
+            //behandelingsinfo = new BehandelingsInfoUI(behandelingVM.behandelingsId, behandelingVM.omschrijving, behandelingVM.bedrag, categorieInfo);
+            //behandelingUI.UpdateBehandeling(behandelingId, behandelingsinfo, categorieInfo);
 
             return RedirectToAction("Behandelingen");
         }
@@ -92,13 +92,13 @@ namespace HairSalonBotan.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult VerwijderBehandeling(BehandelingsInfoUI behandelingsinfo)
-        {
-            int behandelingId = behandelingUI.BehandelingsId;
-            behandelingCollectie.BehandelingVerwijderen(behandelingId);
+        //[HttpPost]
+        //public ActionResult VerwijderBehandeling()
+        //{
+        //    int behandelingId = behandelingUI.BehandelingsId;
+        //    behandelingCollectie.BehandelingVerwijderen(behandelingId);
 
-            return RedirectToAction("Behandelingen");
-        }
+        //    return RedirectToAction("Behandelingen");
+        //}
     }
 }

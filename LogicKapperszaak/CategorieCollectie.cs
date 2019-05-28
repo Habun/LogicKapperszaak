@@ -6,17 +6,17 @@ using FactoryDAL;
 namespace LogicKapperszaak
 {
    public class CategorieCollectie : ICategorieCollectieUi
-    {
-        ICategorieCollectionDAL CategorieCollectionDAL = DatabaseFactory.CategorieDal();
-        public CategorieInfoDal categorieinfoDal { get; set; }
+   {
+       public ICategorieCollectionDAL CategorieCollectionDAL = DatabaseFactory.CategorieDAL();
 
         public void CategorieToevoegen(ICategorieUI categorieUI)
         {
-
+            CategorieInfoDal categorieinfo = new CategorieInfoDal(categorieUI.CategorieId, categorieUI.Categorienaam);
+            CategorieCollectionDAL.VoegCategorieToe(categorieinfo);
         }
         public void CategorieVerwijderen(int categorieId)
         {
-
+            CategorieCollectionDAL.VerwijderCategorie(categorieId);
         }
         public List<ICategorieUI> AlleCategorieenOphalen()
         {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace InterfaceDAL
 {
    public interface ICadeauKaartDal
-    {
-        //update
-    }
+   {
+       void UpdateCadeauKaart(CadeauKaartInfoDal cadeauKaartInfoDal);
+   }
 }

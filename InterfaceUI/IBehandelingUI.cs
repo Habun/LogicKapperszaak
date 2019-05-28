@@ -7,6 +7,6 @@ namespace InterfaceUI
         int Id { get; }
         string Omschrijving { get; }
         decimal Bedrag { get; }
-        void UpdateBehandeling(int behandelingId, IBehandelingUi behandeling, ICategorieUI categorie);
+        void UpdateBehandeling(IBehandelingUi behandeling, ICategorieUI categorie);
     }
 }
