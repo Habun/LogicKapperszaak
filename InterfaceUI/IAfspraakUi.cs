@@ -7,11 +7,12 @@ namespace InterfaceUI
 {
    public interface IAfspraakUi
     {
+        int AfspraakId { get; }
         string Opmerkingen { get; }
-        DateTime datetime { get; }
-        void BehandelingToevoegenAanAfspraak(IBehandelingUi behandeling);
-        void BehandelingVerwijderenBijAfspraak();
-        List<IBehandelingUi> AfspraakBehandelingenOphalen();
-        void KostenVanBehandelingenOptellen();
+        DateTime Datetime { get; }
+        void BehandelingToevoegenAanAfspraak(IBehandelingUi behandeling, int afspraakId);
+        void BehandelingVerwijderenBijAfspraak(int behandelingId);
+        decimal KostenVanBehandelingenOptellen();
+        List<IBehandelingUi> AfspraakBehandelingenOphalen(int afspraakId);
     }
 }

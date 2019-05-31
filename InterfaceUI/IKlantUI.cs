@@ -7,7 +7,7 @@ namespace InterfaceUI
         string Naam { get; }
         int Telefoonnummer { get; }
         string Emailadres { get; }
-        void CadeauKaartReserveren(ICadeauKaartUi cadeauKaart);
+        void CadeauKaartReserveren(ICadeauKaartUi cadeauKaart, IKlantUi klant);
         void AfspraakReserveren();
     }
 }

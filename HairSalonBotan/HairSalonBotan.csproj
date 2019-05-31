@@ -173,7 +173,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Behandeling\Behandelingen.cshtml" />
     <Content Include="Views\Kapperszaak\LijstProducten.cshtml" />
     <Content Include="Views\Behandeling\CreateBehandeling.cshtml" />
     <Content Include="Views\Kapperszaak\ProductenPagina.cshtml" />
@@ -186,6 +185,7 @@
     <Content Include="Views\Kapperszaak\Create.cshtml" />
     <Content Include="Views\Behandeling\BehandelingReserveren.cshtml" />
     <Content Include="Views\Behandeling\LoggedInStatusMessage.cshtml" />
+    <Content Include="Views\Behandeling\Behandelingen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

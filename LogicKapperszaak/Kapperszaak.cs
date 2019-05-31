@@ -11,8 +11,12 @@ namespace LogicKapperszaak
         public int Id { get;}
         public string Naam { get;}
 
-        public IKapperszaakDAL kapperszaakDAL = DatabaseFactory.KapperszaakContext();
+        public List<IProductUi> Producten { get; } = new List<IProductUi>();
+        public List<IAfspraakUi> Afspraken { get; } = new List<IAfspraakUi>();
+        public List<ICadeauKaartUi> Cadeaukaarten { get; } = new List<ICadeauKaartUi>();
+        public List<IWerknemerUi> Werknemers { get; } = new List<IWerknemerUi>();
 
+        public IKapperszaakDAL kapperszaakDAL = DatabaseFactory.KapperszaakDAL();
 
         public Kapperszaak(int id, string naam)
         {
@@ -52,46 +56,38 @@ namespace LogicKapperszaak
 
         public List<IWerknemerUi> AlleWerknemersOphalen()
         {
-            List<IWerknemerUi> werknemers = new List<IWerknemerUi>();
-
-            return werknemers;
+            return Werknemers;
         }
         public List<IProductUi> AlleProductenOphalen()
         {
-            List<IProductUi> producten = new List<IProductUi>();
-
             foreach (var pinfoDal in kapperszaakDAL.HaalProductenOp())
             {
                 IProductUi product = new Product(pinfoDal.Id,pinfoDal.Titel, pinfoDal.Omschrijving, pinfoDal.Image);
-                producten.Add(product);
+                Producten.Add(product);
             }
-            return producten;
+            return Producten;
         }
         public List<IAfspraakUi> AlleAfsprakenOphalen()
         {
-            List<IAfspraakUi> afspraken = new List<IAfspraakUi>();
-
             foreach (var asinfoDal in kapperszaakDAL.HaalAfspraakOp())
             {
                 IKlantUi klant = new Klant(asinfoDal.klantinfo.Naam, asinfoDal.klantinfo.Telefoonnummer, asinfoDal.klantinfo.Emailadres);
 
-                IAfspraakUi afspraak = new Afspraak(asinfoDal.Opmerkingen, asinfoDal.datetime, klant);
-                afspraken.Add(afspraak);
+                IAfspraakUi afspraak = new Afspraak(asinfoDal.AfspraakId,asinfoDal.Opmerkingen, asinfoDal.datetime, klant);
+                Afspraken.Add(afspraak);
             }
-            return afspraken;
+            return Afspraken;
         }
         public List<ICadeauKaartUi> AlleCadeauKaartenOphalen()
         {
-            List<ICadeauKaartUi> cadeaukaarten = new List<ICadeauKaartUi>();
-
             foreach (var ckinfoDal in kapperszaakDAL.HaalCadeauKaartOp())
             {
                 IKlantUi klant = new Klant(ckinfoDal.klantDAL.Naam, ckinfoDal.klantDAL.Telefoonnummer, ckinfoDal.klantDAL.Emailadres);
 
                 ICadeauKaartUi cadeauKaart = new CadeauKaart(ckinfoDal.Bestemd, ckinfoDal.Bedrag, klant);
-                cadeaukaarten.Add(cadeauKaart);
+                Cadeaukaarten.Add(cadeauKaart);
             }
-            return cadeaukaarten; 
+            return Cadeaukaarten; 
         }
     }
 }

@@ -9,7 +9,7 @@ namespace DAL
         private SqlCommand cmd;
         private SqlDataReader reader;
 
-        SqlConnection conn = ConnectieDatabase.Connection;
+        private SqlConnection conn = ConnectieDatabase.Connection;
         public List<KapperszaakInfoDal> AlleKappersZakenOphalen()
         {
             List<KapperszaakInfoDal> kapperszaken = new List<KapperszaakInfoDal>();

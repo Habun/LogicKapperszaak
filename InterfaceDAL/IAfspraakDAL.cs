@@ -8,6 +8,8 @@ namespace InterfaceDAL
 {
    public interface IAfspraakDAL
    {
-
+       void VoegBehandelingToeAanAfspraak(BehandelingInfoDal behandelingInfo, int afspraakId);
+       void VerwijderBehandeling(int behandelingId);
+       List<BehandelingInfoDal> GekozenBehandelingenOphalen(int afspraakId);
    }
 }

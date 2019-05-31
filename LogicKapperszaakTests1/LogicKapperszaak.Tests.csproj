@@ -59,7 +59,6 @@
     <Compile Include="AfspraakTests.cs" />
     <Compile Include="BehandelingCollectieTests.cs" />
     <Compile Include="CategorieCollectieTests.cs" />
-    <Compile Include="KapperszaakTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

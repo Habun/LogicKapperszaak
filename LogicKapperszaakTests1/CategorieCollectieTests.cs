@@ -1,4 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using LogicKapperszaak;
+using System.Collections.Generic;
+using FactoryDAL;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FactoryUI;
 using InterfaceUI;
 
@@ -9,21 +12,42 @@ namespace LogicKapperszaak.Tests
     [TestClass()]
     public class CategorieCollectieTests
     {
-        //ICategorieUI IcategorieUi = UIFactory.Categorie();
-        //CategorieCollectie categorieCollectie = new CategorieCollectie();
+        private Categorie categorie;
+        private ICategorieUI IcategorieUi;
+        private CategorieCollectie categorieCollectie;
 
-        //[TestMethod()]
-        //public void CategorieToevoegenTest()
-        //{
-        //    // Assign
-        //    Categorie categorie = new Categorie(2, "Vrouwen");
-        //    IcategorieUi = new Categorie(categorie.CategorieId, categorie.Categorienaam);
+        [TestInitialize]
+        public void Initialize()
+        {
+            DatabaseFactory.UnitTesting = true;
+            categorieCollectie = new CategorieCollectie();
+            IcategorieUi = UIFactory.Categorie();
+        }
 
-        //    //Act
-        //    categorieCollectie.CategorieToevoegen(IcategorieUi);
+        [TestMethod()]
+        public void CategorieToevoegenTest()
+        {
+            // Assign
+            categorie = new Categorie(5, "Epileren");
+            IcategorieUi = new Categorie(categorie.CategorieId, categorie.Categorienaam);
 
-        //    //Assert
-        //    Assert.AreEqual("Vrouwen", categorieCollectie.CategorieCollectionDAL.HaalCategorieOp()[1].Categorienaam);
-        //}
+            //Act
+            categorieCollectie.CategorieToevoegen(IcategorieUi);
+
+            //Assert
+            Assert.AreEqual("Epileren", categorieCollectie.CategorieCollectionDAL.HaalCategorieOp()[4].Categorienaam);
+        }
+
+        [TestMethod()]
+        public void AlleCategorieenOphalenTest()
+        {
+            // Assign
+
+            //Act
+            categorieCollectie.AlleCategorieenOphalen();
+            
+            //Assert
+            Assert.AreEqual(4, categorieCollectie.AlleCategorieenOphalen().Count);
+        }
     }
 }

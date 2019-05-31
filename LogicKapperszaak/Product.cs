@@ -1,5 +1,4 @@
-﻿using System;
-using InterfaceUI;
+﻿using InterfaceUI;
 using InterfaceDAL;
 using FactoryDAL;
 
@@ -14,11 +13,8 @@ namespace LogicKapperszaak
 
         IProductDAL productdal = DatabaseFactory.ProductDAL();
 
-        public ProductInfoDal productInfo;
-
         public Product()
         {
-
         }
 
         public Product(int id, string titel, string omschrijving, string image)
@@ -31,7 +27,7 @@ namespace LogicKapperszaak
 
         public void UpdateProduct(IProductUi product)
         {
-            productInfo = new ProductInfoDal(product.Id, product.Titel, product.Omschrijving, product.Image);
+            ProductInfoDal productInfo = new ProductInfoDal(product.Id, product.Titel, product.Omschrijving, product.Image);
             productdal.UpdateProduct(productInfo);
         }
     }

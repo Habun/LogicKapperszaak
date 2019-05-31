@@ -12,11 +12,8 @@ namespace LogicKapperszaak
 
         public IBehandelingDAL behandelingDal = DatabaseFactory.Behandelingdal();
 
-        public BehandelingInfoDal behandelingsinfoDal;
+        public ICategorieUI Categorie { get; } 
 
-        public CategorieInfoDal categorieInfoDal;
-
-        public ICategorieUI Categorie ;
         public Behandeling(int id, string omschrijving, decimal bedrag, ICategorieUI categorie)
         {
             Id = id;
@@ -36,11 +33,11 @@ namespace LogicKapperszaak
             Bedrag = bedrag;
         }
 
-        public void UpdateBehandeling(IBehandelingUi behandeling, ICategorieUI categorie)
+        public void UpdateBehandeling(int behandelingId, IBehandelingUi behandeling, ICategorieUI categorie)
         {
-            categorieInfoDal = new CategorieInfoDal(categorie.CategorieId, categorie.Categorienaam);
+            CategorieInfoDal categorieInfoDal = new CategorieInfoDal(categorie.CategorieId, categorie.Categorienaam);
 
-            behandelingsinfoDal = new BehandelingInfoDal(behandeling.Id, behandeling.Omschrijving, behandeling.Bedrag, categorieInfoDal);
+            BehandelingInfoDal behandelingsinfoDal = new BehandelingInfoDal(behandeling.Id, behandeling.Omschrijving, behandeling.Bedrag, categorieInfoDal);
             behandelingDal.UpdateBehandeling(behandelingsinfoDal);
         }
     }

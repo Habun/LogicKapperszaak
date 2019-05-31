@@ -1,28 +1,28 @@
 ﻿using InterfaceDAL;
 using DAL;
 using DAL.Tests;
+using IntergratieDatabase;
+
 namespace FactoryDAL
 {
     public static class DatabaseFactory
     {
-        //public static void Main()
-        //{
-        //    switch (())
-        //    {
-        //        case false:
-        //            MemoryContext();
-        //            break;
-        //        case true:
-        //            BehandelingCollectieDAL();
-        //            break;
-        //    }
-        //}
+        public static bool UnitTesting { get; set; } = false;
+        public static bool IntergratieTest { get; set; } = false;
         public static IBehandelingDAL Behandelingdal()
         {
             return new BehandelingDatabase();
         }
         public static IBehandelingCollectieDAL BehandelingCollectieDAL()
         {
+            if (UnitTesting)
+            {
+                return new BehandelingContext();
+            }
+            if (IntergratieTest)
+            {
+                return new BehandelingIntergratieTest();
+            }
             return new BehandelingDatabase();
         }
         public static IKlantDAL KlantDAL()
@@ -37,7 +37,15 @@ namespace FactoryDAL
         {
             return new KapperszaakDatabase();
         }
-        public static ICategorieCollectionDAL CategorieDAL()
+        public static ICategorieCollectionDAL CategorieCollectieDal()
+        {
+            if (UnitTesting)
+            {
+                return new CategorieContext();
+            }
+            return new CategorieDatabase();
+        }
+        public static ICategorieDAL CategorieDal()
         {
             return new CategorieDatabase();
         }
@@ -50,16 +58,16 @@ namespace FactoryDAL
             return new CadeauKaartDatabase();
         }
 
-
-
-        //unit test
-        public static IBehandelingCollectieDAL MemoryContext()
+        public static IAfspraakDAL AfspraakDal()
         {
-            return new BehandelingContext();
-        }
-        public static IKapperszaakDAL KapperszaakContext()
-        {
-            return new KappersZaakContext();
+            if (UnitTesting)
+            {
+            }
+            if (IntergratieTest)
+            {
+                return new AfspraakIntergratrietest();
+            }
+            return new AfspraakDatabase();
         }
     }
 }

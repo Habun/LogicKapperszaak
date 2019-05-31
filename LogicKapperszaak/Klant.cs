@@ -13,8 +13,6 @@ namespace LogicKapperszaak
 
         IKlantDAL klantDAL = DatabaseFactory.KlantDAL();
 
-        public CadeauKaartInfoDal cadeaukaartinfo;
-
         public Klant()
         {
         }
@@ -26,11 +24,10 @@ namespace LogicKapperszaak
             Emailadres = emailadres;
         }
 
-        public void CadeauKaartReserveren(ICadeauKaartUi cadeauKaart)
+        public void CadeauKaartReserveren(ICadeauKaartUi cadeauKaart, IKlantUi klant)
         {
-             IKlantUi klant = new Klant();
              KlantInfoDal klantinfo = new KlantInfoDal(klant.Naam, klant.Telefoonnummer, klant.Emailadres);
-             cadeaukaartinfo = new CadeauKaartInfoDal(cadeauKaart.Bestemd, cadeauKaart.Bedrag, klantinfo);
+             CadeauKaartInfoDal cadeaukaartinfo = new CadeauKaartInfoDal(cadeauKaart.Bestemd, cadeauKaart.Bedrag, klantinfo);
 
              klantDAL.CadeauKaartReserveren(cadeaukaartinfo);
         }

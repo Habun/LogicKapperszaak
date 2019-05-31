@@ -43,8 +43,6 @@ namespace HairSalonBotan.Controllers
         {
             try
             {
-                //kapperszaakInfoUI = new KapperszaakinfoUI(kapperszaakVM.kapperszaakId, kapperszaakVM.naam);
-                //productInfoUI = new ProductInfoUI(kapperszaakInfoUI, productvm.productId, productvm.titel, productvm.omschrijving, productvm.image);
 
                 //kapperszaakUI.VoegProductToe(productInfoUI, kapperszaakInfoUI);
 
@@ -56,15 +54,11 @@ namespace HairSalonBotan.Controllers
             }
         }
 
-        [HttpGet]
-        public ActionResult ProductVerwijderen()
-        {
-            return View();
-        }
 
         [HttpPost]
-        public ActionResult ProductVerwijderen(KapperszaakVM kapperszaakVm)
+        public ActionResult ProductVerwijderen()
         {
+            kapperszaakUI.ProductVerwijderen(productUi.Id);
             return RedirectToAction("LijstProducten");
         }
     }

@@ -57,7 +57,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="BehandelingContext.cs" />
-    <Compile Include="KappersZaakContext.cs" />
+    <Compile Include="CategorieContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

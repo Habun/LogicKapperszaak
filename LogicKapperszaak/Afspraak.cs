@@ -1,25 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using FactoryDAL;
+using InterfaceDAL;
 using InterfaceUI;
 
 namespace LogicKapperszaak
 {
     public class Afspraak : IAfspraakUi
     {
+        public int AfspraakId { get; }
         public string Opmerkingen { get;}
-        public DateTime datetime { get; }
-        public List<Behandeling> behandelingen { get; set; } = new List<Behandeling>()
-        {
-            new Behandeling(1, "Scheren", 13),
-            new Behandeling(3, "", 25)
-        };
-        public IKlantUi _klantUi;
+        public DateTime Datetime { get; }
+        public List<IBehandelingUi> GekozenBehandelingenVoorAfspraak { get; } = new List<IBehandelingUi>();
 
+        private IKlantUi _klantUi;
 
-        public Afspraak(string opmerking, DateTime dateTime, IKlantUi klantUi)
+        private IAfspraakDAL afspraakDal = DatabaseFactory.AfspraakDal();
+
+        public Afspraak(int afspraakId, string opmerking, DateTime dateTime, IKlantUi klantUi)
         {
+            AfspraakId = afspraakId;
             Opmerkingen = opmerking;
-            datetime = dateTime;
+            Datetime = dateTime;
             _klantUi = klantUi;
         }
 
@@ -27,31 +30,32 @@ namespace LogicKapperszaak
         {
         }
 
-        public void BehandelingToevoegenAanAfspraak(IBehandelingUi behandeling)
+        public void BehandelingToevoegenAanAfspraak(IBehandelingUi behandeling, int afspraakId)
         {
+            BehandelingInfoDal behandelinginfoDal = new BehandelingInfoDal(behandeling.Id, behandeling.Omschrijving, behandeling.Bedrag);
 
+            afspraakDal.VoegBehandelingToeAanAfspraak(behandelinginfoDal, afspraakId);
         }
-        public void BehandelingVerwijderenBijAfspraak()
+        public void BehandelingVerwijderenBijAfspraak(int behandelingId)
         {
+           afspraakDal.VerwijderBehandeling(behandelingId);
+        }
+        public decimal KostenVanBehandelingenOptellen()
+        {
+            AfspraakBehandelingenOphalen(AfspraakId);
+            decimal totaalBedragBehandelingen = GekozenBehandelingenVoorAfspraak.Sum(b => b.Bedrag);
 
+            return  totaalBedragBehandelingen;
         }
 
-        public void KostenVanBehandelingenOptellen(Behandeling bh)
+        public List<IBehandelingUi> AfspraakBehandelingenOphalen(int afspraakId)
         {
-            foreach (var bhbedrag in behandelingen)
+            foreach (var bhInfo in afspraakDal.GekozenBehandelingenOphalen(afspraakId))
             {
-                decimal totaal = bhbedrag.Bedrag + bh.Bedrag;
+                IBehandelingUi behandelingUI = new Behandeling(bhInfo.Id, bhInfo.Omschrijving, bhInfo.Bedrag);
+                GekozenBehandelingenVoorAfspraak.Add(behandelingUI);
             }
-        }
-
-        public List<IBehandelingUi> AfspraakBehandelingenOphalen()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void KostenVanBehandelingenOptellen()
-        {
-            throw new NotImplementedException();
+            return GekozenBehandelingenVoorAfspraak;
         }
     }
 }

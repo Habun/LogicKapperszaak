@@ -17,10 +17,6 @@ namespace LogicKapperszaak
             Emailadres = emailadres;
             Wachtwoord = wachtwoord;
         }
-        public Admin()
-        {
-
-        }
         public string Emailadres { get => _emailadres;
             set => _emailadres = value;
         }

@@ -10,5 +10,7 @@ namespace InterfaceUI
     {
         int CategorieId { get; }
         string Categorienaam { get; }
+
+        void UpdateCategorie(ICategorieUI categorie);
     }
 }

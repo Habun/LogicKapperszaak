@@ -3,10 +3,11 @@
 @{
     ViewBag.Title = "Behandelingen";
 }
+
 <h2>Behandelingen</h2>
 
 <p>
-    @Html.ActionLink("Voeg nieuw behandeling toe", "CreateBehandeling")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
@@ -22,23 +23,21 @@
         <th></th>
     </tr>
 
-    @foreach (var item in Model.behandelingUI)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.categorieVM.categorieInfoUI)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.omschrijving)
-            </td>
-            <td>
-                € @Html.DisplayFor(modelItem => item.bedrag)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { behandelingId = item.Id }) |
-                @Html.ActionLink("Delete", "VerwijderBehandeling",new { behandelingId = item.Id })
-            </td>
-        </tr>
-    }
-
+@foreach (var item in Model.behandelingUI) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categorie.Categorienaam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Omschrijving)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bedrag)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "VerwijderBehandeling", new { id = item.Id })
+        </td>
+    </tr>
+}
 </table>

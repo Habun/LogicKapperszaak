@@ -1,11 +1,12 @@
 ﻿using InterfaceUI;
 using LogicKapperszaak;
+using System.Configuration;
 
 namespace FactoryUI
 {
    public class UIFactory
-    {
-        public static IBehandelingCollectieUi BehandelingCollectie()
+   {
+       public static IBehandelingCollectieUi BehandelingCollectie()
         {
             return new BehandelingCollectie();
         }
@@ -34,9 +35,14 @@ namespace FactoryUI
         {
             return new Categorie();
         }
-        public static IAdminUi Admin()
+
+        public static IAfspraakUi Afspraak()
         {
-            return new Admin();
+            return new Afspraak();
+        }
+        public static IAdminUi Admin(string emailadres, string wachtwoord)
+        {
+            return new Admin(emailadres, wachtwoord);
         }
     }
 }

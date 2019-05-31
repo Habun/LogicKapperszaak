@@ -45,6 +45,7 @@
     <Compile Include="IAfspraakDAL.cs" />
     <Compile Include="ICadeauKaartDal.cs" />
     <Compile Include="ICategorieCollectionDAL.cs" />
+    <Compile Include="ICategorieDAL.cs" />
     <Compile Include="struct\AdminInfoDal.cs" />
     <Compile Include="struct\AfspraakInfoDal.cs" />
     <Compile Include="struct\BehandelingInfoDal.cs" />

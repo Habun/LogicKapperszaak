@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
     <Compile Include="DatabaseFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -56,6 +58,10 @@
     <ProjectReference Include="..\InterfaceDAL\InterfaceDAL.csproj">
       <Project>{5fedd5d4-1da2-4063-9d3b-82c471facb21}</Project>
       <Name>InterfaceDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IntergratieDatabase\IntergratieDatabase.csproj">
+      <Project>{c31eeb36-e66e-48b8-b0e5-9064d5512d8d}</Project>
+      <Name>IntergratieDatabase</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

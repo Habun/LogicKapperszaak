@@ -1,7 +1,11 @@
 ﻿using InterfaceDAL;
 using System;
 using System.Collections.Generic;
+using System.Web;
 using System.Data.SqlClient;
+using System.Web.Configuration;
+using System.Configuration;
+using System.Data;
 
 namespace DAL
 {
@@ -10,7 +14,9 @@ namespace DAL
         private SqlCommand cmd;
         private SqlDataReader reader;
 
-        SqlConnection conn = ConnectieDatabase.Connection;
+        private SqlConnection conn = ConnectieDatabase.Connection;
+
+        private BehandelingInfoDal behandelingInfo;
 
         public void VoegBehandelingToe(BehandelingInfoDal behandelingsinfo)
         {

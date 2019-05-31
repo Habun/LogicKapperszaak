@@ -1,4 +1,5 @@
-﻿
+﻿using FactoryDAL;
+using InterfaceDAL;
 using InterfaceUI;
 
 namespace LogicKapperszaak
@@ -8,6 +9,8 @@ namespace LogicKapperszaak
         public int CategorieId { get;}
         public string Categorienaam { get;}
 
+        private ICategorieDAL IcategorieDal = DatabaseFactory.CategorieDal();
+
         public Categorie()
         {
         }
@@ -16,6 +19,12 @@ namespace LogicKapperszaak
         {
             CategorieId = categorieId;
             Categorienaam = categorieNaam;
+        }
+
+        public void UpdateCategorie(ICategorieUI categorie)
+        {
+            CategorieInfoDal categorieInfoDal = new CategorieInfoDal(categorie.CategorieId, categorie.Categorienaam);
+            IcategorieDal.UpdateCategorie(categorieInfoDal);
         }
     }
 }

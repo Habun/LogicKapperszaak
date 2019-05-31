@@ -1,23 +1,30 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using InterfaceDAL;
 
 namespace DAL
 {
-   public class CategorieDatabase : ICategorieCollectionDAL
+   public class CategorieDatabase : ICategorieCollectionDAL, ICategorieDAL
     {
         private SqlCommand cmd;
         private SqlDataReader reader;
 
-        SqlConnection conn = ConnectieDatabase.Connection;
-        CategorieInfoDal categorieInfoDal;
+        private SqlConnection conn = ConnectieDatabase.Connection;
 
         public void VoegCategorieToe(CategorieInfoDal categorieinfoDal)
         {
+            throw new NotImplementedException();
         }
 
         public void VerwijderCategorie(int categorieId)
         {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateCategorie(CategorieInfoDal categorieInfoDal)
+        {
+            throw new NotImplementedException();
         }
 
         public List<CategorieInfoDal> HaalCategorieOp()
@@ -37,23 +44,6 @@ namespace DAL
                 }
             }
             return categorieen;
-        }
-        public CategorieInfoDal CategoryIdOphalen(int id)
-        {
-            string query = "Select * FROM Categorie WHERE CategorieId=@CategorieID";
-
-            conn.Open();
-            cmd = new SqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("@CategorieID", id);
-
-            using (reader = cmd.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    categorieInfoDal = new CategorieInfoDal(reader.GetInt32(0), reader.GetString(1));
-                }
-            }
-            return categorieInfoDal;
         }
     }
 }

@@ -13,7 +13,7 @@ namespace DAL
         private SqlCommand cmd;
         private SqlDataReader reader;
 
-        SqlConnection conn = ConnectieDatabase.Connection;
+        private SqlConnection conn = ConnectieDatabase.Connection;
         public void AfspraakReserveren()
         {
             throw new NotImplementedException();

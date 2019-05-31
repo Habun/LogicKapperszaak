@@ -9,7 +9,7 @@ namespace DAL
         private SqlCommand cmd;
         private SqlDataReader reader;
 
-        SqlConnection conn = ConnectieDatabase.Connection;
+      //  SqlConnection conn = ConnectieDatabase.Connection;
         public void UpdateProduct(ProductInfoDal productInfo)
         {
             throw new NotImplementedException();

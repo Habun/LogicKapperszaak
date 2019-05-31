@@ -5,7 +5,6 @@
 }
 
 <h2>Producten</h2>
-<br />
 <p>
     @Html.ActionLink("Voeg nieuw product toe", "Create")
 </p>
@@ -36,7 +35,7 @@
             <img src="@Url.Content(item.Image)" width="250" height="200"/>
         </td>
         <td>
-            @Html.ActionLink("Verwijder", "ProductVerwijderen", new { productId = item.ProductId })
+            @Html.ActionLink("Verwijder", "ProductVerwijderen", new { productId = item.Id })
         </td>
     </tr>
     }

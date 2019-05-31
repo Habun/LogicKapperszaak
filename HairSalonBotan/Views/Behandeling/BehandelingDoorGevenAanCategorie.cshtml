@@ -29,7 +29,7 @@
                 € @Html.DisplayFor(modelItem => item.Bedrag)
             </td>
             <td>
-                @Html.ActionLink("Kiezen", "BehandelingReserveren", new {id = item.BehandelingsId, omschrijving = item.Omschrijving, bedrag = item.Bedrag}, new {@class = "btn btn-primary"})
+                @Html.ActionLink("Kiezen", "BehandelingReserveren", new {id = item.Id, omschrijving = item.Omschrijving, bedrag = item.Bedrag}, new {@class = "btn btn-primary"})
             </td>
         </tr>
     }

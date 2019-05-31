@@ -10,7 +10,7 @@ namespace DAL.Tests
     {
         public List<BehandelingInfoDal> behandelingen { get;  set; } = new List<BehandelingInfoDal>()
         {
-            new BehandelingInfoDal(1, "Scheren", 13, new CategorieInfoDal(1, "Mannen"))
+            new BehandelingInfoDal(1, "Scheren", 13, new CategorieInfoDal(1, "Mannen")),
         };
 
         public void VoegBehandelingToe(BehandelingInfoDal behandelingsinfo)
@@ -34,6 +34,11 @@ namespace DAL.Tests
         }
 
         public void VerwijderBehandeling(int behandelingId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int GeefBehandelingIDdoor()
         {
             throw new NotImplementedException();
         }

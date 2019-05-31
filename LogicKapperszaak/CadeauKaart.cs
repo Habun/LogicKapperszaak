@@ -9,18 +9,15 @@ namespace LogicKapperszaak
         public string Bestemd { get;}
         public decimal Bedrag { get;}
 
-        private ICadeauKaartDal cadeauKaartDal = DatabaseFactory.CadeauKaartDal();
+        public ICadeauKaartDal cadeauKaartDal = DatabaseFactory.CadeauKaartDal();
 
-        public IKlantUi Klant;
+        private IKlantUi Klant;
+
         public CadeauKaart(string bestemd, decimal bedrag, IKlantUi klant)
         {
             Bestemd = bestemd;
             Bedrag = bedrag;
             Klant = klant;
-        }
-
-        public CadeauKaart()
-        {
         }
 
         public void UpdateCadeauKaart(ICadeauKaartUi cadeauKaart, IKlantUi klant)
